@@ -1,0 +1,924 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="z-dd, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;----------
+
+##&amp;amp;nbsp;一、PC版：&amp;amp;nbsp;##
+&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。
+上周末，给自己的本本重装了下系统，SSD上装win8.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DD初学Linux系列--1.环境安装搭建及启动过程">
+<meta property="og:url" content="mark.z-dd.net/2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/index.html">
+<meta property="og:site_name" content="DD'echo">
+<meta property="og:description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;----------
+
+##&amp;amp;nbsp;一、PC版：&amp;amp;nbsp;##
+&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。
+上周末，给自己的本本重装了下系统，SSD上装win8.1">
+<meta property="og:updated_time" content="2017-04-27T03:59:03.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DD初学Linux系列--1.环境安装搭建及启动过程">
+<meta name="twitter:description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;----------
+
+##&amp;amp;nbsp;一、PC版：&amp;amp;nbsp;##
+&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。
+上周末，给自己的本本重装了下系统，SSD上装win8.1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '76bc734de01669f87cbaf14d33fb71e7',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="mark.z-dd.net/2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/"/>
+
+
+
+
+
+  <title> DD初学Linux系列--1.环境安装搭建及启动过程 | DD'echo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b14f9da97755a6abfecfdf85a4cc1a4e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DD'echo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">the quieter you become, the more you are able to hear.</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DD初学Linux系列--1.环境安装搭建及启动过程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-09-17T21:20:42+08:00">
+                2014-09-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DD初学Linux系列–环境安装搭建及启动过程-nbsp"><a href="#DD初学Linux系列–环境安装搭建及启动过程-nbsp" class="headerlink" title="DD初学Linux系列–环境安装搭建及启动过程&nbsp;"></a>DD初学Linux系列–环境安装搭建及启动过程&nbsp;</h1><pre><code>----------
+
+##&amp;nbsp;一、PC版：&amp;nbsp;##
+</code></pre><p>&amp;ensp;　&amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。</p>
+<p>上周末，给自己的本本重装了下系统，SSD上装win8.1，原来硬盘装系统和软件的盘来装Ubuntu麒麟版。</p>
+<p>先装了win8.1，再装Ubuntu，接下来就是引导了，用了EasyBCD来设置。</p>
+<p>于是顺便了解了下Linux引导（LILO和Grub）—来源于网络</p>
+<pre><code>&amp;gt;&amp;nbsp;如果想要在同一机器上运行 Windows 和 Linux，那么应该先安装Windows OS，然后再安装 Linux OS，这样，在 Linux 安装中所选择的引导加载程序就不会被 Windows 引导加载程序所覆盖。与 Linux 引导加载程序不同，多数 Window 引导加载程序不支持引导 Linux。如果已经先安装了 Linux，那么只需要自己创建一张 Linux 引导盘，这样就可以在安装完 Windows 之后，回到 Linux 安装中并重写 MBR
+
+二级引导加载程序：
+</code></pre><p>BIOS（BootLoader）–&gt;主引导记录MBR激活引导加载程序–&gt;初始程序加载程序（IPL）查询分区表–&gt;第二阶段引导加载程序–&gt;内核引导等</p>
+<pre><code>----------
+</code></pre><p>##&nbsp;二、嵌入式版：&nbsp;##</p>
+<p>现成的硬件平台，现成的内核，现成的文件系统，搭建Linux应用开发环境。</p>
+<p>主要是：&lt;/br&gt;</p>
+<p>1. tftp与NFS安装，让硬件平台从网络加载内核（tftp）并挂载网络文件系统（NFS）。&lt;/br&gt;</p>
+<p>2. ARM交叉编译链安装&lt;/br&gt;</p>
+<pre><code>&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
+</code></pre><p><strong>tftp安装：</strong>&lt;/br&gt;</p>
+<p>1、安装相关软件包</p>
+<p>//apt-get install tftpd （服务端）</p>
+<p>//apt-get install tftp （客户端）</p>
+<p>sudo apt-get install tftp-hpa tftpd-hpa xinetd</p>
+<p>2、建立配置文件</p>
+<p>cd /etc/xinetd.d/</p>
+<p>gedit tftp</p>
+<p>输入</p>
+<p>service tftp</p>
+<p>{</p>
+<p>socket_type = dgram</p>
+<p>protocol = udp</p>
+<p>wait = yes</p>
+<p>user = root</p>
+<p>server =&nbsp;/usr/sbin/in.tftpd</p>
+<p>server_args =&nbsp;-s&nbsp;/mnt/tftpboot</p>
+<p>disable = no</p>
+<p>per_source = 11</p>
+<p>cps = 100 2</p>
+<p>flags = IPv4</p>
+<p>}</p>
+<p>存盘退出</p>
+<p>3、建立tftp服务文件目录</p>
+<p>mkdir /mnt/tftpboot</p>
+<p>4、从新启动服务</p>
+<p>/etc/init.d/xinetd restart（针对xinetd）</p>
+<p>安装完成！测试方法：</p>
+<p>在/tftpboot 目录下随便放个文件abc</p>
+<p>然后&nbsp;运行tftp 192.168.1.107 进入tftp命令行</p>
+<p>输入get abc 看看是不是能把文件下下来，也可以put&nbsp;文件上去。注意：要在<strong>root权限</strong>下</p>
+<pre><code>**NFS安装：**&amp;lt;/br&amp;gt;
+</code></pre><p>1.安装NFS sudo apt-get install nfs-kernel-server</p>
+<p>2.执行命令：mkdir &nbsp;建立一个nfs服务的专有的文件夹</p>
+<p>3.建立好文件夹后，接着执行命令：sudo gedit /etc/exports&nbsp;配置nfs，</p>
+<p>在文章的最后一行添加：<em>*/nfs </em>(rw,sync,no_root_squash,no_subtree_check)</p>
+<blockquote>
+<p>注：nfs允许挂载的目录及权限，在文件/etc/exports中进行定义，各字段含义如下：</p>
+<p>/mnt/NFS：要共享的目录</p>
+<p>*：允许所有的网段访问</p>
+<p>rw ：读写权限</p>
+<p>sync：资料同步写入内在和硬盘</p>
+<p>no_root_squash：nfs客户端共享目录使用者权限</p>
+<pre><code>特别要注意 ：insecure
+
+
+ro&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;只读访问
+</code></pre><p>rw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;读写访问</p>
+<p>sync&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有数据在请求时写入共享</p>
+<p>async&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS在写入数据前可以相应请求</p>
+<p>secure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS通过1024以下的安全TCP/IP端口发送</p>
+<p>insecure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS通过1024以上的端口发送</p>
+<p>wdelay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果多个用户要写入NFS目录，则归组写入（默认）</p>
+<p>no_wdelay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果多个用户要写入NFS目录，则立即写入，当使用async时，无需此设置。</p>
+<p>hide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在NFS共享目录中不共享其子目录</p>
+<p>no_hide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享NFS目录的子目录</p>
+<p>subtree_check&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果共享/usr/bin之类的子目录时，强制NFS检查父目录的权限（默认）</p>
+<p>no_subtree_check&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和上面相对，不检查父目录权限</p>
+<p>all_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享文件的UID和GID映射匿名用户anonymous，适合公用目录。</p>
+<p>no_all_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保留共享文件的UID和GID（默认）</p>
+<p>root_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root用户的所有请求映射成如anonymous用户一样的权限（默认）</p>
+<p>no_root_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root用户具有根目录的完全管理访问权限</p>
+<p>anonuid=xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的UID</p>
+<p>anongid=xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的GID</p>
+</blockquote>
+<pre><code>4.执行命令：sudo /etc/init.d/portmap restart
+</code></pre><p>重启portmap服务。nfs是一个RPC程序，使用它前，需要映射好端口，通过portmap设定。</p>
+<p>5.执行命令：sudo /etc/init.d/nfs-kernel-server restart 重启nfs服务</p>
+<pre><code>&lt;span data-mce-style=&quot;color: #ff0000;&quot; style=&quot;color:#FF0000;&quot;&gt;**注：rpcbind（Ubuntu14.04）就是高版本的portmap**&lt;/span&gt;
+</code></pre><p><span data-mce-style="color: #ff0000;" style="color:#FF0000;"><strong>注意此时可能会出现：Not starting: portmapper is not running //重启Ubuntu系统后就好了;</strong></span></p>
+<p>6、测试 NFS</p>
+<p>showmount -e</p>
+<p>sudo mount&nbsp; 192.168.1.107:/mnt/NFS &nbsp;/home</p>
+<p>看是否已经挂载成功</p>
+<p>sudo umount</p>
+<p>如果用在嵌入式设备上挂载，要加上参数-o nolock</p>
+<pre><code>**添加环境变量：**&amp;lt;/br&amp;gt;
+</code></pre><p>1&gt;gedit ~/.profile,</p>
+<p>在最后一行添加：export PATH=$PATH:/usr/local/arm/4.3.2/bin，</p>
+<p>接着source ~/.profile：立即生效</p>
+<p>2&gt; sudo gedit /etc/environment，在最后一个:号之后和“号之前添加/usr/local/arm/4.3.2/bin</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持是我创作最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="shell WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="shell Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/09/25/python-github-blog/" rel="next" title="用pelican在github上创建自己的博客">
+                <i class="fa fa-chevron-left"></i> 用pelican在github上创建自己的博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/10/14/Lofter搬家到WordPress/" rel="prev" title="Lofter搬家到WordPress">
+                Lofter搬家到WordPress <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+	<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+ 		"common": {
+			"bdSnsKey":{},
+			"bdText":"",
+			"bdMini":"2",
+			"bdMiniList":false,
+			"bdPic":"",
+			"bdStyle":"1",
+			"bdSize":"24"
+		},
+		"share": {},
+		"image": {
+			"viewList":["weixin","sqq","tsina","qzone","douban","fbook","twi"],
+			"viewText":"分享到：",
+			"viewSize":"16"
+		}
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/"
+           data-title="DD初学Linux系列--1.环境安装搭建及启动过程" data-url="mark.z-dd.net/2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="shell" />
+          <p class="site-author-name" itemprop="name">shell</p>
+          <p class="site-description motion-element" itemprop="description">the</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/91winter" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winter91" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://echo.z-dd.net/" title="DD'echo(我的技术博)" target="_blank">DD'echo(我的技术博)</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DD初学Linux系列–环境安装搭建及启动过程-nbsp"><span class="nav-number">1.</span> <span class="nav-text">DD初学Linux系列–环境安装搭建及启动过程 </span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shell</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"z-dd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

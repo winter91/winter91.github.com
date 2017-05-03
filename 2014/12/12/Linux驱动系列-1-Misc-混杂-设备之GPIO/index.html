@@ -1,0 +1,898 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="z-dd, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="##    Misc设备&amp;nbsp;–&amp;nbsp;特殊的字符设备 
+本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&amp;amp;nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux驱动系列?1.Misc(混杂)设备之GPIO">
+<meta property="og:url" content="mark.z-dd.net/2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/index.html">
+<meta property="og:site_name" content="DD'echo">
+<meta property="og:description" content="##    Misc设备&amp;nbsp;–&amp;nbsp;特殊的字符设备 
+本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&amp;amp;nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操">
+<meta property="og:updated_time" content="2017-04-27T03:59:03.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux驱动系列?1.Misc(混杂)设备之GPIO">
+<meta name="twitter:description" content="##    Misc设备&amp;nbsp;–&amp;nbsp;特殊的字符设备 
+本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&amp;amp;nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '76bc734de01669f87cbaf14d33fb71e7',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="mark.z-dd.net/2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/"/>
+
+
+
+
+
+  <title> Linux驱动系列?1.Misc(混杂)设备之GPIO | DD'echo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b14f9da97755a6abfecfdf85a4cc1a4e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DD'echo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">the quieter you become, the more you are able to hear.</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux驱动系列?1.Misc(混杂)设备之GPIO
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-12-12T21:23:15+08:00">
+                2014-12-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##<br>    <strong>Misc设备&nbsp;–&nbsp;特殊的字符设备</strong> </p>
+<pre><code>本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&amp;nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操作，因此其驱动的主体工作还是file_operations的成员函数。
+</code></pre><p>###<br>    <a name="_Toc31631"></a><strong>1.&nbsp;**</strong><a name="_Toc3127"></a>字符设备模板及说明解析：** </p>
+<pre><code>1.[http://blog.csdn.net/wdzxl198/article/details/8817147](http://blog.csdn.net/wdzxl198/article/details/8817147)&amp;nbsp;（自动创建设备节点）
+
+2.[http://blog.chinaunix.net/uid-20698426-id-136243.html](http://blog.chinaunix.net/uid-20698426-id-136243.html) 
+
+主要是init函数(获取设备号，创建节点)&amp;nbsp;，exit函数（回收操作），及设备操作集对应的操作函数。
+</code></pre><p>###<br>    <a name="_Toc3209"></a><strong>2.&nbsp;**</strong><a name="_Toc29371"></a>设备操作集&nbsp;file_operations结构体分析:** </p>
+<pre><code>[http://www.linuxidc.com/Linux/2011-09/43530.htm](http://www.linuxidc.com/Linux/2011-09/43530.htm) 
+
+特别的异步IO轮询函数：
+
+**unsigned&amp;nbsp;int&amp;nbsp;(*poll)&amp;nbsp;(struct&amp;nbsp;file&amp;nbsp;*,&amp;nbsp;struct&amp;nbsp;poll_table_struct&amp;nbsp;*);** 
+
+(这是一个设备驱动中的轮询函数，第一个参数为file结构指针，第二个为轮询表指针）
+
+这个函数返回设备资源的可获取状态，即POLLIN，POLLOUT，POLLPRI，POLLERR，POLLNVAL等宏的位“或”结果。
+
+每个宏都表明设备的一种状态，如：POLLIN（定义为0x0001）意味着设备可以无阻塞的读，POLLOUT（定义为0x0004）意味着设备可以无阻塞的写。
+
+(poll&amp;nbsp;方法是&amp;nbsp;3&amp;nbsp;个系统调用的后端:&amp;nbsp;poll,&amp;nbsp;epoll,&amp;nbsp;和&amp;nbsp;select,&amp;nbsp;都用作查询对一个或多个文件描述符的读或写是否会阻塞.
+
+poll&amp;nbsp;方法应当返回一个位掩码指示是否非阻塞的读或写是可能的,&amp;nbsp;并且,&amp;nbsp;可能地,&amp;nbsp;提供给内核信息用来使调用进程睡眠直到&amp;nbsp;I/O&amp;nbsp;变为可能.
+
+如果一个驱动的&amp;nbsp;poll&amp;nbsp;方法为&amp;nbsp;NULL,&amp;nbsp;设备假定为不阻塞地可读可写.
+
+(这里通常将设备看作一个文件进行相关的操作，而轮询操作的取值直接关系到设备的响应情况，可以是阻塞操作结果，同时也可以是非阻塞操作结果）
+</code></pre><p>###<br>    <a name="_Toc645"></a><strong>3.&nbsp;**</strong><a name="_Toc13436"></a>ioctl函数详解：** </p>
+<pre><code>[http://blog.csdn.net/shanshanpt/article/details/19897897](http://blog.csdn.net/shanshanpt/article/details/19897897) 
+
+ioctl函数的cmd：
+
+cmd的大小为&amp;nbsp;32位，共分&amp;nbsp;4&amp;nbsp;个域：
+
+bit31~bit30&amp;nbsp;2位为&amp;nbsp;“区别读写”&amp;nbsp;区，作用是区分是读取命令还是写入命令。
+
+bit29~bit15&amp;nbsp;14位为&amp;nbsp;&quot;数据大小&quot;&amp;nbsp;区，表示&amp;nbsp;ioctl()&amp;nbsp;中的&amp;nbsp;arg&amp;nbsp;变量传送的内存大小。
+
+bit20~bit08&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;“魔数&quot;(&quot;幻数&quot;)区，这个值用以与其它设备驱动程序的&amp;nbsp;ioctl&amp;nbsp;命令进行区别。
+
+bit07~bit00&amp;nbsp;&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;&quot;区别序号&quot;&amp;nbsp;区，是区分命令的命令顺序序号。
+
+这几个宏的使用格式为：
+</code></pre><ul>
+<li>_IO&nbsp;(魔数，&nbsp;基数);</li>
+<li>_IOR&nbsp;(魔数，&nbsp;基数，&nbsp;变量型)</li>
+<li>_IOW&nbsp;&nbsp;(魔数，&nbsp;基数，&nbsp;变量型)</li>
+<li><p>_IOWR&nbsp;(魔数，&nbsp;基数，变量型&nbsp;)</p>
+<p><strong>魔数&nbsp;(magic&nbsp;number)</strong> </p>
+<p>魔数范围为&nbsp;0~255&nbsp;。通常，用英文字符&nbsp;”A”&nbsp;~&nbsp;”Z”&nbsp;或者&nbsp;”a”&nbsp;~&nbsp;”z”&nbsp;来表示。设备驱动程序从传递进来的命令获取魔数，然后与自身处理的魔数想比较，如果相同则处理，不同则不处理。魔数是拒绝误使用的初步辅助状态。设备驱动&nbsp;程序可以通过&nbsp;_IOC_TYPE&nbsp;(cmd)&nbsp;来获取魔数。不同的设备驱动程序最好设置不同的魔数，但并不是要求绝对，也是可以使用其他设备驱动程序已用过的魔数。</p>
+<p><strong>基(序列号)数</strong> </p>
+<p>基数用于区别各种命令。通常，从&nbsp;0开始递增，相同设备驱动程序上可以重复使用该值。例如，读取和写入命令中使用了相同的基数，设备驱动程序也能分辨出来，原因在于设备驱动程序区分命令时&nbsp;使用&nbsp;switch&nbsp;，且直接使用命令变量&nbsp;cmd值。创建命令的宏生成的值由多个域组合而成，所以即使是相同的基数，也会判断为不同的命令。设备驱动程序想要从命令中获取该基数，就使用下面的宏：</p>
+<p>_IOC_NR&nbsp;(cmd)</p>
+<p>通常，switch&nbsp;中的&nbsp;case&nbsp;值使用的是命令的本身。</p>
+<p><strong>变量型</strong> </p>
+<p>变量型使用&nbsp;arg&nbsp;变量指定传送的数据大小，但是不直接代入输入，而是代入变量或者是变量的类型，原因是在使用宏创建命令，已经包含了&nbsp;sizeof()&nbsp;编译命令。</p>
+<p>Linux内核中_IO,_IOR,_IOW,_IOWR宏的用法与解析：<a href="http://blog.csdn.net/hzn407487204/article/details/7995041" target="_blank" rel="external">http://blog.csdn.net/hzn407487204/article/details/7995041</a> </p>
+</li>
+</ul>
+<p>###<br>    <a name="_Toc29957"></a><strong>4.&nbsp;**</strong><a name="_Toc10881"></a>misc设备相关：** </p>
+<pre><code>**misc设备结构体：** 
+
+struct&amp;nbsp;miscdevice&amp;nbsp;&amp;nbsp;{
+
+int&amp;nbsp;minor;&amp;nbsp;&amp;nbsp;//次设备号，若为&amp;nbsp;MISC_DYNAMIC_MINOR&amp;nbsp;自动分配
+
+const&amp;nbsp;char&amp;nbsp;*name;&amp;nbsp;&amp;nbsp;//设备名
+
+const&amp;nbsp;struct&amp;nbsp;file_operations&amp;nbsp;*fops;&amp;nbsp;&amp;nbsp;//设备文件操作结构体
+
+struct&amp;nbsp;list_head&amp;nbsp;list;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//misc_list链表头
+
+struct&amp;nbsp;device&amp;nbsp;*parent;
+
+struct&amp;nbsp;device&amp;nbsp;*this_device;
+
+};
+
+**misc设备注册和注销API：** 
+
+int&amp;nbsp;misc_register(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
+
+int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
+
+**misc设备驱动模型及实例解析：** 
+
+参考：[http://blog.csdn.net/chenlong12580/article/details/7339127](http://blog.csdn.net/chenlong12580/article/details/7339127) 
+</code></pre><p>###<br>    <a name="_Toc29344"></a><strong>5.&nbsp;**</strong><a name="_Toc1286"></a>具体实例：** </p>
+<pre><code>详见code文件夹
+</code></pre><ul>
+<li>输出</li>
+<li>输入</li>
+<li><p>中断</p>
+<p>4步曲：</p>
+<p>Step1：定义申明IO口，特别是管脚复用。</p>
+<p>Step2：平台初始化时初始化对应IO。</p>
+<p>Step3：创建编写对应的驱动代码&nbsp;C文件。</p>
+<p>Step4：修改对应的Kconfig，Makefile文件，并配置加载编译。</p>
+<p>中断参考：</p>
+<p><a href="http://blog.csdn.net/mashang123456789/article/details/8623786" target="_blank" rel="external">http://blog.csdn.net/mashang123456789/article/details/8623786</a> </p>
+<p>GPIO&nbsp;API:</p>
+<p><a href="http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html</a> </p>
+<p>与中断有关的API：</p>
+<p>static&nbsp;inline&nbsp;int&nbsp;gpio_to_irq(unsigned&nbsp;gpio)</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持是我创作最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="shell WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="shell Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/09/Linux系列-2-磁盘分区和Linux根文件系统-目录结构/" rel="next" title="Linux系列--2.磁盘分区和Linux根文件系统,目录结构">
+                <i class="fa fa-chevron-left"></i> Linux系列--2.磁盘分区和Linux根文件系统,目录结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/05/拯救我的Ubuntu14-04（kylin）/" rel="prev" title="拯救我的Ubuntu14.04（kylin）">
+                拯救我的Ubuntu14.04（kylin） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+	<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+ 		"common": {
+			"bdSnsKey":{},
+			"bdText":"",
+			"bdMini":"2",
+			"bdMiniList":false,
+			"bdPic":"",
+			"bdStyle":"1",
+			"bdSize":"24"
+		},
+		"share": {},
+		"image": {
+			"viewList":["weixin","sqq","tsina","qzone","douban","fbook","twi"],
+			"viewText":"分享到：",
+			"viewSize":"16"
+		}
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/"
+           data-title="Linux驱动系列?1.Misc(混杂)设备之GPIO" data-url="mark.z-dd.net/2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="shell" />
+          <p class="site-author-name" itemprop="name">shell</p>
+          <p class="site-description motion-element" itemprop="description">the</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/91winter" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winter91" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://echo.z-dd.net/" title="DD'echo(我的技术博)" target="_blank">DD'echo(我的技术博)</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shell</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"z-dd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

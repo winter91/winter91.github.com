@@ -1,0 +1,826 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Ubuntu," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="##    1.重启后亮度无法保存
+查看本机最大亮度值：cat /sys/class/backlight/XXX/max_brightness（XXX为你的显卡）编辑/etc/rc.local启动初始化文件，在最后一行（exit 0）之前添加：echo 15（你设置的值） &amp;gt; /sys/class/backlight/XXX/brightness（XXX为你的显卡）exit 0&amp;nbsp;(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu14.04环境配置">
+<meta property="og:url" content="mark.z-dd.net/2015/01/11/ubuntu14-04环境配置/index.html">
+<meta property="og:site_name" content="DD'echo">
+<meta property="og:description" content="##    1.重启后亮度无法保存
+查看本机最大亮度值：cat /sys/class/backlight/XXX/max_brightness（XXX为你的显卡）编辑/etc/rc.local启动初始化文件，在最后一行（exit 0）之前添加：echo 15（你设置的值） &amp;gt; /sys/class/backlight/XXX/brightness（XXX为你的显卡）exit 0&amp;nbsp;(">
+<meta property="og:updated_time" content="2017-04-27T03:59:03.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu14.04环境配置">
+<meta name="twitter:description" content="##    1.重启后亮度无法保存
+查看本机最大亮度值：cat /sys/class/backlight/XXX/max_brightness（XXX为你的显卡）编辑/etc/rc.local启动初始化文件，在最后一行（exit 0）之前添加：echo 15（你设置的值） &amp;gt; /sys/class/backlight/XXX/brightness（XXX为你的显卡）exit 0&amp;nbsp;(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '76bc734de01669f87cbaf14d33fb71e7',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="mark.z-dd.net/2015/01/11/ubuntu14-04环境配置/"/>
+
+
+
+
+
+  <title> ubuntu14.04环境配置 | DD'echo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b14f9da97755a6abfecfdf85a4cc1a4e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DD'echo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">the quieter you become, the more you are able to hear.</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2015/01/11/ubuntu14-04环境配置/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ubuntu14.04环境配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-11T21:17:21+08:00">
+                2015-01-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/01/11/ubuntu14-04环境配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/11/ubuntu14-04环境配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##<br>    1.重启后亮度无法保存</p>
+<p>查看本机最大亮度值：cat /sys/class/backlight/XXX/max_brightness（XXX为你的显卡）<br>编辑/etc/rc.local启动初始化文件，在最后一行（exit 0）之前添加：<br>echo 15（你设置的值） &gt; /sys/class/backlight/XXX/brightness（XXX为你的显卡）<br><strong>exit 0</strong>&nbsp;(别忘了)</p>
+<p>##<br>    2.休眠后无法启动</p>
+<p>Ubuntu 14.04系统下，休眠之后无法启动的问题解决：<br><a href="http://blog.csdn.net/blueheart20/article/details/37995049" target="_blank" rel="external">http://blog.csdn.net/blueheart20/article/details/37995049</a> （与显卡驱动有关）<br>linux学习笔记（7）=》ubuntu挂起后无法唤醒-解决：（缺失laptop_mode）<br><a href="http://blog.sina.com.cn/s/blog_7ec12e960100rfpn.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_7ec12e960100rfpn.html</a> </p>
+<p>##<br>    3.鼠标箭头闪烁问题，显卡驱动问题</p>
+<p>安装NVIDIA显卡驱动：（bumblebee）—开始使用的方法<br><a href="http://www.jb51.net/os/Ubuntu/84218.html" target="_blank" rel="external">http://www.jb51.net/os/Ubuntu/84218.html</a><br>显卡切换，关闭独显在14.04上没用<br><a href="http://www.douban.com/note/298832176/" target="_blank" rel="external">http://www.douban.com/note/298832176/</a><br>Ubuntu 14.04为Intel/Nvidia双显卡调节亮度:(Prime，比 Bumblebee 成熟)—最终使用方法<br><a href="http://www.mintos.org/config/intel-nvidia-brightness.html" target="_blank" rel="external">http://www.mintos.org/config/intel-nvidia-brightness.html</a><br>sudo apt-get install nvidia-319 nvidia-settings-319 nvidia-prime<br>安装完毕，还要安装一个 Nvidia Prime 双显卡切换指示器，用于在系统托盘中轻点鼠标即可切换显卡，而不必使用命令。在终端中使用如下 PPA 安装：<br>sudo add-apt-repository ppa:nilarimogard/webupd8<br>sudo apt-get update<br>sudo apt-get install prime-indicator<br>想解决亮度及休眠问题–&gt;想安装显卡驱动—》不知道型号—&gt;想用官网的自动检测–&gt;缺少JAVA（TM）–&gt;下载安装了OpenJDK（使用软件中心）–&gt;安装浏览器插件Icedtea（使用软件中心）–&gt;浏览器检测不到插件–&gt;Icedtea不再支持高版本的chrome–&gt;安装其他版本的JAVA</p>
+<p>##<br>    安装JAVA：</p>
+<p><a href="http://blog.sina.com.cn/s/blog_53a99cf30102v6o4.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_53a99cf30102v6o4.html</a><br>sudo add-apt-repository ppa:webupd8team/java<br>sudo apt-get update<br>sudo apt-get install Oracle-java8-installer<br>设置 Java 8 环境变量：<br>sudo apt-get install oracle-java8-set-default<br>切换为 Java 7 ：<br>sudo update-java-alternatives -s java-7-oracle<br>再切换为 Java 8：<br>sudo update-java-alternatives -s java-8-oracle<br>切换JAVA版本<br>update-alternatives –config java<br>update-alternatives –config javac<br>在ubuntu的chrome中启用java plugin：<br><a href="http://blog.csdn.net/xiajian2010/article/details/10219589" target="_blank" rel="external">http://blog.csdn.net/xiajian2010/article/details/10219589</a> </p>
+<p>##<br>    QT安装：</p>
+<p><a href="http://www.cnblogs.com/striver-zhu/p/3918275.html" target="_blank" rel="external">http://www.cnblogs.com/striver-zhu/p/3918275.html</a> </p>
+<p>##<br>    Samba共享</p>
+<p>Ubuntu挂载windows共享文件夹：<br><a href="http://blog.csdn.net/fulinus/article/details/21086581" target="_blank" rel="external">http://blog.csdn.net/fulinus/article/details/21086581</a><br>samba:<br><a href="http://www.cnblogs.com/ouuy/archive/2011/10/24/2223164.html" target="_blank" rel="external">http://www.cnblogs.com/ouuy/archive/2011/10/24/2223164.html</a><br>sudo gedit /etc/samba/smb.conf 新增如下语句:<br>[share]<br>path = /xxx &nbsp;//共享目录<br>available = yes<br>browsealbe = yes<br>public = yes<br>writable = yes<br>read only=yes<br>valid users = xxx//用户名<br>create mask = 0700<br>directory mask = 0700<br>force user = nobody<br>force group = nogroup<br>workgroup = WORKGROUP<br>display charset = UTF-8 //防止windows显示乱码<br>unix charset = UTF-8<br>dos charset = cp936<br>新增登录用户密码<br>sudo touch /etc/samba/smbpasswd<br>sudo smbpasswd -a xxx</p>
+<p>##<br>    安装flash插件：</p>
+<p>1.Chromium谷歌的开源浏览器将不再支持Netscape浏览器插件API，Adobe公司的Flash将无法正常工作了。然而用户可以使用Pepper Flash Player，这是谷歌浏览器上一款替代Adobe Flash的插件。<br>Ubuntu 14.04及衍生版本用户命令:<br>sudo apt-get update<br>sudo apt-get install chromium-browser<br>sudo apt-get install pepperflashplugin-nonfree<br>sudo update-pepperflashplugin-nonfree –install<br>卸载命令：<br>sudo apt-get remove chromium-browser pepperflashplugin-nonfree<br>2.firefox:sudo apt-get install flashplugin-installer</p>
+<p>##<br>    NFS安装时：</p>
+<p>注：rpcbind（Ubuntu14.04）就是高版本的portmap<br>注意此时可能会出现：Not starting: portmapper is not running //重启Ubuntu系统后就好了;<br>win7 中使用NFS共享：&nbsp;<a href="http://www.cnblogs.com/itech/archive/2012/06/17/2552514.html" target="_blank" rel="external">http://www.cnblogs.com/itech/archive/2012/06/17/2552514.html</a><br>可以用来测试<br>Cifs取代了smbfs</p>
+<p>##<br>    VNC：</p>
+<p><span style="font-size:14px;">1.vino-server</span><br><span style="font-size:14px;">运行dconf-editor，注意一定要用当前用户来运行，不能加sudo，依次展开org-&gt;gnome-&gt;desktop-&gt;remote-access</span><span style="font-size:14px;">，这里也可以直接设置远程控制选项，但重要的是将“requre-encryption”去掉</span><span style="font-size:14px;">，但是没有密码,需要点图标设置</span><span style="font-size:14px;">。此方法有点卡，占用带宽太大</span></p>
+<p><span style="font-size:14px;">2.vnc4server</span> </p>
+<p>##<br>    用户管理：</p>
+<p><span style="font-size:14px;">新建用户：useradd，修改密码：passwd，但home目录并没有创建对应的用户文件夹，我们需要添加选项,主动创建用户文件夹和指定shell</span><br>userdel -r xxx&nbsp;&nbsp; &nbsp;<br>useradd xxx -m -s /bin/bash<br><span style="font-size:14px;">note:</span><br><span style="font-size:14px;">useradd username不会在/home下建立一个文件夹username</span><br><span style="font-size:14px;">adduser username会在/home下建立一个文件夹username</span><br><span style="font-size:14px;">useradd -m username跟adduser一样，可以建立一个文件夹username</span> </p>
+<p>##<br>    samba：</p>
+<p><pre class="prettyprint lang-bsh linenums">sudo&nbsp;apt-get&nbsp;update<br>sudo&nbsp;apt-get&nbsp;install&nbsp;samba&nbsp;samba-common<br>sudo&nbsp;gedit&nbsp;/etc/samba/smb.conf</pre>&gt; max log size = 1000</p>
+<blockquote>
+<p>security = user<br>[mpushare]<br>comment = mpu_share<br>path = /home/share<br>browseable = yes<br>writable = yes</p>
+</blockquote>
+<p><span style="font-size:14px;">修改用户及加到smb组： </span></p>
+<p><span style="font-size:14px;">sudo smbpasswd -a xxx<br>重启服务：<br></span></p>
+<p><span style="font-size:14px;"><br>    sudo service smbd restart</span></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持是我创作最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="shell WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="shell Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/05/拯救我的Ubuntu14-04（kylin）/" rel="next" title="拯救我的Ubuntu14.04（kylin）">
+                <i class="fa fa-chevron-left"></i> 拯救我的Ubuntu14.04（kylin）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/11/Linux常用命令-（持续更新中。。。）/" rel="prev" title="Linux常用命令--（持续更新中。。。）">
+                Linux常用命令--（持续更新中。。。） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+	<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+ 		"common": {
+			"bdSnsKey":{},
+			"bdText":"",
+			"bdMini":"2",
+			"bdMiniList":false,
+			"bdPic":"",
+			"bdStyle":"1",
+			"bdSize":"24"
+		},
+		"share": {},
+		"image": {
+			"viewList":["weixin","sqq","tsina","qzone","douban","fbook","twi"],
+			"viewText":"分享到：",
+			"viewSize":"16"
+		}
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/01/11/ubuntu14-04环境配置/"
+           data-title="ubuntu14.04环境配置" data-url="mark.z-dd.net/2015/01/11/ubuntu14-04环境配置/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="shell" />
+          <p class="site-author-name" itemprop="name">shell</p>
+          <p class="site-description motion-element" itemprop="description">the</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/91winter" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winter91" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://echo.z-dd.net/" title="DD'echo(我的技术博)" target="_blank">DD'echo(我的技术博)</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shell</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"z-dd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,1121 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="FM3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="7.15
+以下是我今天的一些笔记或是值得注意不懂的&amp;amp;nbsp;一个小结：
+
+1.资料，平台，工具的发放，准备
+
+2,总线地址。寻址
+
+3.内核+外设，内核的概念。
+
+4.内存保护单元的利用。比如故意出错等。
+
+5.nm工艺（成本）与EMC的权衡。
+
+6.看内存
+
+7.两种keil，IAR开发环境的配置，驱动库的移植。
+
+8.启动文件不要公用
+
+9.hex bin文件烧写的区别
+
+10.fl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FM3和FSL（M0+）问题Mark">
+<meta property="og:url" content="mark.z-dd.net/2013/08/30/FM3和FSL（M0-）问题Mark/index.html">
+<meta property="og:site_name" content="DD'echo">
+<meta property="og:description" content="7.15
+以下是我今天的一些笔记或是值得注意不懂的&amp;amp;nbsp;一个小结：
+
+1.资料，平台，工具的发放，准备
+
+2,总线地址。寻址
+
+3.内核+外设，内核的概念。
+
+4.内存保护单元的利用。比如故意出错等。
+
+5.nm工艺（成本）与EMC的权衡。
+
+6.看内存
+
+7.两种keil，IAR开发环境的配置，驱动库的移植。
+
+8.启动文件不要公用
+
+9.hex bin文件烧写的区别
+
+10.fl">
+<meta property="og:updated_time" content="2017-04-27T03:59:03.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FM3和FSL（M0+）问题Mark">
+<meta name="twitter:description" content="7.15
+以下是我今天的一些笔记或是值得注意不懂的&amp;amp;nbsp;一个小结：
+
+1.资料，平台，工具的发放，准备
+
+2,总线地址。寻址
+
+3.内核+外设，内核的概念。
+
+4.内存保护单元的利用。比如故意出错等。
+
+5.nm工艺（成本）与EMC的权衡。
+
+6.看内存
+
+7.两种keil，IAR开发环境的配置，驱动库的移植。
+
+8.启动文件不要公用
+
+9.hex bin文件烧写的区别
+
+10.fl">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '76bc734de01669f87cbaf14d33fb71e7',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="mark.z-dd.net/2013/08/30/FM3和FSL（M0-）问题Mark/"/>
+
+
+
+
+
+  <title> FM3和FSL（M0+）问题Mark | DD'echo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b14f9da97755a6abfecfdf85a4cc1a4e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DD'echo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">the quieter you become, the more you are able to hear.</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2013/08/30/FM3和FSL（M0-）问题Mark/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                FM3和FSL（M0+）问题Mark
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-08-30T21:25:55+08:00">
+                2013-08-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARM/" itemprop="url" rel="index">
+                    <span itemprop="name">ARM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/08/30/FM3和FSL（M0-）问题Mark/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/30/FM3和FSL（M0-）问题Mark/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>7.15</p>
+<pre><code>以下是我今天的一些笔记或是值得注意不懂的&amp;nbsp;一个小结：
+
+1.资料，平台，工具的发放，准备
+
+2,总线地址。寻址
+
+3.内核+外设，内核的概念。
+
+4.内存保护单元的利用。比如故意出错等。
+
+5.nm工艺（成本）与EMC的权衡。
+
+6.看内存
+
+7.两种keil，IAR开发环境的配置，驱动库的移植。
+
+8.启动文件不要公用
+
+9.hex bin文件烧写的区别
+
+10.flash的擦除,主要是flash的分块，有些型号的是不同的
+
+11.时钟配置，&amp;nbsp;启动代码&amp;nbsp; SysTick内核定时器，&amp;nbsp; GPIO ,bit band 存储器映射。
+
+技术培训的第一天&amp;nbsp;,确实就开始感受到了这次培训的强度，学习的内容多，时间紧,所以技术培训开始的第一天就开始加班了,可能这才进入节奏，虽然一天下来高强度地接收一大堆东西，有点小累，但是很有收获很充实。
+
+-------------------------------------------------------------------------------
+
+7.16
+
+以下是我今天的一些笔记或是值得注意不懂的一个小结：
+
+1.IAR下.flash文件&amp;nbsp;.board文件
+
+2.boot升级，flash加密
+
+3.NVIC 嵌套向量中断控制器&amp;nbsp;优先级（子优先级，抢占优先级）
+
+4.程序跳转，地址SP PC ，双操作单操作flash，flash升级。
+
+5.看门狗定时器，软&amp;nbsp;硬件看门狗区别及用途。喂狗，复位，中断
+
+6.作业1讲解&amp;nbsp; PLL =&amp;nbsp;&amp;nbsp;/K&amp;nbsp;*N&amp;nbsp;*M&amp;nbsp;/M&amp;nbsp;&amp;nbsp; M的作用。
+
+7.BT，Base Timer, RT ,PWM, PPG
+
+8.低功耗模式，SLEEP ,TIMER, STOP 三种模式的一些差异，及注意事项。
+
+相比以前接触的M3的东西，可能是产品比较新，相关的资料，支持比较少，驱动库还不是很完善，底层的一些东西（内核，地址等）以前也接触的比较少，也没怎么研究，开始比较吃力，现在逐渐开始上手了，进入正轨了，毕竟基于驱动库的编程都是大同小异了，思想，思路都是差不多，只是略微的一些差异，没有ST的驱动库详细全面而已。
+
+---------------------------------------------------------------------------------
+
+7.17
+
+1.vincent 示波器的一些操作及注意事项。接地，sweep触发方式（auto，，single）捕获信号，使用接头的一些小技巧，&amp;nbsp;&amp;nbsp; roll扫描模式等。
+
+2.进低功耗模式调试接口关闭。
+
+3.中断向量表的一些有效利用
+
+4.完善消化理解前面的一些东西和作业，
+
+5.中断唤醒&amp;nbsp;低功耗模式，要再次进入低功耗。
+
+6.多功能串口，UART时序分析，SPI时序分析
+
+7.ADC，DMA的一些功能介绍，例程分析。
+
+----------------------------------------------------------------------------------
+
+7.18
+
+1.简单了解USB了的一些基本知识（简介，发展，协议）。USB的线上的阻抗匹配，FS/LS速度识别（硬件上拉电阻），HS速度识别，动态加载某设备会产生强电流，FM3的USB的一些特征。
+
+2.USB的HID类，USB插入检测过程机制，USB枚举过程，USB描述符（备描述符、配置描述符、端点描述符等），USB HID设备报告描述符详解，USB调试软件工具Bus Hound的使用和一些基本功能。
+
+3.完善前面的PWM，串口程序。
+
+4.实验：FM3板（MB9F218S）的USB移植实验（USB时钟设置，中断入口，IO功能引脚）
+
+5.通过USB boot升级程序的大致过程和基本原理。
+
+----------------------------------------------------------------------------------
+
+7.19
+
+1.了解了Ethernet的一些简单概念，物理连接介质， Fujitsu Ethernet功能，结构描述，数据链路层MAC，以太网连接的一些典型电路，物理层PHY，以太网帧结构和分用过程，TCP/IP协议栈，数据格式分析。
+
+2.TCP/IP协议栈的一些简单了解，TCP/IP的具体实现，LwIP &amp;amp; uIP介绍，通过具体例程学习了LwIP &amp;amp; uIP的实际使用过程，测试实验：使用LwIP进行UDP和TCP通信测试实验。综合实验：一个学习板做TCP服务器，一个学习板做TCP客户端，实现两块板子间相互通信。
+
+//3.自己计划LwIP1.4在富士通板子上（MB9F128S）的移植（无OS），加入新的驱动库，以便以后的学习和使用（暂定）
+
+4.自己计划综合实验（前面的AD，PWM，以太网，DMA，UART等综合）
+
+5.一周的富士通FM3的培训结束了，课程也基本上跟着学完了，很多东西都只有在实践中才能检验出来，也只有通过后面的实践，后面的工作不断地巩固，不断地完善，才能更好地服务于工作。
+
+-----------------------------------------------------------------------------------
+
+7.22
+
+1.飞思卡尔M0+的整体了解，包括多种系列外设的一些比较，几种低功耗模式，ARM Cortex M0+的一些特点。
+
+2.FSLM0+开发环境的配置，调试模式的配置，新建工程的一些注意事项，FSLM0+的GPIO介绍，一些简单的使用操作，进行GPIO闪灯+按键检测实验。
+
+3.MCG 时钟模式之间的区别与对比，时钟模式之间的切换过程及关系。时钟模式切换，分析例程分析和实验。
+
+4.中断，中断优先级，中断向量表，不可屏蔽中断NMI
+
+-----------------------------------------------------------------------------------
+
+7.23
+
+1.WDOG 窗口看门狗的特点及意义。相关寄存器的对应配置，例程demo程序分析，可能由于硬件原因，看门狗好像无法正常工作。
+
+2.PIT的功能，作为触发源，PIT的框图，相关的例程example分析。
+
+3.RTC的时钟源，OSC对RTC时钟源的影响，相关寄存器说明，例程程序分析，可能由于硬件原因，外部32768晶振无法正常工作，导致RTC的外部时钟源不可用。
+
+4.LPTMR的模块概况，几种操作模式，相关寄存器的配置。LPTMR的几种功能说明：LPTMR比较，LPTMR计数器，LPTMR硬件触发器，LPTMR中断等，例程分析。
+
+5.TPM模块的整体架构，及大致工作原理。TPM模块相关功能：计数器，输入捕捉模式，输出比较模式，边沿对齐PWM(EPWM)模式，中心对其PWM模式(CPWM)TPM中断等等，对应库函数说明，分析。
+
+------------------------------------------------------------------------------------
+
+7.24
+
+1.DMA 周期性触发模式仅适用于渠道0-1，flash赋值要通过寄存器操作，数据传输时间对比实验（直接赋值，指针，DMA）&amp;nbsp; 32bit的传输
+
+2.UART 0低功耗串口，过采样，发送接收中断的触发（start，stop，re-start等），特殊的10bit地址模式，中断源，地址匹配，例程代码实验，分析，与DMA的综合实验。
+
+SPI，协议时序分析，多种工作模式，FIFO模式，SPI传输DMA，SPI时钟格式分析。
+
+4.飞思卡尔M0+的USB电压调节器。
+
+5.软件模拟I2C
+
+------------------------------------------------------------------------------------
+
+7.25
+
+1.SPI的调试，SCL,MOSI看到数据波形，这也是后面用SPI操作SD卡的基础
+
+2.SD的一些简单知识了解（硬件，及发展），SPI模式下操作SD卡初始化，实现简单的读写。
+
+3.硬件错误中断可能的原因（时钟配置，O初始化），示波器的触发电平要合适，系统滴答时钟的作用
+
+4.FAT32文件系统的简单了解，其发展过程和一些基本的知识，移植时候的注意事项和关键点。&amp;nbsp;
+
+5.FAT32文件系统在飞思卡尔M0+上的简单移植。
+
+6.清零的模式，好像不习惯被动接受的这种模式。
+
+------------------------------------------------------------------------------------
+
+7.26
+
+1.COMP 滞环特性
+
+2.DAC &amp;nbsp;+ OMP，初始化的先后顺序，中断开启或功能使能最好最后操作，引脚干扰问题
+
+3.M0+ ADC，时钟MHZ，&amp;nbsp;同步采样问题，各种低功耗模式下的，LSB的含义，内部温度传感器
+
+4.重定向printf函数
+
+MDK（keil）工程属性的“Target“-》”Code Generation“中勾选”Use MicroLIB
+
+#ifdef __GNUC__
+
+/* With GCC/RAISONANCE, small printf (option LD Linker-&amp;gt;Libraries-&amp;gt;Small printf
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; set to ’Yes’) calls __io_putchar()&amp;nbsp;*/&amp;nbsp;
+
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)&amp;nbsp;
+
+#else
+
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)&amp;nbsp;
+
+#endif /* __GNUC__ */&amp;nbsp;
+
+/**&amp;nbsp;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@brief &amp;nbsp; Retargets the C library printf function to the USART.&amp;nbsp;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@param &amp;nbsp; None&amp;nbsp; printf
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@retval None
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;*/&amp;nbsp;
+
+PUTCHAR_PROTOTYPE
+
+{&amp;nbsp;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;/* Place your implementation of fputc here */&amp;nbsp;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;//UART0_PutStr(&amp;nbsp;(uint8_t*)ch);&amp;nbsp;
+
+while(&amp;nbsp;!(UART0_S1&amp;amp;UART_S1_TDRE_MASK));//
+
+UART0_D =&amp;nbsp;(uint8_t)ch;
+
+&amp;nbsp;&amp;nbsp; return ch;&amp;nbsp;
+
+}&amp;nbsp;
+
+5.周末：RTC+LCD+UART+ADC_TEMP综合调试完成，主要问题是段式的显示驱动
+
+6.python 语音识别，语音操作，利用周围的一切可以利用的工具或资源（编程语言或是软件工具等），只为能高效地实现自己的东西，如此下去，从而达到一个很好地良性循环。
+
+-----------------------------------------------------------------------------------
+
+7.29
+
+1.复习回顾上周学的一些东西。
+
+2.各种低功耗模式分析，对比，和其他产品的对比（48M，），各种低功耗模式下各外设的情况，低功耗模式唤醒源介绍及对比。能耗。进入低功耗模式之前，最好delay以下。
+
+3.整机时，进入低功耗之前要每个IO初始化（低电平（悬空），高电平（上拉））。
+
+4.低功耗实验：Vlps_LPTMR实验，LLS低功耗模式下LPTMR中断唤醒实验，BLPI时钟模式下Vlpr低功耗实验
+
+5.切换时钟源之后要更新内核时钟 SystemCoreClockUpdate();&amp;nbsp;&amp;nbsp;注意时钟源的选择。
+
+6.进入LLS或VLLSx模式之前，(具备唤醒功能的外设)外设中断标志必须由软件清零才可以进入，以避免立即退出模式。
+
+对一个外部输入引脚，过滤和未过滤的相关的标志，也必须清除，在进入LLS或VLLSx模式之前。
+
+7.低功耗模式切换时，注意外部主时钟的开启与关闭。
+
+-----------------------------------------------------------------------------------7.30
+
+-----------------------------------------------------------------------------------
+
+7.31
+
+1.时钟选择，IO复用了。 9.37&amp;nbsp; 100.6&amp;nbsp; 11.736
+
+2.Edge_Aligned_PWM的模式与占空比的控制要相匹配，Edge_Aligned_PWM_Highpulses/Edge_Aligned_PWM_Lowpulses,控制方向是相反的。
+
+3.值溢出错误
+
+------------------------------------------------------------------------------------
+
+8.2
+
+1.晶振匹配电容，起振，很微妙，几个pf
+
+2.VCWizards/2052/Common.js
+
+VCWizards/AppWiz/MFC/Application/html/2052/GetnerateClasses.htm
+
+解决VS2012 新建工程&amp;nbsp;上两个JS脚本运行不了，用安装光盘修复
+
+3.莎士比亚&amp;nbsp;说过，简洁才是美！&amp;nbsp;《漫画半导体》，越简单越好，不论是交互还是学习，方法论，1:3:6
+
+4.要有市场概念，市场意识，只有有人用的东西才是好东西，不能闭门造车。
+
+http://www.admin10000.com/document/2411.html Do the right thing, Wait to get fired
+
+敢于去冒险，风险分析，成本（时间）分析，发展空间分析，短长时间阶段分析，SWOT分析
+
+抓住key
+</code></pre><div><br><br>        //———————————-<br><br>        10.25<br><br>        FSL KL系列BootLoader程序，S19文件<br><br>        Keil生成S19文件：<br><br>        在option的user选项的run user program After Build添加命令行：<br><br>        fromelf –m32combined –output=outfile.s19 &nbsp;.axf文件路径<br><br>        BootLoader程序解决，修改上位机源代码，Keil 生成的S19文件开始的存储的起始地址始终为0x400<br><br>        S19<br><br>        //———————————-<br><br>12.4<br><br>Flash操作，首先检查Flash的类型，使用RAM Code，Keil和IAR不同，是否中断,通信口记得要禁用模拟输入<br><br>程序过大，进硬件错误中断，可以考虑RAM大小及堆栈大小，.s文件里面<br><br>生成bin<br><br>        fromelf –bin –output .oot.bin .objBt2E.axf<br><br>        //———————————-<br><br>        富士通 读保护：读保护写不进去，即0x0001写不进0x00100000地址<br><br>修改驱动库函数 ，<br><br>14-7.28<br><br>Keil将库文件或是C文件编译到指定地址，优化选项的：One ELF<br><br></div>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持是我创作最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="shell WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="shell Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FM3/" rel="tag"># FM3</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/06/13/毕设Mark！/" rel="next" title="毕设Mark！">
+                <i class="fa fa-chevron-left"></i> 毕设Mark！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/08/30/FM3应用笔记调试-串口上位机（大数据量，高波特率，保存到WAV文件）-问题Mark！/" rel="prev" title="FM3应用笔记调试+串口上位机（大数据量，高波特率，保存到WAV文件） 问题Mark！">
+                FM3应用笔记调试+串口上位机（大数据量，高波特率，保存到WAV文件） 问题Mark！ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+	<a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+ 		"common": {
+			"bdSnsKey":{},
+			"bdText":"",
+			"bdMini":"2",
+			"bdMiniList":false,
+			"bdPic":"",
+			"bdStyle":"1",
+			"bdSize":"24"
+		},
+		"share": {},
+		"image": {
+			"viewList":["weixin","sqq","tsina","qzone","douban","fbook","twi"],
+			"viewText":"分享到：",
+			"viewSize":"16"
+		}
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2013/08/30/FM3和FSL（M0-）问题Mark/"
+           data-title="FM3和FSL（M0+）问题Mark" data-url="mark.z-dd.net/2013/08/30/FM3和FSL（M0-）问题Mark/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="shell" />
+          <p class="site-author-name" itemprop="name">shell</p>
+          <p class="site-description motion-element" itemprop="description">the</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/91winter" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/winter91" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://echo.z-dd.net/" title="DD'echo(我的技术博)" target="_blank">DD'echo(我的技术博)</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shell</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"z-dd"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

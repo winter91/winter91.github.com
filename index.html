@@ -268,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2017/02/08/hello-world/">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2017/04/10/hello-world/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="shell">
@@ -293,7 +293,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/08/hello-world/" itemprop="url">
+                <a class="post-title-link" href="/2017/04/10/hello-world/" itemprop="url">
                   Hello World
                 </a>
               
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-08T17:32:13+08:00">
-                2017-02-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-10T08:35:40+08:00">
+                2017-04-10
               </time>
             
 
@@ -341,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/08/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/08/hello-world/" itemprop="commentCount"></span>
+                <a href="/2017/04/10/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/10/hello-world/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -419,7 +419,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2013/09/25/python-github-blog/">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2016/03/13/Kali-Rolling版本折腾/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="shell">
@@ -444,8 +444,8 @@
             
               
                 
-                <a class="post-title-link" href="/2013/09/25/python-github-blog/" itemprop="url">
-                  用pelican在github上创建自己的博客
+                <a class="post-title-link" href="/2016/03/13/Kali-Rolling版本折腾/" itemprop="url">
+                  Kali Rolling版本折腾
                 </a>
               
             
@@ -461,8 +461,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-09-25T19:30:45+08:00">
-                2013-09-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-13T21:46:14+08:00">
+                2016-03-13
               </time>
             
 
@@ -477,8 +477,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-02-10T10:30:21+08:00">
-                2017-02-10
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
               </time>
             
           </span>
@@ -496,8 +496,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/github/" itemprop="url" rel="index">
-                    <span itemprop="name">github</span>
+                  <a href="/categories/kali/" itemprop="url" rel="index">
+                    <span itemprop="name">kali</span>
                   </a>
                 </span>
 
@@ -514,8 +514,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/09/25/python-github-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/25/python-github-blog/" itemprop="commentCount"></span>
+                <a href="/2016/03/13/Kali-Rolling版本折腾/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/13/Kali-Rolling版本折腾/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -543,9 +543,1543 @@
       
         
           
-            <p>今天在网上查用Python生成静态网页，偶然中发现了这个pelican好东东，而且发现可以自己用它在github上创建博客，经过一段的折腾，终于基本上会用了。</p>
-<p>MarkdownPad2编辑.md的文章代码，当然也可以用.rst。然后用pelican生成静态网页，通过Github上传到我的Git仓库，今天终于知道了Git的另一个用途，真是太强悍了。MarkdownPad2也感觉挺好用的。</p>
+            <p>&nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。</p>
+<p><strong>#引导：</strong></p>
+<p>&nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win10选择项。终于想起来了，之前装mint的时候是用MBR引导grub(在window下用的easyBCD，很简单)。</p>
+<p>然后硬着头皮去研究grub，后面发现了篇类似的文章(<a href="http://www.2cto.com/os/201411/354914.html" target="_blank" rel="external">http://www.2cto.com/os/201411/354914.html</a>)，然后用里面的方案一就OK了：</p>
+<p>在grub的配置文件/boot/grub/grub.cfg添加win10的启动项声明：</p>
+<blockquote>
+<h3 id="BEGIN-etc-grub-d-30-os-prober"><a href="#BEGIN-etc-grub-d-30-os-prober" class="headerlink" title="BEGIN /etc/grub.d/30_os-prober"></a>BEGIN /etc/grub.d/30_os-prober</h3><p>menuentry &#39;Windows 7 (loader) (on /dev/sda1)&#39; –class windows –class os $menuentry_id_option &#39;osprober-chain-XXX&#39; {</p>
+<p>insmod part_msdos</p>
+<p>insmod ntfs</p>
+<p>set root=&#39;hd0,msdos1&#39;</p>
+<p>chainloader +1</p>
+<p>}</p>
+<h3 id="END-etc-grub-d-30-os-prober"><a href="#END-etc-grub-d-30-os-prober" class="headerlink" title="END /etc/grub.d/30_os-prober"></a>END /etc/grub.d/30_os-prober</h3></blockquote>
+<p>加在### END /etc/grub.d/00_header ###之后。其中的XXX为你的Windows 系统分区的UUID。查看分区UUID的命令：sudo blkid</p>
+<p><strong>#安装中文输入法，字体(解决中文乱码):</strong></p>
+<p>apt-get install fcitx fcitx-table-wbpy &nbsp;ttf-wqy-microhei ttf-wqy-zenhei &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p>手工配置：</p>
+<p>im-config</p>
+<p><strong>#添加用户（因为Kali默认就是root用户）:</strong></p>
+<p>useradd -m -G video,audio,cdrom,sudo -s /bin/bash 用户名</p>
+<p>passwd 用户名</p>
+<p><strong>#安装多窗口终端：</strong></p>
+<p>apt-get install terminator &nbsp; &nbsp;</p>
+<p><strong><strong style="white-space: normal;">#</strong>浏览器：</strong></p>
+<p>虽然Kali里面的是iceweasel，但是和firefox是同一家族的，所以和之前装mint类似： <a href="http://echo.z-dd.net/post-34.html" target="_blank" rel="external">http://echo.z-dd.net/post-34.html</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
 
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2016/03/01/初尝Linux-mint/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/01/初尝Linux-mint/" itemprop="url">
+                  初尝Linux mint
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-01T21:57:14+08:00">
+                2016-03-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/01/初尝Linux-mint/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/01/初尝Linux-mint/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Cinnamon桌面：</p>
+<p>1.更新源，改为国内的，更新系统。</p>
+<p>2.配置firefox，使用中文版的配置：删除用户目录下的.mozilla，里面就是些配置。下载个中文版的，解压，运行一次，会重新生成一个.mozilla。OK&nbsp;</p>
+<p>3.安装显卡驱动：<a href="http://www.binarytides.com/install-nvidia-drivers-linux-mint-16/" target="_blank" rel="external">http://www.binarytides.com/install-nvidia-drivers-linux-mint-16/</a></p>
+<p>4.中文输入法，在选项里可以安装</p>
+<p>5.翻墙配置（Shadowsocks，见<a href="http://echo.z-dd.net/post-6.html" target="_blank" rel="external">linux常用命令</a>）</p>
+<p>清除</p>
+<p><img src="/ueditor/php/upload/image/20160301/1456840945362783.png" alt="123.png" title="1456840945362783.png"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2016/01/24/android上安装kali/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/24/android上安装kali/" itemprop="url">
+                  android上安装kali
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-24T20:22:06+08:00">
+                2016-01-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T13:58:04+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kali/" itemprop="url" rel="index">
+                    <span itemprop="name">kali</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/01/24/android上安装kali/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/24/android上安装kali/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&nbsp;&nbsp;最近公司换新手机了–P8乞丐版，以前的那个就没啥用了（其实早就没用了<img src="http://img.baidu.com/hi/jx2/j_0063.gif" alt="">，一方面质量太差，经常失灵，另一方面带两个手机太麻烦了）。反正放在那闲着也是闲着，于是琢磨着能不能在上面装个linux,后面在网上一查，真的可以哇，于是说干就干。</p>
+<p>​    先刷个机，刷得干净清爽点，那个是定制机，里面乱七八糟的太多的太卡了Deploy linux和Busybox都需要root权限，而且。开始装个Deploy linux，感觉就是类似PC上的虚拟机，虚拟化chroot容器。安装好了后面发现在里面安装Linux要依赖Busybox，于是又安了个<a href="https://github.com/meefik/busybox/releases" target="_blank" rel="external">Busybox</a>。一切开始准备Ok，开始傻瓜式安装Kali。注意安装期间千万别断网，否则要重新开始。安装Ok后，用SSH和VNC都可以连上去，感觉还是有点卡哇，毕竟是容器里面的跑的。</p>
+<p>&nbsp;&nbsp;2016-01-24&nbsp;20:44:34</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2016/01/05/yocto相关/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/05/yocto相关/" itemprop="url">
+                  yocto相关
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-05T17:18:02+08:00">
+                2016-01-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/01/05/yocto相关/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/05/yocto相关/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>repo:</p>
+<p>curl <a href="http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo" target="_blank" rel="external">http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo</a> &gt; ~/bin/repo</p>
+<p><a href="https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernel" target="_blank" rel="external">https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernel</a><br>MACHINE=imx6qsabresd source fsl-setup-release.sh -b build-x11 -e x11<br>bitbake -c menuconfig linux-imx<br>bitbake fsl-image-qt5</p>
+<p>bitbake -c cleansstate u-boot<br>bitbake -c patch u-boot<br>bitbake -c cleansstate linux-imx<br>bitbake -c cleanall fsl-image-qt5<br>bitbake meta-toolchain-qt5&nbsp; #生成的sdk在 deploy/sdk/，一样先运行环境脚本</p>
+<p>bitbake meta-ide-support:生成交叉编译环境脚本<br>source 交叉编译环境脚本<br>查看编译链:<br>echo $CC<br>arm-poky-linux-gnueabi-gcc -v<br>//bitbake meta-toolchain</p>
+<p>error:<br>/usr/include/gnu/stubs.h:7:29: fatal error: gnu/stubs-soft.h: No such file or directory 编译器问题</p>
+<p>编译好的部署image在/build-x11/tmp/deploy下<br>qmake:/opt/fsl-yocto-bsp/build-x11/tmp/sysroots/x86_64-linux/usr/bin/qt5/<br>/opt/atsama5d44/poky/build-atmel/tmp/sysroots/x86_64-linux/usr/bin/qt5/qmake -o Makefile<br>//make savedefconfig 生成defconfig文件</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2016/01/05/Python相关问题Mark！/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/05/Python相关问题Mark！/" itemprop="url">
+                  Python相关问题Mark！
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-05T15:07:06+08:00">
+                2016-01-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/01/05/Python相关问题Mark！/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/05/Python相关问题Mark！/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>//————————————————————————</p>
+<pre><code>14.9.2 给世成解决在windows下python逐行拷贝sql文件的问题，要以“rb”，二进制的方式打开，不能直接“r”，文件的存储的编码方式的问题。
+
+//----------------------------------------------------------------------
+</code></pre><p>9.17 python 串口操作</p>
+<p><a href="http://blog.chinaunix.net/uid-9787595-id-1997667.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-9787595-id-1997667.html</a></p>
+<p>//———————————————————————-</p>
+<p>9.18 python log，&nbsp; wxpython&nbsp; wx.Choice</p>
+<p>python 模块间，函数间的调用</p>
+<p><a href="http://www.2cto.com/kf/201212/175349.html" target="_blank" rel="external">http://www.2cto.com/kf/201212/175349.html</a></p>
+<p>python 类</p>
+<p>【Python】TypeError: ’module’ object is not callable 原因分析</p>
+<p><a href="http://blog.csdn.net/kenkywu/article/details/6743520" target="_blank" rel="external">http://blog.csdn.net/kenkywu/article/details/6743520</a></p>
+<p>//———————————————————————-</p>
+<p>9.24 Python 操作注册表</p>
+<p><a href="http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp" target="_blank" rel="external">http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp</a>; (_winreg和win32api)</p>
+<p>wxpython ComboBox</p>
+<p>pyhon字符串操作，选择其中部分的字符，转整型</p>
+<p>Python通过查找注册表，找到COM口，并打开串口，接收数据，OK！！！</p>
+<p>Python TCP端口监听</p>
+<p>//———————————————————————-</p>
+<p>9.25</p>
+<p>python pip, easy_install</p>
+<p>由 Python ??的?????生工具－ jemdoc</p>
+<p><a href="http://www.openfoundry.org/en/foss-programs/8709?task=view" target="_blank" rel="external">http://www.openfoundry.org/en/foss-programs/8709?task=view</a></p>
+<p>用pelican在github上创建自己的博客!(Python静态网页生成工具pelican)</p>
+<p><a href="http://x-wei.github.io/pelican_github_blog.html" target="_blank" rel="external">http://x-wei.github.io/pelican_github_blog.html</a></p>
+<p><a href="http://dengzhp.github.io/hello-pelican.html" target="_blank" rel="external">http://dengzhp.github.io/hello-pelican.html</a></p>
+<p>安装后不支持Markdown语法?</p>
+<p>这个是因为Markdown没有与pelican包一起安装(pelican默认的还是支持rst格式), 安装上Markdown包就行了:install Markdown</p>
+<p>编写的.md文件除了标签之外必须要有内容，Github必须要同步到仓库的master分支才能创建博客</p>
+<p>//———————————————————————-</p>
+<p>9.26</p>
+<p>博客生成命令已全部写成批处理命令，并打开GitHub来同步，一键搞定</p>
+<p>cmd 下xcopy/?，复制目录所有文件到目标文件夹</p>
+<p>DISQUS_SITENAME 设置Disqus短域名，来绑定Disqus评论插件</p>
+<p>wxpython编程之 grid(数据表格),布局：BoxSizer&nbsp; ，，TextCtrl</p>
+<p>//——————————–</p>
+<p>10.23</p>
+<p>python扩展问题”unable to find vcvarsall.bat“的解决</p>
+<p><a href="http://blog.csdn.net/ren911/article/details/6448696" target="_blank" rel="external">http://blog.csdn.net/ren911/article/details/6448696</a></p>
+<p>Zbar安装失败</p>
+<p>//———————————-</p>
+<p>10.28</p>
+<p>不能启动PyQt4uic 解决方法：</p>
+<p>1.自己调用命令行</p>
+<p>pyuic4 -o codeFile.py -x yourUIfile.ui</p>
+<p>2.写一个批处理,每次双击就行了,跟你的源文件放在同一文件夹下</p>
+<p>import os</p>
+<p>for root, dirs, files in os.walk(’.’):</p>
+<p>&nbsp;&nbsp;&nbsp; for file in files:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if file.endswith(’.ui’):</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyuic4 -o %s.py -x %s’ </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file))</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elif file.endswith(’.qrc’):</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyrcc4 -o %s_rc.py %s’ </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file))</p>
+<p>3.使用Eric</p>
+<pre><code>//----------------------------------
+
+Boa Constructor - wxPython GUI Builder 
+</code></pre><p>python下处理带空格的路径：</p>
+<p>&nbsp;&nbsp;&nbsp; import os</p>
+<p>&nbsp;&nbsp;&nbsp; cmd1=r’c:”Program FilesInternet Explorer”iexplore.exe’</p>
+<p>&nbsp;&nbsp;&nbsp; cmd2 = r’copy E:”Program Files””flash magic”fm.exe 2.exe’</p>
+<p>&nbsp;&nbsp;&nbsp; def main():</p>
+<p>&nbsp;&nbsp;&nbsp; #cmd = ’ “ “ 带空格的可执行程序 “&nbsp; 空格 “ 带空格的参数或文件名等” “ ’</p>
+<p>&nbsp;&nbsp;&nbsp; #cmd=’””D:\Program Files\Microsoft Office\OFFICE11\winword.exe” “d:\11.doc””’</p>
+<p>&nbsp;&nbsp;&nbsp; #cmd = ’””copy” “E:\Program Files\flash magic\fm.exe”&nbsp; “2.exe””’</p>
+<p>&nbsp;&nbsp; &nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp; #print os.system(cmd2).read()</p>
+<p>&nbsp;&nbsp;&nbsp; print os.popen(cmd2).read()</p>
+<p>&nbsp;&nbsp; &nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp; if <strong>name</strong> == ’<strong>main</strong>’:</p>
+<p>&nbsp;&nbsp;&nbsp; main()</p>
+<p>处理中文路径：</p>
+<p>filepath=unicode(filepath,’utf8’)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2016/01/04/Centos6-升级python2-6-6-2-7-6/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/04/Centos6-升级python2-6-6-2-7-6/" itemprop="url">
+                  Centos6 升级python2.6.6-->2.7.6
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-04T13:55:55+08:00">
+                2016-01-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/centos/" itemprop="url" rel="index">
+                    <span itemprop="name">centos</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/01/04/Centos6-升级python2-6-6-2-7-6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/04/Centos6-升级python2-6-6-2-7-6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下：</p>
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; 1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.修改符号链接：
+</code></pre><pre class="prettyprint lang-bsh linenums">    rm -rf /usr/bin/python
+    ln -s /usr/local/bin/python2.7 /usr/bin/python</pre>
+
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; 3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;python -V
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2015/11/10/I2C-tools工具使用-记录/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/10/I2C-tools工具使用-记录/" itemprop="url">
+                  I2C tools工具使用-记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-10T17:08:59+08:00">
+                2015-11-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/10/I2C-tools工具使用-记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/10/I2C-tools工具使用-记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。</p>
+<pre><code>使用 ：
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;**1.i2cdetect -l**
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举出系统中所有的I2C总线。
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;** 2.i2cdetect -y -r **&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;**0**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举一条I2C总线（&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;以0为例&lt;/span&gt;）上的所有设备(UU为使用中，即已经操作过)
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5&amp;nbsp; 6&amp;nbsp; 7&amp;nbsp; 8&amp;nbsp; 9&amp;nbsp; a&amp;nbsp; b&amp;nbsp; c&amp;nbsp; d&amp;nbsp; e&amp;nbsp; f
+</code></pre><p>00:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; – – – – – – – – – – – – –</p>
+<p>10: – – – – – – – – – – UU – – – – –</p>
+<p>20: – – – – – – – – – – – – – – – –</p>
+<p>30: – – – – 34 – – – – – – – – – – –</p>
+<p>40: – – – – – – – – – – – – – – – –</p>
+<p>50: – – – – – – – – – – – – – – – –</p>
+<p>60: – – – – – – – – – – – – – – – –</p>
+<p>70: – – – – – – – –</p>
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; **3.i2cdump -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; **4.i2cget -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; **5.i2cset -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; &lt;span style=&quot;background-color:#00D5FF;&quot;&gt;**0xfb**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 写I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器为&lt;span style=&quot;background-color:#00D5FF;&quot;&gt;0xfb&lt;/span&gt; 
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2015/11/04/Cubieboard上kali初探/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/04/Cubieboard上kali初探/" itemprop="url">
+                  Cubieboard上kali初探
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-04T22:05:12+08:00">
+                2015-11-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kali/" itemprop="url" rel="index">
+                    <span itemprop="name">kali</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/04/Cubieboard上kali初探/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/04/Cubieboard上kali初探/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。</p>
+<pre><code>开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
+
+后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/emoticons/images/23.gif)。下下来刷进了SD卡里，顺利跑起来了。
+
+突然发现之前的USB网卡rtl8188eu不能用，于是又开始折腾&amp;nbsp;&amp;nbsp;rtl8188eu的驱动。
+
+下了个&lt;span style=&quot;white-space:normal;&quot;&gt;rtl8188eu驱动源码，发现没有unzip。&lt;/span&gt;&lt;span style=&quot;display:none;&quot; id=&quot;__kindeditor_bookmark_start_31__&quot;&gt;&lt;span style=&quot;white-space:normal;&quot;&gt;发现没make，gcc，&lt;/span&gt;&lt;/span&gt; 
+
+开始编译，没有/lib/modules/3.4.10/bulid 的软链接无效，导致找不到路径。
+
+没有make，gcc，
+
+ssh：
+
+kali默认是没有开启SSH，每次用串口很麻烦，于是就打开了ssh：
+
+1.修改/etc/ssh/sshd_config:
+
+PasswordAuthentication yes
+
+PermitRootLogin without-password的后面&lt;span style=&quot;white-space:normal;&quot;&gt;without-password&lt;/span&gt;改为yes
+
+保存退出
+
+2.添加自启动：
+
+update-rc.d ssh enable &amp;nbsp;//开启
+</code></pre><p>update-rc.d ssh disabled // 关闭</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2015/10/27/wpa-supplicant-iwconfig/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="shell">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DD'echo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DD'echo" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/27/wpa-supplicant-iwconfig/" itemprop="url">
+                  wpa_supplicant & iwconfig
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-27T19:26:56+08:00">
+                2015-10-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
+                2017-04-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/10/27/wpa-supplicant-iwconfig/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/27/wpa-supplicant-iwconfig/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong><span style="font-size:24px;"><u>wpa_supplicant</u></span>**</strong><span style="font-size:24px;"><u></u></span>** </p>
+<pre><code>用wpa_passphrase生成最基本的wpa_supplicant配置文件：
+</code></pre><pre class="prettyprint lang-bsh linenums">wpa_passphrase TPLINK 12345678 |sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf </pre>
+
+<p>wpa_supplication.conf的模板如下：</p>
+<pre class="prettyprint lang-bsh linenums">ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=wheel
+update_config=1
+
+network={
+ ssid="xxxx"
+ scan_ssid=1
+ psk=xxxxxxxxx37bca5cf24a345f514d319211822f568bba28f8f0b74c894e7644
+ proto=RSN
+ key_mgmt=WPA-PSK
+ pairwise=CCMP
+ auth_alg=OPEN
+}</pre>
+
+<p>连接命令：</p>
+<pre class="prettyprint lang-bsh linenums">wpa_supplicant -B -d -iwlan0 -c/etc/wpa_supplicant.conf</pre>
+
+<p>动态获取IP：</p>
+<pre class="prettyprint lang-bsh linenums">dhclient wlan0</pre>
+
+<pre><code>**&lt;span style=&quot;font-size:24px;&quot;&gt;&lt;u&gt;iwconfig&lt;/u&gt;&lt;/span&gt;** 
+
+扫描AP节点：
+</code></pre><pre class="prettyprint lang-bsh linenums">iwlist wlan4 scanning</pre>
+
+<p>配置MYSSID：</p>
+<pre class="prettyprint lang-bsh linenums">iwconfig wlan0 essid "myssid"</pre>
+
+<p>加密码：</p>
+<pre class="prettyprint lang-bsh linenums">iwconfig wlan0 key s:xxxxx/xxxxxxxxxxxxx（40－bit为5个ASSIC字符，128－bit为13个ASSIC字符，以字符为密钥时，密钥之前需要加s:表示字符）</pre>
           
         
       
@@ -579,6 +2113,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
           
           </div>
@@ -619,7 +2157,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -628,7 +2166,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -637,7 +2175,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
