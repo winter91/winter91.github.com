@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>DD&#39;echo</title>
+  <subtitle>the quieter you become, the more you are able to hear.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="mark.z-dd.net/"/>
+  <updated>2016-03-20T09:31:16.000Z</updated>
+  <id>mark.z-dd.net/</id>
+  
+  <author>
+    <name>shell</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="mark.z-dd.net/2017/05/03/hello-world/"/>
+    <id>mark.z-dd.net/2017/05/03/hello-world/</id>
+    <published>2017-05-03T01:40:31.686Z</published>
+    <updated>2016-03-20T09:31:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Kali Rolling版本折腾</title>
+    <link href="mark.z-dd.net/2016/03/13/Kali-Rolling%E7%89%88%E6%9C%AC%E6%8A%98%E8%85%BE/"/>
+    <id>mark.z-dd.net/2016/03/13/Kali-Rolling版本折腾/</id>
+    <published>2016-03-13T13:46:14.000Z</published>
+    <updated>2017-04-27T03:59:03.377Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。</p>
+<p><strong>#引导：</strong></p>
+<p>&nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win10选择项。终于想起来了，之前装mint的时候是用MBR引导grub(在window下用的easyBCD，很简单)。</p>
+<p>然后硬着头皮去研究grub，后面发现了篇类似的文章(<a href="http://www.2cto.com/os/201411/354914.html" target="_blank" rel="external">http://www.2cto.com/os/201411/354914.html</a>)，然后用里面的方案一就OK了：</p>
+<p>在grub的配置文件/boot/grub/grub.cfg添加win10的启动项声明：</p>
+<blockquote>
+<h3 id="BEGIN-etc-grub-d-30-os-prober"><a href="#BEGIN-etc-grub-d-30-os-prober" class="headerlink" title="BEGIN /etc/grub.d/30_os-prober"></a>BEGIN /etc/grub.d/30_os-prober</h3><p>menuentry &#39;Windows 7 (loader) (on /dev/sda1)&#39; –class windows –class os $menuentry_id_option &#39;osprober-chain-XXX&#39; {</p>
+<p>insmod part_msdos</p>
+<p>insmod ntfs</p>
+<p>set root=&#39;hd0,msdos1&#39;</p>
+<p>chainloader +1</p>
+<p>}</p>
+<h3 id="END-etc-grub-d-30-os-prober"><a href="#END-etc-grub-d-30-os-prober" class="headerlink" title="END /etc/grub.d/30_os-prober"></a>END /etc/grub.d/30_os-prober</h3></blockquote>
+<p>加在### END /etc/grub.d/00_header ###之后。其中的XXX为你的Windows 系统分区的UUID。查看分区UUID的命令：sudo blkid</p>
+<p><strong>#安装中文输入法，字体(解决中文乱码):</strong></p>
+<p>apt-get install fcitx fcitx-table-wbpy &nbsp;ttf-wqy-microhei ttf-wqy-zenhei &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p>手工配置：</p>
+<p>im-config</p>
+<p><strong>#添加用户（因为Kali默认就是root用户）:</strong></p>
+<p>useradd -m -G video,audio,cdrom,sudo -s /bin/bash 用户名</p>
+<p>passwd 用户名</p>
+<p><strong>#安装多窗口终端：</strong></p>
+<p>apt-get install terminator &nbsp; &nbsp;</p>
+<p><strong><strong style="white-space: normal;">#</strong>浏览器：</strong></p>
+<p>虽然Kali里面的是iceweasel，但是和firefox是同一家族的，所以和之前装mint类似： <a href="http://echo.z-dd.net/post-34.html" target="_blank" rel="external">http://echo.z-dd.net/post-34.html</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;#引导：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写
+    
+    </summary>
+    
+      <category term="kali" scheme="mark.z-dd.net/categories/kali/"/>
+    
+    
+      <category term="grub" scheme="mark.z-dd.net/tags/grub/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初尝Linux mint</title>
+    <link href="mark.z-dd.net/2016/03/01/%E5%88%9D%E5%B0%9DLinux-mint/"/>
+    <id>mark.z-dd.net/2016/03/01/初尝Linux-mint/</id>
+    <published>2016-03-01T13:57:14.000Z</published>
+    <updated>2017-04-27T03:59:03.377Z</updated>
+    
+    <content type="html"><![CDATA[<p>Cinnamon桌面：</p>
+<p>1.更新源，改为国内的，更新系统。</p>
+<p>2.配置firefox，使用中文版的配置：删除用户目录下的.mozilla，里面就是些配置。下载个中文版的，解压，运行一次，会重新生成一个.mozilla。OK&nbsp;</p>
+<p>3.安装显卡驱动：<a href="http://www.binarytides.com/install-nvidia-drivers-linux-mint-16/" target="_blank" rel="external">http://www.binarytides.com/install-nvidia-drivers-linux-mint-16/</a></p>
+<p>4.中文输入法，在选项里可以安装</p>
+<p>5.翻墙配置（Shadowsocks，见<a href="http://echo.z-dd.net/post-6.html" target="_blank" rel="external">linux常用命令</a>）</p>
+<p>清除</p>
+<p><img src="/ueditor/php/upload/image/20160301/1456840945362783.png" alt="123.png" title="1456840945362783.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Cinnamon桌面：&lt;/p&gt;
+&lt;p&gt;1.更新源，改为国内的，更新系统。&lt;/p&gt;
+&lt;p&gt;2.配置firefox，使用中文版的配置：删除用户目录下的.mozilla，里面就是些配置。下载个中文版的，解压，运行一次，会重新生成一个.mozilla。OK&amp;nbsp;&lt;/p&gt;
+&lt;p
+    
+    </summary>
+    
+      <category term="Linux" scheme="mark.z-dd.net/categories/Linux/"/>
+    
+    
+      <category term="Shadowsocks" scheme="mark.z-dd.net/tags/Shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android上安装kali</title>
+    <link href="mark.z-dd.net/2016/01/24/android%E4%B8%8A%E5%AE%89%E8%A3%85kali/"/>
+    <id>mark.z-dd.net/2016/01/24/android上安装kali/</id>
+    <published>2016-01-24T12:22:06.000Z</published>
+    <updated>2017-04-27T05:58:04.688Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp;&nbsp;最近公司换新手机了–P8乞丐版，以前的那个就没啥用了（其实早就没用了<img src="http://img.baidu.com/hi/jx2/j_0063.gif" alt="">，一方面质量太差，经常失灵，另一方面带两个手机太麻烦了）。反正放在那闲着也是闲着，于是琢磨着能不能在上面装个linux,后面在网上一查，真的可以哇，于是说干就干。</p>
+<p>​    先刷个机，刷得干净清爽点，那个是定制机，里面乱七八糟的太多的太卡了Deploy linux和Busybox都需要root权限，而且。开始装个Deploy linux，感觉就是类似PC上的虚拟机，虚拟化chroot容器。安装好了后面发现在里面安装Linux要依赖Busybox，于是又安了个<a href="https://github.com/meefik/busybox/releases" target="_blank" rel="external">Busybox</a>。一切开始准备Ok，开始傻瓜式安装Kali。注意安装期间千万别断网，否则要重新开始。安装Ok后，用SSH和VNC都可以连上去，感觉还是有点卡哇，毕竟是容器里面的跑的。</p>
+<p>&nbsp;&nbsp;2016-01-24&nbsp;20:44:34</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;最近公司换新手机了–P8乞丐版，以前的那个就没啥用了（其实早就没用了&lt;img src=&quot;http://img.baidu.com/hi/jx2/j_0063.gif&quot; alt=&quot;&quot;&gt;，一方面质量太差，经常失灵，另一方面带两个手机太麻烦了）。反正放在那
+    
+    </summary>
+    
+      <category term="kali" scheme="mark.z-dd.net/categories/kali/"/>
+    
+    
+      <category term="Android" scheme="mark.z-dd.net/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yocto相关</title>
+    <link href="mark.z-dd.net/2016/01/05/yocto%E7%9B%B8%E5%85%B3/"/>
+    <id>mark.z-dd.net/2016/01/05/yocto相关/</id>
+    <published>2016-01-05T09:18:02.000Z</published>
+    <updated>2017-04-27T03:59:03.375Z</updated>
+    
+    <content type="html"><![CDATA[<p>repo:</p>
+<p>curl <a href="http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo" target="_blank" rel="external">http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo</a> &gt; ~/bin/repo</p>
+<p><a href="https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernel" target="_blank" rel="external">https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernel</a><br>MACHINE=imx6qsabresd source fsl-setup-release.sh -b build-x11 -e x11<br>bitbake -c menuconfig linux-imx<br>bitbake fsl-image-qt5</p>
+<p>bitbake -c cleansstate u-boot<br>bitbake -c patch u-boot<br>bitbake -c cleansstate linux-imx<br>bitbake -c cleanall fsl-image-qt5<br>bitbake meta-toolchain-qt5&nbsp; #生成的sdk在 deploy/sdk/，一样先运行环境脚本</p>
+<p>bitbake meta-ide-support:生成交叉编译环境脚本<br>source 交叉编译环境脚本<br>查看编译链:<br>echo $CC<br>arm-poky-linux-gnueabi-gcc -v<br>//bitbake meta-toolchain</p>
+<p>error:<br>/usr/include/gnu/stubs.h:7:29: fatal error: gnu/stubs-soft.h: No such file or directory 编译器问题</p>
+<p>编译好的部署image在/build-x11/tmp/deploy下<br>qmake:/opt/fsl-yocto-bsp/build-x11/tmp/sysroots/x86_64-linux/usr/bin/qt5/<br>/opt/atsama5d44/poky/build-atmel/tmp/sysroots/x86_64-linux/usr/bin/qt5/qmake -o Makefile<br>//make savedefconfig 生成defconfig文件</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;repo:&lt;/p&gt;
+&lt;p&gt;curl &lt;a href=&quot;http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://php.webtutor.
+    
+    </summary>
+    
+      <category term="tools" scheme="mark.z-dd.net/categories/tools/"/>
+    
+    
+      <category term="yocto" scheme="mark.z-dd.net/tags/yocto/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python相关问题Mark！</title>
+    <link href="mark.z-dd.net/2016/01/05/Python%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98Mark%EF%BC%81/"/>
+    <id>mark.z-dd.net/2016/01/05/Python相关问题Mark！/</id>
+    <published>2016-01-05T07:07:06.000Z</published>
+    <updated>2017-04-27T03:59:03.375Z</updated>
+    
+    <content type="html"><![CDATA[<p>//————————————————————————</p>
+<pre><code>14.9.2 给世成解决在windows下python逐行拷贝sql文件的问题，要以“rb”，二进制的方式打开，不能直接“r”，文件的存储的编码方式的问题。
+
+//----------------------------------------------------------------------
+</code></pre><p>9.17 python 串口操作</p>
+<p><a href="http://blog.chinaunix.net/uid-9787595-id-1997667.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-9787595-id-1997667.html</a></p>
+<p>//———————————————————————-</p>
+<p>9.18 python log，&nbsp; wxpython&nbsp; wx.Choice</p>
+<p>python 模块间，函数间的调用</p>
+<p><a href="http://www.2cto.com/kf/201212/175349.html" target="_blank" rel="external">http://www.2cto.com/kf/201212/175349.html</a></p>
+<p>python 类</p>
+<p>【Python】TypeError: ’module’ object is not callable 原因分析</p>
+<p><a href="http://blog.csdn.net/kenkywu/article/details/6743520" target="_blank" rel="external">http://blog.csdn.net/kenkywu/article/details/6743520</a></p>
+<p>//———————————————————————-</p>
+<p>9.24 Python 操作注册表</p>
+<p><a href="http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp" target="_blank" rel="external">http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp</a>; (_winreg和win32api)</p>
+<p>wxpython ComboBox</p>
+<p>pyhon字符串操作，选择其中部分的字符，转整型</p>
+<p>Python通过查找注册表，找到COM口，并打开串口，接收数据，OK！！！</p>
+<p>Python TCP端口监听</p>
+<p>//———————————————————————-</p>
+<p>9.25</p>
+<p>python pip, easy_install</p>
+<p>由 Python ??的?????生工具－ jemdoc</p>
+<p><a href="http://www.openfoundry.org/en/foss-programs/8709?task=view" target="_blank" rel="external">http://www.openfoundry.org/en/foss-programs/8709?task=view</a></p>
+<p>用pelican在github上创建自己的博客!(Python静态网页生成工具pelican)</p>
+<p><a href="http://x-wei.github.io/pelican_github_blog.html" target="_blank" rel="external">http://x-wei.github.io/pelican_github_blog.html</a></p>
+<p><a href="http://dengzhp.github.io/hello-pelican.html" target="_blank" rel="external">http://dengzhp.github.io/hello-pelican.html</a></p>
+<p>安装后不支持Markdown语法?</p>
+<p>这个是因为Markdown没有与pelican包一起安装(pelican默认的还是支持rst格式), 安装上Markdown包就行了:install Markdown</p>
+<p>编写的.md文件除了标签之外必须要有内容，Github必须要同步到仓库的master分支才能创建博客</p>
+<p>//———————————————————————-</p>
+<p>9.26</p>
+<p>博客生成命令已全部写成批处理命令，并打开GitHub来同步，一键搞定</p>
+<p>cmd 下xcopy/?，复制目录所有文件到目标文件夹</p>
+<p>DISQUS_SITENAME 设置Disqus短域名，来绑定Disqus评论插件</p>
+<p>wxpython编程之 grid(数据表格),布局：BoxSizer&nbsp; ，，TextCtrl</p>
+<p>//——————————–</p>
+<p>10.23</p>
+<p>python扩展问题”unable to find vcvarsall.bat“的解决</p>
+<p><a href="http://blog.csdn.net/ren911/article/details/6448696" target="_blank" rel="external">http://blog.csdn.net/ren911/article/details/6448696</a></p>
+<p>Zbar安装失败</p>
+<p>//———————————-</p>
+<p>10.28</p>
+<p>不能启动PyQt4uic 解决方法：</p>
+<p>1.自己调用命令行</p>
+<p>pyuic4 -o codeFile.py -x yourUIfile.ui</p>
+<p>2.写一个批处理,每次双击就行了,跟你的源文件放在同一文件夹下</p>
+<p>import os</p>
+<p>for root, dirs, files in os.walk(’.’):</p>
+<p>&nbsp;&nbsp;&nbsp; for file in files:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if file.endswith(’.ui’):</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyuic4 -o %s.py -x %s’ </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file))</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elif file.endswith(’.qrc’):</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyrcc4 -o %s_rc.py %s’ </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file))</p>
+<p>3.使用Eric</p>
+<pre><code>//----------------------------------
+
+Boa Constructor - wxPython GUI Builder 
+</code></pre><p>python下处理带空格的路径：</p>
+<p>&nbsp;&nbsp;&nbsp; import os</p>
+<p>&nbsp;&nbsp;&nbsp; cmd1=r’c:”Program FilesInternet Explorer”iexplore.exe’</p>
+<p>&nbsp;&nbsp;&nbsp; cmd2 = r’copy E:”Program Files””flash magic”fm.exe 2.exe’</p>
+<p>&nbsp;&nbsp;&nbsp; def main():</p>
+<p>&nbsp;&nbsp;&nbsp; #cmd = ’ “ “ 带空格的可执行程序 “&nbsp; 空格 “ 带空格的参数或文件名等” “ ’</p>
+<p>&nbsp;&nbsp;&nbsp; #cmd=’””D:\Program Files\Microsoft Office\OFFICE11\winword.exe” “d:\11.doc””’</p>
+<p>&nbsp;&nbsp;&nbsp; #cmd = ’””copy” “E:\Program Files\flash magic\fm.exe”&nbsp; “2.exe””’</p>
+<p>&nbsp;&nbsp; &nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp; #print os.system(cmd2).read()</p>
+<p>&nbsp;&nbsp;&nbsp; print os.popen(cmd2).read()</p>
+<p>&nbsp;&nbsp; &nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp; if <strong>name</strong> == ’<strong>main</strong>’:</p>
+<p>&nbsp;&nbsp;&nbsp; main()</p>
+<p>处理中文路径：</p>
+<p>filepath=unicode(filepath,’utf8’)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;//————————————————————————&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;14.9.2 给世成解决在windows下python逐行拷贝sql文件的问题，要以“rb”，二进制的方式打开，不能直接“r”，文件的存储的编码方式的问题。
+
+//-------------
+    
+    </summary>
+    
+      <category term="Python" scheme="mark.z-dd.net/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="mark.z-dd.net/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Centos6 升级python2.6.6--&gt;2.7.6</title>
+    <link href="mark.z-dd.net/2016/01/04/Centos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6/"/>
+    <id>mark.z-dd.net/2016/01/04/Centos6-升级python2-6-6-2-7-6/</id>
+    <published>2016-01-04T05:55:55.000Z</published>
+    <updated>2017-04-27T03:59:03.375Z</updated>
+    
+    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下：</p>
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; 1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.修改符号链接：
+</code></pre><pre class="prettyprint lang-bsh linenums">    rm -rf /usr/bin/python
+    ln -s /usr/local/bin/python2.7 /usr/bin/python</pre>
+
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; 3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;python -V
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;nbs
+    
+    </summary>
+    
+      <category term="centos" scheme="mark.z-dd.net/categories/centos/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>I2C tools工具使用-记录</title>
+    <link href="mark.z-dd.net/2015/11/10/I2C-tools%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8-%E8%AE%B0%E5%BD%95/"/>
+    <id>mark.z-dd.net/2015/11/10/I2C-tools工具使用-记录/</id>
+    <published>2015-11-10T09:08:59.000Z</published>
+    <updated>2017-04-27T03:59:03.375Z</updated>
+    
+    <content type="html"><![CDATA[<p>下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。</p>
+<pre><code>使用 ：
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;**1.i2cdetect -l**
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举出系统中所有的I2C总线。
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;** 2.i2cdetect -y -r **&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;**0**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举一条I2C总线（&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;以0为例&lt;/span&gt;）上的所有设备(UU为使用中，即已经操作过)
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5&amp;nbsp; 6&amp;nbsp; 7&amp;nbsp; 8&amp;nbsp; 9&amp;nbsp; a&amp;nbsp; b&amp;nbsp; c&amp;nbsp; d&amp;nbsp; e&amp;nbsp; f
+</code></pre><p>00:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; – – – – – – – – – – – – –</p>
+<p>10: – – – – – – – – – – UU – – – – –</p>
+<p>20: – – – – – – – – – – – – – – – –</p>
+<p>30: – – – – 34 – – – – – – – – – – –</p>
+<p>40: – – – – – – – – – – – – – – – –</p>
+<p>50: – – – – – – – – – – – – – – – –</p>
+<p>60: – – – – – – – – – – – – – – – –</p>
+<p>70: – – – – – – – –</p>
+<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; **3.i2cdump -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; **4.i2cget -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; **5.i2cset -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; &lt;span style=&quot;background-color:#00D5FF;&quot;&gt;**0xfb**&lt;/span&gt; 
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 写I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器为&lt;span style=&quot;background-color:#00D5FF;&quot;&gt;0xfb&lt;/span&gt; 
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用 ：
+
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;**1.i2cdet
+    
+    </summary>
+    
+      <category term="tools" scheme="mark.z-dd.net/categories/tools/"/>
+    
+    
+      <category term="I2C" scheme="mark.z-dd.net/tags/I2C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cubieboard上kali初探</title>
+    <link href="mark.z-dd.net/2015/11/04/Cubieboard%E4%B8%8Akali%E5%88%9D%E6%8E%A2/"/>
+    <id>mark.z-dd.net/2015/11/04/Cubieboard上kali初探/</id>
+    <published>2015-11-04T14:05:12.000Z</published>
+    <updated>2017-04-27T03:59:03.374Z</updated>
+    
+    <content type="html"><![CDATA[<p>本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。</p>
+<pre><code>开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
+
+后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/emoticons/images/23.gif)。下下来刷进了SD卡里，顺利跑起来了。
+
+突然发现之前的USB网卡rtl8188eu不能用，于是又开始折腾&amp;nbsp;&amp;nbsp;rtl8188eu的驱动。
+
+下了个&lt;span style=&quot;white-space:normal;&quot;&gt;rtl8188eu驱动源码，发现没有unzip。&lt;/span&gt;&lt;span style=&quot;display:none;&quot; id=&quot;__kindeditor_bookmark_start_31__&quot;&gt;&lt;span style=&quot;white-space:normal;&quot;&gt;发现没make，gcc，&lt;/span&gt;&lt;/span&gt; 
+
+开始编译，没有/lib/modules/3.4.10/bulid 的软链接无效，导致找不到路径。
+
+没有make，gcc，
+
+ssh：
+
+kali默认是没有开启SSH，每次用串口很麻烦，于是就打开了ssh：
+
+1.修改/etc/ssh/sshd_config:
+
+PasswordAuthentication yes
+
+PermitRootLogin without-password的后面&lt;span style=&quot;white-space:normal;&quot;&gt;without-password&lt;/span&gt;改为yes
+
+保存退出
+
+2.添加自启动：
+
+update-rc.d ssh enable &amp;nbsp;//开启
+</code></pre><p>update-rc.d ssh disabled // 关闭</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
+
+后来突然发现Kali的官网上，A
+    
+    </summary>
+    
+      <category term="kali" scheme="mark.z-dd.net/categories/kali/"/>
+    
+    
+      <category term="Cubieboard" scheme="mark.z-dd.net/tags/Cubieboard/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>wpa_supplicant &amp; iwconfig</title>
+    <link href="mark.z-dd.net/2015/10/27/wpa-supplicant-iwconfig/"/>
+    <id>mark.z-dd.net/2015/10/27/wpa-supplicant-iwconfig/</id>
+    <published>2015-10-27T11:26:56.000Z</published>
+    <updated>2017-04-27T03:59:03.374Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><span style="font-size:24px;"><u>wpa_supplicant</u></span>**</strong><span style="font-size:24px;"><u></u></span>** </p>
+<pre><code>用wpa_passphrase生成最基本的wpa_supplicant配置文件：
+</code></pre><pre class="prettyprint lang-bsh linenums">wpa_passphrase TPLINK 12345678 |sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf </pre>
+
+<p>wpa_supplication.conf的模板如下：</p>
+<pre class="prettyprint lang-bsh linenums">ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=wheel
+update_config=1
+
+network={
+ ssid="xxxx"
+ scan_ssid=1
+ psk=xxxxxxxxx37bca5cf24a345f514d319211822f568bba28f8f0b74c894e7644
+ proto=RSN
+ key_mgmt=WPA-PSK
+ pairwise=CCMP
+ auth_alg=OPEN
+}</pre>
+
+<p>连接命令：</p>
+<pre class="prettyprint lang-bsh linenums">wpa_supplicant -B -d -iwlan0 -c/etc/wpa_supplicant.conf</pre>
+
+<p>动态获取IP：</p>
+<pre class="prettyprint lang-bsh linenums">dhclient wlan0</pre>
+
+<pre><code>**&lt;span style=&quot;font-size:24px;&quot;&gt;&lt;u&gt;iwconfig&lt;/u&gt;&lt;/span&gt;** 
+
+扫描AP节点：
+</code></pre><pre class="prettyprint lang-bsh linenums">iwlist wlan4 scanning</pre>
+
+<p>配置MYSSID：</p>
+<pre class="prettyprint lang-bsh linenums">iwconfig wlan0 essid "myssid"</pre>
+
+<p>加密码：</p>
+<pre class="prettyprint lang-bsh linenums">iwconfig wlan0 key s:xxxxx/xxxxxxxxxxxxx（40－bit为5个ASSIC字符，128－bit为13个ASSIC字符，以字符为密钥时，密钥之前需要加s:表示字符）</pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;&lt;span style=&quot;font-size:24px;&quot;&gt;&lt;u&gt;wpa_supplicant&lt;/u&gt;&lt;/span&gt;**&lt;/strong&gt;&lt;span style=&quot;font-size:24px;&quot;&gt;&lt;u&gt;&lt;/u&gt;&lt;/span&gt;** &lt;/p&gt;
+&lt;pre&gt;&lt;co
+    
+    </summary>
+    
+      <category term="tools" scheme="mark.z-dd.net/categories/tools/"/>
+    
+    
+      <category term="网络" scheme="mark.z-dd.net/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openwrt 相关有用的</title>
+    <link href="mark.z-dd.net/2015/10/19/openwrt-%E7%9B%B8%E5%85%B3%E6%9C%89%E7%94%A8%E7%9A%84/"/>
+    <id>mark.z-dd.net/2015/10/19/openwrt-相关有用的/</id>
+    <published>2015-10-19T06:46:54.000Z</published>
+    <updated>2017-04-27T03:59:03.375Z</updated>
+    
+    <content type="html"><![CDATA[<pre>config_load等获取config配置文件：
+<pre class="prettyprint lang-bsh linenums">#!/bin/sh /etc/rc.common
+# Copyright (C) 2013 NXP Semiconductor
+# -s /dev/ttyTX0 -B 115200 --mode=coordinator -6 fd04:bd3:80e8:10::1 -c 15 -I zb0
+
+START=99
+
+PROG=zigbee-jip-daemon
+
+start_zigbee_jip_daemon() {
+    local section="$1"
+
+    config_get_bool ignore "$section" ignore 0
+    [ "$ignore" -ne 0 ] &amp;&amp; return 0
+
+    local tty
+    config_get tty "${section}" tty
+    [ -z $tty ] &amp;&amp; tty="/dev/ttyUSB0"
+
+    local interface
+    config_get interface "${section}" interface
+
+    local baudrate
+    config_get baudrate "${section}" baudrate
+    [ -z $baudrate ] &amp;&amp; baudrate="1000000"
+
+    local mode
+    config_get mode "${section}" mode
+
+    local borderrouter
+    config_get borderrouter "${section}" borderrouter
+
+    local channel
+    config_get channel "${section}" channel
+
+    local whitelisting
+    config_get whitelisting "${section}" whitelisting
+
+    local args
+    args="-s $tty -B $baudrate --mode=$mode -6 $borderrouter -c $channel"
+
+    if [ $interface ]
+    then
+        args="$args -I $interface"
+    fi
+
+    if [ $whitelisting -ne 0 ]
+    then
+        args="$args --whitelisting"
+    fi
+
+    echo "Starting $PROG with arguments: $args"
+    /usr/sbin/$PROG $args
+}
+
+start () {
+    config_load zigbee-jip-daemon
+    config_foreach start_zigbee_jip_daemon zigbee-jip-daemon
+}
+
+stop () {
+    killall $PROG
+}
+</pre>
+
+<p>log操作：</p>
+<p>logread</p>
+<p></p></pre><p></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;config_load等获取config配置文件：
+&lt;pre class=&quot;prettyprint lang-bsh linenums&quot;&gt;#!/bin/sh /etc/rc.common
+# Copyright (C) 2013 NXP Semiconductor
+# 
+    
+    </summary>
+    
+      <category term="openwrt" scheme="mark.z-dd.net/categories/openwrt/"/>
+    
+    
+      <category term="openwrt" scheme="mark.z-dd.net/tags/openwrt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>About</title>
+    <link href="mark.z-dd.net/2015/10/16/About/"/>
+    <id>mark.z-dd.net/2015/10/16/About/</id>
+    <published>2015-10-16T15:58:55.000Z</published>
+    <updated>2017-04-27T03:59:03.374Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux常用命令--（持续更新中。。。）</title>
+    <link href="mark.z-dd.net/2015/02/11/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%E3%80%82%E3%80%82%E3%80%82%EF%BC%89/"/>
+    <id>mark.z-dd.net/2015/02/11/Linux常用命令-（持续更新中。。。）/</id>
+    <published>2015-02-11T13:12:23.000Z</published>
+    <updated>2017-04-27T03:59:03.374Z</updated>
+    
+    <content type="html"><![CDATA[<p>##<br>    SSH：</p>
+<pre><code>http://www.live-in.org/archives/832.html
+</code></pre><blockquote>
+<p>不指定用户：<br>ssh 192.168.0.11<br>指定用户：<br>ssh -l root 192.168.0.11<br>ssh root@192.168.0.11<br>如果修改过ssh登录端口的可以：<br>ssh -p 12333 192.168.0.11<br>ssh -l root -p 12333 216.230.230.114<br>ssh -p 12333 root@216.230.230.114<br>另外修改配置文件/etc/ssh/sshd_config，可以改ssh登录端口和禁止root登录。改端口可以防止被端口扫描。<br>编辑配置文件：<br>vim /etc/ssh/sshd_config<br>找到#Port 22，去掉注释，修改成一个五位的端口：<br>Port 12333<br>找到#PermitRootLogin yes，去掉注释，修改为：<br>PermitRootLogin no<br>重启sshd服务：<br>service sshd restart<br>退出登陆<br>Exit</p>
+</blockquote>
+<p>##<br>    查看显卡状态：</p>
+<blockquote>
+<p>lspci | grep VGA<br>rev ff 表示显卡已经关闭</p>
+</blockquote>
+<p>##<br>    Mount:</p>
+<pre><code>sudo mount -r -t cifs //192.168.12.128/share /mnt/tmp -o username=lierda,password=123456
+</code></pre><p><a href="http://tutu.spaces.eepw.com.cn/articles/article/item/70737" target="_blank" rel="external">http://tutu.spaces.eepw.com.cn/articles/article/item/70737</a></p>
+<p>##<br>    常用的APT命令参数</p>
+<blockquote>
+<p>apt-cache search package 搜索包<br>apt-cache show package 获取包的相关信息，如说明、大小、版本等<br>sudo apt-get install package 安装包<br>sudo apt-get install package - - reinstall 重新安装包<br>sudo apt-get -f install 修复安装&quot;-f = ――fix-missing&quot;<br>sudo apt-get remove package 删除包<br>sudo apt-get remove package - - purge 删除包，包括删除配置文件等<br>sudo apt-get update 更新源<br>sudo apt-get upgrade 更新已安装的包<br>sudo apt-get dist-upgrade 升级系统<br>sudo apt-get dselect-upgrade 使用 dselect 升级<br>apt-cache depends package 了解使用依赖<br>apt-cache rdepends package 是查看该包被哪些包依赖<br>sudo apt-get build-dep package 安装相关的编译环境<br>apt-get source package 下载该包的源代码<br>sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包<br>sudo apt-get check 检查是否有损坏的依赖<br>apt-get autoremove    </p>
+<p><span style="line-height:1;">apt-cache search package 搜索包</span> </p>
+<p><span style="line-height:1;">apt-cache show package 获取包的相关信息</span><span style="line-height:1;"></span></p>
+</blockquote>
+<p>##<br>    磁盘空间查看：</p>
+<pre><code>用df命令查看分区情况 $df -h
+</code></pre><p>用du命令查看文件或文件夹的磁盘使用空间:<br>$ du -h –max-depth=1 或 $ du -h –max-depth=0</p>
+<p>##<br>    source</p>
+<pre><code>source命令也称为“点命令”，也就是一个点符号（.）。source命令通常用于重新执行刚修改的初始化文件，使之立即生效，而不必注销并重新登录
+</code></pre><p>##<br>    修改文件或目录用户组和用户</p>
+<pre><code>chown [-R] 账号名称:用户组名称 文件或目录
+</code></pre><p>##<br>    防火墙</p>
+<pre><code>sudo ufw disable 关闭防火墙
+</code></pre><p>sudo ufw enable 开启防火墙<br>sudo ufw status 检查防火墙的状态</p>
+<p>##<br>    解压：</p>
+<pre><code>tar.gz 解压:tar -zxvf 压缩：tar -zcvf
+</code></pre><p>tar.bz2 解压:tar -jxvf xx.tar.bz2</p>
+<p>##<br>    查找：</p>
+<pre><code>find 路径 -name &amp;quot;*log&amp;quot;
+</code></pre><p>##<br>    修改网关与指定路由：</p>
+<pre><code>修改默认网关：route add default gw 192.168.0.254
+</code></pre><p>指定路由：route add -net 192.168.10.0 netmask 255.255.255.0 dev eth0</p>
+<p>##<br>    Busybox的tftp命令：</p>
+<pre><code>tftp -g -l /usr/APP -r APP 192.168.12.128
+</code></pre><p>##<br>        实时监控网络：    </p>
+<p>nethogs</p>
+<h2 id="安装使用Shadowsocks："><a href="#安装使用Shadowsocks：" class="headerlink" title="安装使用Shadowsocks："></a><span style="font-size: 16px; font-family: &#39;arial black&#39;, &#39;avant garde&#39;;">安装使用Shadowsocks：</span></h2><blockquote>
+<p>apt-get&nbsp;install python-pip<br>pip install shadowsocks</p>
+<p>sslocal -s server_ip -p server_port &nbsp;-b 127.0.0.1 -l 1080 -k password &nbsp;-t 600 &nbsp;-m aes-256-cfb</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##&lt;br&gt;    SSH：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://www.live-in.org/archives/832.html
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;不指定用户：&lt;br&gt;ssh 192.168.0.11&lt;br&gt;指定用户：&lt;b
+    
+    </summary>
+    
+      <category term="linux common" scheme="mark.z-dd.net/categories/linux-common/"/>
+    
+    
+      <category term="linux命令" scheme="mark.z-dd.net/tags/linux%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu14.04环境配置</title>
+    <link href="mark.z-dd.net/2015/01/11/ubuntu14-04%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>mark.z-dd.net/2015/01/11/ubuntu14-04环境配置/</id>
+    <published>2015-01-11T13:17:21.000Z</published>
+    <updated>2017-04-27T03:59:03.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>##<br>    1.重启后亮度无法保存</p>
+<p>查看本机最大亮度值：cat /sys/class/backlight/XXX/max_brightness（XXX为你的显卡）<br>编辑/etc/rc.local启动初始化文件，在最后一行（exit 0）之前添加：<br>echo 15（你设置的值） &gt; /sys/class/backlight/XXX/brightness（XXX为你的显卡）<br><strong>exit 0</strong>&nbsp;(别忘了)</p>
+<p>##<br>    2.休眠后无法启动</p>
+<p>Ubuntu 14.04系统下，休眠之后无法启动的问题解决：<br><a href="http://blog.csdn.net/blueheart20/article/details/37995049" target="_blank" rel="external">http://blog.csdn.net/blueheart20/article/details/37995049</a> （与显卡驱动有关）<br>linux学习笔记（7）=》ubuntu挂起后无法唤醒-解决：（缺失laptop_mode）<br><a href="http://blog.sina.com.cn/s/blog_7ec12e960100rfpn.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_7ec12e960100rfpn.html</a> </p>
+<p>##<br>    3.鼠标箭头闪烁问题，显卡驱动问题</p>
+<p>安装NVIDIA显卡驱动：（bumblebee）—开始使用的方法<br><a href="http://www.jb51.net/os/Ubuntu/84218.html" target="_blank" rel="external">http://www.jb51.net/os/Ubuntu/84218.html</a><br>显卡切换，关闭独显在14.04上没用<br><a href="http://www.douban.com/note/298832176/" target="_blank" rel="external">http://www.douban.com/note/298832176/</a><br>Ubuntu 14.04为Intel/Nvidia双显卡调节亮度:(Prime，比 Bumblebee 成熟)—最终使用方法<br><a href="http://www.mintos.org/config/intel-nvidia-brightness.html" target="_blank" rel="external">http://www.mintos.org/config/intel-nvidia-brightness.html</a><br>sudo apt-get install nvidia-319 nvidia-settings-319 nvidia-prime<br>安装完毕，还要安装一个 Nvidia Prime 双显卡切换指示器，用于在系统托盘中轻点鼠标即可切换显卡，而不必使用命令。在终端中使用如下 PPA 安装：<br>sudo add-apt-repository ppa:nilarimogard/webupd8<br>sudo apt-get update<br>sudo apt-get install prime-indicator<br>想解决亮度及休眠问题–&gt;想安装显卡驱动—》不知道型号—&gt;想用官网的自动检测–&gt;缺少JAVA（TM）–&gt;下载安装了OpenJDK（使用软件中心）–&gt;安装浏览器插件Icedtea（使用软件中心）–&gt;浏览器检测不到插件–&gt;Icedtea不再支持高版本的chrome–&gt;安装其他版本的JAVA</p>
+<p>##<br>    安装JAVA：</p>
+<p><a href="http://blog.sina.com.cn/s/blog_53a99cf30102v6o4.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_53a99cf30102v6o4.html</a><br>sudo add-apt-repository ppa:webupd8team/java<br>sudo apt-get update<br>sudo apt-get install Oracle-java8-installer<br>设置 Java 8 环境变量：<br>sudo apt-get install oracle-java8-set-default<br>切换为 Java 7 ：<br>sudo update-java-alternatives -s java-7-oracle<br>再切换为 Java 8：<br>sudo update-java-alternatives -s java-8-oracle<br>切换JAVA版本<br>update-alternatives –config java<br>update-alternatives –config javac<br>在ubuntu的chrome中启用java plugin：<br><a href="http://blog.csdn.net/xiajian2010/article/details/10219589" target="_blank" rel="external">http://blog.csdn.net/xiajian2010/article/details/10219589</a> </p>
+<p>##<br>    QT安装：</p>
+<p><a href="http://www.cnblogs.com/striver-zhu/p/3918275.html" target="_blank" rel="external">http://www.cnblogs.com/striver-zhu/p/3918275.html</a> </p>
+<p>##<br>    Samba共享</p>
+<p>Ubuntu挂载windows共享文件夹：<br><a href="http://blog.csdn.net/fulinus/article/details/21086581" target="_blank" rel="external">http://blog.csdn.net/fulinus/article/details/21086581</a><br>samba:<br><a href="http://www.cnblogs.com/ouuy/archive/2011/10/24/2223164.html" target="_blank" rel="external">http://www.cnblogs.com/ouuy/archive/2011/10/24/2223164.html</a><br>sudo gedit /etc/samba/smb.conf 新增如下语句:<br>[share]<br>path = /xxx &nbsp;//共享目录<br>available = yes<br>browsealbe = yes<br>public = yes<br>writable = yes<br>read only=yes<br>valid users = xxx//用户名<br>create mask = 0700<br>directory mask = 0700<br>force user = nobody<br>force group = nogroup<br>workgroup = WORKGROUP<br>display charset = UTF-8 //防止windows显示乱码<br>unix charset = UTF-8<br>dos charset = cp936<br>新增登录用户密码<br>sudo touch /etc/samba/smbpasswd<br>sudo smbpasswd -a xxx</p>
+<p>##<br>    安装flash插件：</p>
+<p>1.Chromium谷歌的开源浏览器将不再支持Netscape浏览器插件API，Adobe公司的Flash将无法正常工作了。然而用户可以使用Pepper Flash Player，这是谷歌浏览器上一款替代Adobe Flash的插件。<br>Ubuntu 14.04及衍生版本用户命令:<br>sudo apt-get update<br>sudo apt-get install chromium-browser<br>sudo apt-get install pepperflashplugin-nonfree<br>sudo update-pepperflashplugin-nonfree –install<br>卸载命令：<br>sudo apt-get remove chromium-browser pepperflashplugin-nonfree<br>2.firefox:sudo apt-get install flashplugin-installer</p>
+<p>##<br>    NFS安装时：</p>
+<p>注：rpcbind（Ubuntu14.04）就是高版本的portmap<br>注意此时可能会出现：Not starting: portmapper is not running //重启Ubuntu系统后就好了;<br>win7 中使用NFS共享：&nbsp;<a href="http://www.cnblogs.com/itech/archive/2012/06/17/2552514.html" target="_blank" rel="external">http://www.cnblogs.com/itech/archive/2012/06/17/2552514.html</a><br>可以用来测试<br>Cifs取代了smbfs</p>
+<p>##<br>    VNC：</p>
+<p><span style="font-size:14px;">1.vino-server</span><br><span style="font-size:14px;">运行dconf-editor，注意一定要用当前用户来运行，不能加sudo，依次展开org-&gt;gnome-&gt;desktop-&gt;remote-access</span><span style="font-size:14px;">，这里也可以直接设置远程控制选项，但重要的是将“requre-encryption”去掉</span><span style="font-size:14px;">，但是没有密码,需要点图标设置</span><span style="font-size:14px;">。此方法有点卡，占用带宽太大</span></p>
+<p><span style="font-size:14px;">2.vnc4server</span> </p>
+<p>##<br>    用户管理：</p>
+<p><span style="font-size:14px;">新建用户：useradd，修改密码：passwd，但home目录并没有创建对应的用户文件夹，我们需要添加选项,主动创建用户文件夹和指定shell</span><br>userdel -r xxx&nbsp;&nbsp; &nbsp;<br>useradd xxx -m -s /bin/bash<br><span style="font-size:14px;">note:</span><br><span style="font-size:14px;">useradd username不会在/home下建立一个文件夹username</span><br><span style="font-size:14px;">adduser username会在/home下建立一个文件夹username</span><br><span style="font-size:14px;">useradd -m username跟adduser一样，可以建立一个文件夹username</span> </p>
+<p>##<br>    samba：</p>
+<p><pre class="prettyprint lang-bsh linenums">sudo&nbsp;apt-get&nbsp;update<br>sudo&nbsp;apt-get&nbsp;install&nbsp;samba&nbsp;samba-common<br>sudo&nbsp;gedit&nbsp;/etc/samba/smb.conf</pre>&gt; max log size = 1000</p>
+<blockquote>
+<p>security = user<br>[mpushare]<br>comment = mpu_share<br>path = /home/share<br>browseable = yes<br>writable = yes</p>
+</blockquote>
+<p><span style="font-size:14px;">修改用户及加到smb组： </span></p>
+<p><span style="font-size:14px;">sudo smbpasswd -a xxx<br>重启服务：<br></span></p>
+<p><span style="font-size:14px;"><br>    sudo service smbd restart</span></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##&lt;br&gt;    1.重启后亮度无法保存&lt;/p&gt;
+&lt;p&gt;查看本机最大亮度值：cat /sys/class/backlight/XXX/max_brightness（XXX为你的显卡）&lt;br&gt;编辑/etc/rc.local启动初始化文件，在最后一行（exit 0）之前添加：
+    
+    </summary>
+    
+      <category term="Linux" scheme="mark.z-dd.net/categories/Linux/"/>
+    
+    
+      <category term="Ubuntu" scheme="mark.z-dd.net/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>拯救我的Ubuntu14.04（kylin）</title>
+    <link href="mark.z-dd.net/2015/01/05/%E6%8B%AF%E6%95%91%E6%88%91%E7%9A%84Ubuntu14-04%EF%BC%88kylin%EF%BC%89/"/>
+    <id>mark.z-dd.net/2015/01/05/拯救我的Ubuntu14-04（kylin）/</id>
+    <published>2015-01-05T13:18:53.000Z</published>
+    <updated>2017-04-27T03:59:03.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>##<br>    背景：</p>
+<pre><code>双硬盘，双系统（SSD-&amp;gt;win8.1，HDD-&amp;gt;Ubuntu14.04），HDD是原笔记本的硬盘，只有320G，而且本来就不咋地，很大的吱吱声音，速度也很慢很卡。HDD其中120G为Ubuntu，当时挂载分区的时候，根目录分的是50G，装完系统就剩40多G了，Home目录为70G。
+
+打算自己开始编译imx6的Android源码，10G多的源码放在根目录下的/mnt，折腾了一天多，终于编译好了一个目标板的。接着没看剩余磁盘大小就编译第二个目标板的，从晚上开始编译，觉得早上应该就差不多了。第二天早上一看，系统提示磁盘空间不足，然后很卡。就用那个优客助手想清理下，结果系统就越来越卡，UI渐渐消失了，系统崩溃了。最后重启结果就进不了系统了，一直停在启动界面。
+</code></pre><p>##<br>    自己解决步骤：</p>
+<p>###<br>    第一次：</p>
+<pre><code>在停住的启动界面按Esc进入非图形启动界面，发现lightdm&amp;nbsp;display&amp;nbsp;manager&amp;nbsp;fail。Ctrl+Alt+F1&amp;nbsp;由桌面图形模式进命令行模式，命令行中文乱码
+
+修改Ubuntu的命令行语言环境：
+
+1、修改/etc/default/locale
+
+如不存在则新建一个
+
+如下：
+
+LANG=’en_US’&amp;nbsp;#中文可以用zh_CN
+
+LANGUAGE=’en_US:en’&amp;nbsp;#中文可以用zh_CN:zh
+
+2、reboot即可
+
+locale命令可以列出当前系统所用的所有语言设置
+
+查看/var/log/lightdm，发现默认配置都丢失了，查看/etc/lightdm/，果然没了。经过很多种尝试，发现桌面lightdm始终不行，打算重新安装桌面。
+
+但发现Apt丢失了（apt-get&amp;nbsp;command&amp;nbsp;not&amp;nbsp;found），幸好dpkg还在，网也能通，打算用dpkg安装apt，找了半天资料，才找到个能下包的地方，小白啊，没办法，&amp;nbsp;安装apt（[http://www.cnblogs.com/huangbangshun/p/4174922.html](http://www.cnblogs.com/huangbangshun/p/4174922.html)），包：
+
+[http://mirrors.163.com/ubuntu/pool/main/a/apt/](http://mirrors.163.com/ubuntu/pool/main/a/apt/)&amp;nbsp;&amp;nbsp;（apt_1.0.1ubuntu2_amd64）
+
+后面用apt安装其他包，又遇到Apt依赖项问题（Ubuntu&amp;nbsp;unmet&amp;nbsp;dependencies），安装任何包都会报依赖项问题，又折腾了半天，找了半天，apt-get&amp;nbsp;dist-upgrade&amp;nbsp;升级系统&amp;nbsp;，sudo&amp;nbsp;apt-get&amp;nbsp;upgrade&amp;nbsp;更新已安装的包&amp;nbsp;，重新安装桌面（ubuntu-desktop），搞定，可以正常了。
+</code></pre><p>###<br>    第二次：</p>
+<pre><code>也是用优客助手（类似于win下面的360卫士，可以清理）后，系统又崩溃了。这次更彻底，Apt丢失，它的一些依赖包也丢了，网也不行了，无线网卡没起来，eth幸好敲命令能起来（ipconfig&amp;nbsp;eth0&amp;nbsp;up）。下载依赖包（[http://www.ubuntuupdates.org/](http://www.ubuntuupdates.org/)&amp;nbsp;），发现依赖包存在版本依赖，折腾半天终于安装好了apt，后面的步骤就同第一次了。
+</code></pre><p>##<br>    总结：</p>
+<pre><code>越来越能体会命令行的好处了
+</code></pre><p>##<br>    参考：</p>
+<pre><code>ubuntu&amp;nbsp;lightdm登陆器不能用户登陆解决：
+
+[http://www.2cto.com/os/201305/213215.html](http://www.2cto.com/os/201305/213215.html) 
+
+ubuntu中apt-get，dpkg与默认路径:
+
+[http://blog.chinaunix.net/uid-25436678-id-3853747.html](http://blog.chinaunix.net/uid-25436678-id-3853747.html) 
+
+dpkg&amp;nbsp;-i&amp;nbsp;&amp;lt;package.deb&amp;gt;&amp;nbsp;&amp;nbsp;dpkg&amp;nbsp;-p&amp;lt;package.deb&amp;gt;
+
+Recovery模式&amp;nbsp;按e
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##&lt;br&gt;    背景：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;双硬盘，双系统（SSD-&amp;amp;gt;win8.1，HDD-&amp;amp;gt;Ubuntu14.04），HDD是原笔记本的硬盘，只有320G，而且本来就不咋地，很大的吱吱声音，速度也很慢很卡。HDD其中120G为Ub
+    
+    </summary>
+    
+      <category term="Linux" scheme="mark.z-dd.net/categories/Linux/"/>
+    
+    
+      <category term="Ubuntu" scheme="mark.z-dd.net/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux驱动系列?1.Misc(混杂)设备之GPIO</title>
+    <link href="mark.z-dd.net/2014/12/12/Linux%E9%A9%B1%E5%8A%A8%E7%B3%BB%E5%88%97-1-Misc-%E6%B7%B7%E6%9D%82-%E8%AE%BE%E5%A4%87%E4%B9%8BGPIO/"/>
+    <id>mark.z-dd.net/2014/12/12/Linux驱动系列-1-Misc-混杂-设备之GPIO/</id>
+    <published>2014-12-12T13:23:15.000Z</published>
+    <updated>2017-04-27T03:59:03.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>##<br>    <strong>Misc设备&nbsp;–&nbsp;特殊的字符设备</strong> </p>
+<pre><code>本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&amp;nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操作，因此其驱动的主体工作还是file_operations的成员函数。
+</code></pre><p>###<br>    <a name="_Toc31631"></a><strong>1.&nbsp;**</strong><a name="_Toc3127"></a>字符设备模板及说明解析：** </p>
+<pre><code>1.[http://blog.csdn.net/wdzxl198/article/details/8817147](http://blog.csdn.net/wdzxl198/article/details/8817147)&amp;nbsp;（自动创建设备节点）
+
+2.[http://blog.chinaunix.net/uid-20698426-id-136243.html](http://blog.chinaunix.net/uid-20698426-id-136243.html) 
+
+主要是init函数(获取设备号，创建节点)&amp;nbsp;，exit函数（回收操作），及设备操作集对应的操作函数。
+</code></pre><p>###<br>    <a name="_Toc3209"></a><strong>2.&nbsp;**</strong><a name="_Toc29371"></a>设备操作集&nbsp;file_operations结构体分析:** </p>
+<pre><code>[http://www.linuxidc.com/Linux/2011-09/43530.htm](http://www.linuxidc.com/Linux/2011-09/43530.htm) 
+
+特别的异步IO轮询函数：
+
+**unsigned&amp;nbsp;int&amp;nbsp;(*poll)&amp;nbsp;(struct&amp;nbsp;file&amp;nbsp;*,&amp;nbsp;struct&amp;nbsp;poll_table_struct&amp;nbsp;*);** 
+
+(这是一个设备驱动中的轮询函数，第一个参数为file结构指针，第二个为轮询表指针）
+
+这个函数返回设备资源的可获取状态，即POLLIN，POLLOUT，POLLPRI，POLLERR，POLLNVAL等宏的位“或”结果。
+
+每个宏都表明设备的一种状态，如：POLLIN（定义为0x0001）意味着设备可以无阻塞的读，POLLOUT（定义为0x0004）意味着设备可以无阻塞的写。
+
+(poll&amp;nbsp;方法是&amp;nbsp;3&amp;nbsp;个系统调用的后端:&amp;nbsp;poll,&amp;nbsp;epoll,&amp;nbsp;和&amp;nbsp;select,&amp;nbsp;都用作查询对一个或多个文件描述符的读或写是否会阻塞.
+
+poll&amp;nbsp;方法应当返回一个位掩码指示是否非阻塞的读或写是可能的,&amp;nbsp;并且,&amp;nbsp;可能地,&amp;nbsp;提供给内核信息用来使调用进程睡眠直到&amp;nbsp;I/O&amp;nbsp;变为可能.
+
+如果一个驱动的&amp;nbsp;poll&amp;nbsp;方法为&amp;nbsp;NULL,&amp;nbsp;设备假定为不阻塞地可读可写.
+
+(这里通常将设备看作一个文件进行相关的操作，而轮询操作的取值直接关系到设备的响应情况，可以是阻塞操作结果，同时也可以是非阻塞操作结果）
+</code></pre><p>###<br>    <a name="_Toc645"></a><strong>3.&nbsp;**</strong><a name="_Toc13436"></a>ioctl函数详解：** </p>
+<pre><code>[http://blog.csdn.net/shanshanpt/article/details/19897897](http://blog.csdn.net/shanshanpt/article/details/19897897) 
+
+ioctl函数的cmd：
+
+cmd的大小为&amp;nbsp;32位，共分&amp;nbsp;4&amp;nbsp;个域：
+
+bit31~bit30&amp;nbsp;2位为&amp;nbsp;“区别读写”&amp;nbsp;区，作用是区分是读取命令还是写入命令。
+
+bit29~bit15&amp;nbsp;14位为&amp;nbsp;&quot;数据大小&quot;&amp;nbsp;区，表示&amp;nbsp;ioctl()&amp;nbsp;中的&amp;nbsp;arg&amp;nbsp;变量传送的内存大小。
+
+bit20~bit08&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;“魔数&quot;(&quot;幻数&quot;)区，这个值用以与其它设备驱动程序的&amp;nbsp;ioctl&amp;nbsp;命令进行区别。
+
+bit07~bit00&amp;nbsp;&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;&quot;区别序号&quot;&amp;nbsp;区，是区分命令的命令顺序序号。
+
+这几个宏的使用格式为：
+</code></pre><ul>
+<li>_IO&nbsp;(魔数，&nbsp;基数);</li>
+<li>_IOR&nbsp;(魔数，&nbsp;基数，&nbsp;变量型)</li>
+<li>_IOW&nbsp;&nbsp;(魔数，&nbsp;基数，&nbsp;变量型)</li>
+<li><p>_IOWR&nbsp;(魔数，&nbsp;基数，变量型&nbsp;)</p>
+<p><strong>魔数&nbsp;(magic&nbsp;number)</strong> </p>
+<p>魔数范围为&nbsp;0~255&nbsp;。通常，用英文字符&nbsp;”A”&nbsp;~&nbsp;”Z”&nbsp;或者&nbsp;”a”&nbsp;~&nbsp;”z”&nbsp;来表示。设备驱动程序从传递进来的命令获取魔数，然后与自身处理的魔数想比较，如果相同则处理，不同则不处理。魔数是拒绝误使用的初步辅助状态。设备驱动&nbsp;程序可以通过&nbsp;_IOC_TYPE&nbsp;(cmd)&nbsp;来获取魔数。不同的设备驱动程序最好设置不同的魔数，但并不是要求绝对，也是可以使用其他设备驱动程序已用过的魔数。</p>
+<p><strong>基(序列号)数</strong> </p>
+<p>基数用于区别各种命令。通常，从&nbsp;0开始递增，相同设备驱动程序上可以重复使用该值。例如，读取和写入命令中使用了相同的基数，设备驱动程序也能分辨出来，原因在于设备驱动程序区分命令时&nbsp;使用&nbsp;switch&nbsp;，且直接使用命令变量&nbsp;cmd值。创建命令的宏生成的值由多个域组合而成，所以即使是相同的基数，也会判断为不同的命令。设备驱动程序想要从命令中获取该基数，就使用下面的宏：</p>
+<p>_IOC_NR&nbsp;(cmd)</p>
+<p>通常，switch&nbsp;中的&nbsp;case&nbsp;值使用的是命令的本身。</p>
+<p><strong>变量型</strong> </p>
+<p>变量型使用&nbsp;arg&nbsp;变量指定传送的数据大小，但是不直接代入输入，而是代入变量或者是变量的类型，原因是在使用宏创建命令，已经包含了&nbsp;sizeof()&nbsp;编译命令。</p>
+<p>Linux内核中_IO,_IOR,_IOW,_IOWR宏的用法与解析：<a href="http://blog.csdn.net/hzn407487204/article/details/7995041" target="_blank" rel="external">http://blog.csdn.net/hzn407487204/article/details/7995041</a> </p>
+</li>
+</ul>
+<p>###<br>    <a name="_Toc29957"></a><strong>4.&nbsp;**</strong><a name="_Toc10881"></a>misc设备相关：** </p>
+<pre><code>**misc设备结构体：** 
+
+struct&amp;nbsp;miscdevice&amp;nbsp;&amp;nbsp;{
+
+int&amp;nbsp;minor;&amp;nbsp;&amp;nbsp;//次设备号，若为&amp;nbsp;MISC_DYNAMIC_MINOR&amp;nbsp;自动分配
+
+const&amp;nbsp;char&amp;nbsp;*name;&amp;nbsp;&amp;nbsp;//设备名
+
+const&amp;nbsp;struct&amp;nbsp;file_operations&amp;nbsp;*fops;&amp;nbsp;&amp;nbsp;//设备文件操作结构体
+
+struct&amp;nbsp;list_head&amp;nbsp;list;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//misc_list链表头
+
+struct&amp;nbsp;device&amp;nbsp;*parent;
+
+struct&amp;nbsp;device&amp;nbsp;*this_device;
+
+};
+
+**misc设备注册和注销API：** 
+
+int&amp;nbsp;misc_register(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
+
+int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
+
+**misc设备驱动模型及实例解析：** 
+
+参考：[http://blog.csdn.net/chenlong12580/article/details/7339127](http://blog.csdn.net/chenlong12580/article/details/7339127) 
+</code></pre><p>###<br>    <a name="_Toc29344"></a><strong>5.&nbsp;**</strong><a name="_Toc1286"></a>具体实例：** </p>
+<pre><code>详见code文件夹
+</code></pre><ul>
+<li>输出</li>
+<li>输入</li>
+<li><p>中断</p>
+<p>4步曲：</p>
+<p>Step1：定义申明IO口，特别是管脚复用。</p>
+<p>Step2：平台初始化时初始化对应IO。</p>
+<p>Step3：创建编写对应的驱动代码&nbsp;C文件。</p>
+<p>Step4：修改对应的Kconfig，Makefile文件，并配置加载编译。</p>
+<p>中断参考：</p>
+<p><a href="http://blog.csdn.net/mashang123456789/article/details/8623786" target="_blank" rel="external">http://blog.csdn.net/mashang123456789/article/details/8623786</a> </p>
+<p>GPIO&nbsp;API:</p>
+<p><a href="http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html</a> </p>
+<p>与中断有关的API：</p>
+<p>static&nbsp;inline&nbsp;int&nbsp;gpio_to_irq(unsigned&nbsp;gpio)</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##&lt;br&gt;    &lt;strong&gt;Misc设备&amp;nbsp;–&amp;nbsp;特殊的字符设备&lt;/strong&gt; &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有2
+    
+    </summary>
+    
+      <category term="Linux" scheme="mark.z-dd.net/categories/Linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux系列--2.磁盘分区和Linux根文件系统,目录结构</title>
+    <link href="mark.z-dd.net/2014/12/09/Linux%E7%B3%BB%E5%88%97-2-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8CLinux%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"/>
+    <id>mark.z-dd.net/2014/12/09/Linux系列-2-磁盘分区和Linux根文件系统-目录结构/</id>
+    <published>2014-12-09T13:22:14.000Z</published>
+    <updated>2017-04-27T03:59:03.373Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构"><a href="#DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构" class="headerlink" title="DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构"></a>DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构</h1><pre><code>----------
+</code></pre><p>来源：1.<a href=""><a href="http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" target="_blank" rel="external">http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84</a></a></p>
+<p>2.<a href="&quot;鸟哥的私房菜&quot;"><a href="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php" target="_blank" rel="external">http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php</a></a></p>
+<pre><code>**## 一、根文件系统 ##**
+</code></pre><p><strong>/bin</strong></p>
+<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong></p>
+<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong></p>
+<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong></p>
+<p>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong></p>
+<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。</p>
+<p><strong>/home</strong></p>
+<p>存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。</p>
+<p><strong>/lib</strong></p>
+<p>这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。</p>
+<p><strong>/lib64</strong></p>
+<p>64位系统有这个文件夹，64位程序的库。</p>
+<p><strong>/lost+found</strong></p>
+<p>这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。</p>
+<p><strong>/media</strong></p>
+<p>可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。</p>
+<p><strong>/mnt</strong></p>
+<p>临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区）</p>
+<p><strong>/opt</strong></p>
+<p>多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。</p>
+<p><strong>/proc</strong></p>
+<p>它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。</p>
+<p><strong>/root</strong></p>
+<p>这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。</p>
+<p><strong>/sbin</strong></p>
+<p>供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。</p>
+<p><strong>/tmp</strong></p>
+<p>该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。</p>
+<p><strong>/usr</strong></p>
+<p>静态的用户级应用程序等，见下。</p>
+<p><strong>/var</strong></p>
+<p>动态的程序数据等，见下文。</p>
+<pre><code>var中包括了一些数据文件，如系统日志等。/var的存放使得/usr被只读挂载成为可能。
+
+**## /var目录结构 ##**
+</code></pre><p><strong>/var/cache</strong></p>
+<p>应用程序的缓存文件</p>
+<p><strong>/var/lib</strong></p>
+<p>应用程序的信息、数据。如数据库的数据等都存放在此文件夹。</p>
+<p><strong>/var/local</strong></p>
+<p>/usr/local中程序的信息、数据</p>
+<p><strong>/var/lock</strong></p>
+<p>锁文件</p>
+<p><strong>/var/log</strong></p>
+<p>日志文件</p>
+<p><strong>/var/opt</strong></p>
+<p>/opt中程序的信息、数据</p>
+<p><strong>/var/run</strong></p>
+<p>正在执行着的程序的信息，如PID文件应存放于此</p>
+<p><strong>/var/spool</strong></p>
+<p>存放程序的假脱机数据（即spool data）</p>
+<p><strong>/var/tmp</strong></p>
+<p>临时文件</p>
+<pre><code>****二、所以分区：****
+</code></pre><p>使用任何Linux系统，都要有至少两个分区：一个根分区，用“/”表示；另一个是swap（交换）分区（最小应该和内存一样大，最大一般不超过内存的两倍大小），最好把/boot单独创建一个分区上（200M左右）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构&quot;&gt;&lt;a href=&quot;#DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构&quot; class=&quot;headerlink&quot; title=&quot;DD初学Linux系列–2.磁盘分区和Linux文件
+    
+    </summary>
+    
+      <category term="Linux" scheme="mark.z-dd.net/categories/Linux/"/>
+    
+    
+      <category term="根文件系统" scheme="mark.z-dd.net/tags/%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开源许可-略知一二</title>
+    <link href="mark.z-dd.net/2014/10/29/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF-%E7%95%A5%E7%9F%A5%E4%B8%80%E4%BA%8C/"/>
+    <id>mark.z-dd.net/2014/10/29/开源许可-略知一二/</id>
+    <published>2014-10-29T13:55:27.000Z</published>
+    <updated>2017-04-27T03:59:03.374Z</updated>
+    
+    <content type="html"><![CDATA[<p>很早就开始关注些开源项目，加上这段时间在学习linux的相关东西，毕竟商用与学习是不一样的，所以就不得不全面了解下开源许可了。在此Mark一下。</p>
+<pre><code>找了下度娘，搜到一篇很全的说明：[http://blog.csdn.net/techbirds_bao/article/details/8785413](http://blog.csdn.net/techbirds_bao/article/details/8785413)。
+
+今天看到了一个开源IM工具，是蘑菇街的---[mogutt](https://github.com/mogutt)，它是基于Apache Licence V2.0的。对商业应用友好的许可。使用者也可以在需要的时候修改代码来满足需要并作为开源或商业产品发布/销售
+
+现在也想学习下QT5，它的开源版本是基于LGPL的。商业软件可以使用，但不能修改LGPL协议的代码，只能使用类库引用。
+
+Linux本身是基于GPL的。商业软件不能使用GPL协议的代码
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很早就开始关注些开源项目，加上这段时间在学习linux的相关东西，毕竟商用与学习是不一样的，所以就不得不全面了解下开源许可了。在此Mark一下。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;找了下度娘，搜到一篇很全的说明：[http://blog.csdn.net/techbirds_b
+    
+    </summary>
+    
+      <category term="Open Source" scheme="mark.z-dd.net/categories/Open-Source/"/>
+    
+    
+      <category term="开源许可" scheme="mark.z-dd.net/tags/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>与SSI的初遇</title>
+    <link href="mark.z-dd.net/2014/10/23/%E4%B8%8ESSI%E7%9A%84%E5%88%9D%E9%81%87/"/>
+    <id>mark.z-dd.net/2014/10/23/与SSI的初遇/</id>
+    <published>2014-10-23T14:01:38.000Z</published>
+    <updated>2017-04-27T03:59:03.374Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。</p>
+<pre><code>首先补充了下基础知识（来源于网络）：
+
+SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含 (SSI）”指令将文本、图形或应用程序信息包含到网页中。默认扩展名是 .stm、.shtm 和 .shtml。
+</code></pre><blockquote>
+<p>在Lwip里的httpd中，工作原理：LWIP对于.shtml,.ssi,.shtm后缀的文件，会检测文件中&lt;!–#name–&gt;格式的TAG标志。</p>
+<p>然后再这个标记后面添加你想要的字符串。并不是替换，不过这个方法在脚本中不行， &lt;!–#name–&gt;</p>
+<p>是html文件的注释，但是在 &lt;script&gt;…&lt;/script&gt;中就不是注释了，所以在添加js代码的时候必须把整个JS脚本添加进来。</p>
+</blockquote>
+<pre><code>对于SSI使用详解 可移步至：[http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html](http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html) 
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;首先补充了下基础知识（来源于网络）：
+
+SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的
+    
+    </summary>
+    
+      <category term="Network" scheme="mark.z-dd.net/categories/Network/"/>
+    
+    
+      <category term="网络" scheme="mark.z-dd.net/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="lwip" scheme="mark.z-dd.net/tags/lwip/"/>
+    
+      <category term="SSI" scheme="mark.z-dd.net/tags/SSI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IP与MAC--ARP及W5500超时机制，非阻塞</title>
+    <link href="mark.z-dd.net/2014/10/16/IP%E4%B8%8EMAC-ARP%E5%8F%8AW5500%E8%B6%85%E6%97%B6%E6%9C%BA%E5%88%B6%EF%BC%8C%E9%9D%9E%E9%98%BB%E5%A1%9E/"/>
+    <id>mark.z-dd.net/2014/10/16/IP与MAC-ARP及W5500超时机制，非阻塞/</id>
+    <published>2014-10-16T13:58:54.000Z</published>
+    <updated>2017-04-27T03:59:03.374Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，<strong>前提条件：由交换机组成的网络</strong>。</p>
+<pre><code>按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。
+
+在不断电的情况下，电表中缓存着前一个集中器的IP和MAC映射关系，如果更换集中器之后且IP不变，电表进行UDP通信使用的还是之前的映射关系，所以会通信异常。
+
+2.另一个客户反馈的W5500的TCP连接问题，connect。如果服务器断了，客户端会一直死在连接的while里面不断请求连接。很明显，使用的是类似阻塞模式，但是超时中断未发生。A，改为非阻塞方式，立即返回状态。B，设置中断及合理的超时时间（TCPto）。SIMR，SIR及RTR, RCR
+</code></pre><blockquote>
+<p>while ( IINCHIP_READ(Sn_SR(s)) != SOCK_SYNSENT )</p>
+<p>{</p>
+<p>if(IINCHIP_READ(Sn_SR(s)) == SOCK_ESTABLISHED)</p>
+<p>{</p>
+<p>break;</p>
+<p>}</p>
+<p>if (getSn_IR(s) &amp; Sn_IR_TIMEOUT)</p>
+<p>{</p>
+<p>IINCHIP_WRITE(Sn_IR(s), (Sn_IR_TIMEOUT)); // clear TIMEOUT Interrupt</p>
+<p>ret = 0;</p>
+<p>break;</p>
+<p>}</p>
+<p>}</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，&lt;strong&gt;前提条件：由交换机组成的网络&lt;/strong&gt;。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;按照理论上来讲，应该是会有问题的。后面就补
+    
+    </summary>
+    
+      <category term="Network" scheme="mark.z-dd.net/categories/Network/"/>
+    
+    
+      <category term="W5500" scheme="mark.z-dd.net/tags/W5500/"/>
+    
+      <category term="网络" scheme="mark.z-dd.net/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+</feed>

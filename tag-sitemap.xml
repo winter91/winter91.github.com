@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>mark.z-dd.net/tags/%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
+        <lastmod>2017-04-27T03:59:03.373Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/Ubuntu/</loc>
+        <lastmod>2017-04-27T03:59:03.373Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
+        <lastmod>2017-04-27T03:59:03.373Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/FM3/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/%E4%B8%8A%E4%BD%8D%E6%9C%BA/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/%E4%B8%B2%E5%8F%A3/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/W5500/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/%E7%BD%91%E7%BB%9C/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/Cubieboard/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/linux%E5%91%BD%E4%BB%A4/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/lwip/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/SSI/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/eclipse/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/%E6%AF%95%E8%AE%BE/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/Matlab/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/I2C/</loc>
+        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/openwrt/</loc>
+        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/yocto/</loc>
+        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/grub/</loc>
+        <lastmod>2017-04-27T03:59:03.377Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/Shadowsocks/</loc>
+        <lastmod>2017-04-27T03:59:03.377Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/Android/</loc>
+        <lastmod>2017-04-27T05:58:04.688Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/Lofter/</loc>
+        <lastmod>2017-05-03T02:22:48.048Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/wordpress/</loc>
+        <lastmod>2017-05-03T02:22:48.048Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/Python/</loc>
+        <lastmod>2017-05-03T02:22:48.048Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/tags/github/</loc>
+        <lastmod>2017-05-03T02:24:19.676Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F05%2F03%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Kali Rolling版本折腾]]></title>
+    <url>%2F2016%2F03%2F13%2FKali-Rolling%E7%89%88%E6%9C%AC%E6%8A%98%E8%85%BE%2F</url>
+    <content type="text"><![CDATA[&nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。 #引导： &nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win10选择项。终于想起来了，之前装mint的时候是用MBR引导grub(在window下用的easyBCD，很简单)。 然后硬着头皮去研究grub，后面发现了篇类似的文章(http://www.2cto.com/os/201411/354914.html)，然后用里面的方案一就OK了： 在grub的配置文件/boot/grub/grub.cfg添加win10的启动项声明： BEGIN /etc/grub.d/30_os-probermenuentry &#39;Windows 7 (loader) (on /dev/sda1)&#39; –class windows –class os $menuentry_id_option &#39;osprober-chain-XXX&#39; { insmod part_msdos insmod ntfs set root=&#39;hd0,msdos1&#39; chainloader +1 } END /etc/grub.d/30_os-prober 加在### END /etc/grub.d/00_header ###之后。其中的XXX为你的Windows 系统分区的UUID。查看分区UUID的命令：sudo blkid #安装中文输入法，字体(解决中文乱码): apt-get install fcitx fcitx-table-wbpy &nbsp;ttf-wqy-microhei ttf-wqy-zenhei &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 手工配置： im-config #添加用户（因为Kali默认就是root用户）: useradd -m -G video,audio,cdrom,sudo -s /bin/bash 用户名 passwd 用户名 #安装多窗口终端： apt-get install terminator &nbsp; &nbsp; #浏览器： 虽然Kali里面的是iceweasel，但是和firefox是同一家族的，所以和之前装mint类似： http://echo.z-dd.net/post-34.html&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;]]></content>
+      <categories>
+        <category>kali</category>
+      </categories>
+      <tags>
+        <tag>grub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[初尝Linux mint]]></title>
+    <url>%2F2016%2F03%2F01%2F%E5%88%9D%E5%B0%9DLinux-mint%2F</url>
+    <content type="text"><![CDATA[Cinnamon桌面： 1.更新源，改为国内的，更新系统。 2.配置firefox，使用中文版的配置：删除用户目录下的.mozilla，里面就是些配置。下载个中文版的，解压，运行一次，会重新生成一个.mozilla。OK&nbsp; 3.安装显卡驱动：http://www.binarytides.com/install-nvidia-drivers-linux-mint-16/ 4.中文输入法，在选项里可以安装 5.翻墙配置（Shadowsocks，见linux常用命令） 清除]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Shadowsocks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[android上安装kali]]></title>
+    <url>%2F2016%2F01%2F24%2Fandroid%E4%B8%8A%E5%AE%89%E8%A3%85kali%2F</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;最近公司换新手机了–P8乞丐版，以前的那个就没啥用了（其实早就没用了，一方面质量太差，经常失灵，另一方面带两个手机太麻烦了）。反正放在那闲着也是闲着，于是琢磨着能不能在上面装个linux,后面在网上一查，真的可以哇，于是说干就干。 ​ 先刷个机，刷得干净清爽点，那个是定制机，里面乱七八糟的太多的太卡了Deploy linux和Busybox都需要root权限，而且。开始装个Deploy linux，感觉就是类似PC上的虚拟机，虚拟化chroot容器。安装好了后面发现在里面安装Linux要依赖Busybox，于是又安了个Busybox。一切开始准备Ok，开始傻瓜式安装Kali。注意安装期间千万别断网，否则要重新开始。安装Ok后，用SSH和VNC都可以连上去，感觉还是有点卡哇，毕竟是容器里面的跑的。 &nbsp;&nbsp;2016-01-24&nbsp;20:44:34]]></content>
+      <categories>
+        <category>kali</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[yocto相关]]></title>
+    <url>%2F2016%2F01%2F05%2Fyocto%E7%9B%B8%E5%85%B3%2F</url>
+    <content type="text"><![CDATA[repo: curl http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo &gt; ~/bin/repo https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernelMACHINE=imx6qsabresd source fsl-setup-release.sh -b build-x11 -e x11bitbake -c menuconfig linux-imxbitbake fsl-image-qt5 bitbake -c cleansstate u-bootbitbake -c patch u-bootbitbake -c cleansstate linux-imxbitbake -c cleanall fsl-image-qt5bitbake meta-toolchain-qt5&nbsp; #生成的sdk在 deploy/sdk/，一样先运行环境脚本 bitbake meta-ide-support:生成交叉编译环境脚本source 交叉编译环境脚本查看编译链:echo $CCarm-poky-linux-gnueabi-gcc -v//bitbake meta-toolchain error:/usr/include/gnu/stubs.h:7:29: fatal error: gnu/stubs-soft.h: No such file or directory 编译器问题 编译好的部署image在/build-x11/tmp/deploy下qmake:/opt/fsl-yocto-bsp/build-x11/tmp/sysroots/x86_64-linux/usr/bin/qt5//opt/atsama5d44/poky/build-atmel/tmp/sysroots/x86_64-linux/usr/bin/qt5/qmake -o Makefile//make savedefconfig 生成defconfig文件]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>yocto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python相关问题Mark！]]></title>
+    <url>%2F2016%2F01%2F05%2FPython%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98Mark%EF%BC%81%2F</url>
+    <content type="text"><![CDATA[//———————————————————————— 14.9.2 给世成解决在windows下python逐行拷贝sql文件的问题，要以“rb”，二进制的方式打开，不能直接“r”，文件的存储的编码方式的问题。 //---------------------------------------------------------------------- 9.17 python 串口操作 http://blog.chinaunix.net/uid-9787595-id-1997667.html //———————————————————————- 9.18 python log，&nbsp; wxpython&nbsp; wx.Choice python 模块间，函数间的调用 http://www.2cto.com/kf/201212/175349.html python 类 【Python】TypeError: ’module’ object is not callable 原因分析 http://blog.csdn.net/kenkywu/article/details/6743520 //———————————————————————- 9.24 Python 操作注册表 http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp; (_winreg和win32api) wxpython ComboBox pyhon字符串操作，选择其中部分的字符，转整型 Python通过查找注册表，找到COM口，并打开串口，接收数据，OK！！！ Python TCP端口监听 //———————————————————————- 9.25 python pip, easy_install 由 Python ??的?????生工具－ jemdoc http://www.openfoundry.org/en/foss-programs/8709?task=view 用pelican在github上创建自己的博客!(Python静态网页生成工具pelican) http://x-wei.github.io/pelican_github_blog.html http://dengzhp.github.io/hello-pelican.html 安装后不支持Markdown语法? 这个是因为Markdown没有与pelican包一起安装(pelican默认的还是支持rst格式), 安装上Markdown包就行了:install Markdown 编写的.md文件除了标签之外必须要有内容，Github必须要同步到仓库的master分支才能创建博客 //———————————————————————- 9.26 博客生成命令已全部写成批处理命令，并打开GitHub来同步，一键搞定 cmd 下xcopy/?，复制目录所有文件到目标文件夹 DISQUS_SITENAME 设置Disqus短域名，来绑定Disqus评论插件 wxpython编程之 grid(数据表格),布局：BoxSizer&nbsp; ，，TextCtrl //——————————– 10.23 python扩展问题”unable to find vcvarsall.bat“的解决 http://blog.csdn.net/ren911/article/details/6448696 Zbar安装失败 //———————————- 10.28 不能启动PyQt4uic 解决方法： 1.自己调用命令行 pyuic4 -o codeFile.py -x yourUIfile.ui 2.写一个批处理,每次双击就行了,跟你的源文件放在同一文件夹下 import os for root, dirs, files in os.walk(’.’): &nbsp;&nbsp;&nbsp; for file in files: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if file.endswith(’.ui’): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyuic4 -o %s.py -x %s’ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file)) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elif file.endswith(’.qrc’): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyrcc4 -o %s_rc.py %s’ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file)) 3.使用Eric //---------------------------------- Boa Constructor - wxPython GUI Builder python下处理带空格的路径： &nbsp;&nbsp;&nbsp; import os &nbsp;&nbsp;&nbsp; cmd1=r’c:”Program FilesInternet Explorer”iexplore.exe’ &nbsp;&nbsp;&nbsp; cmd2 = r’copy E:”Program Files””flash magic”fm.exe 2.exe’ &nbsp;&nbsp;&nbsp; def main(): &nbsp;&nbsp;&nbsp; #cmd = ’ “ “ 带空格的可执行程序 “&nbsp; 空格 “ 带空格的参数或文件名等” “ ’ &nbsp;&nbsp;&nbsp; #cmd=’””D:\Program Files\Microsoft Office\OFFICE11\winword.exe” “d:\11.doc””’ &nbsp;&nbsp;&nbsp; #cmd = ’””copy” “E:\Program Files\flash magic\fm.exe”&nbsp; “2.exe””’ &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; #print os.system(cmd2).read() &nbsp;&nbsp;&nbsp; print os.popen(cmd2).read() &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; if name == ’main’: &nbsp;&nbsp;&nbsp; main() 处理中文路径： filepath=unicode(filepath,’utf8’)]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Centos6 升级python2.6.6-->2.7.6]]></title>
+    <url>%2F2016%2F01%2F04%2FCentos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6%2F</url>
+    <content type="text"><![CDATA[&nbsp;&nbsp;&nbsp;&nbsp;最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下： &amp;nbsp;&amp;nbsp;&amp;nbsp; 1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++ &amp;nbsp;&amp;nbsp;&amp;nbsp; 2.修改符号链接： rm -rf /usr/bin/python ln -s /usr/local/bin/python2.7 /usr/bin/python &amp;nbsp;&amp;nbsp;&amp;nbsp; 3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;python -V]]></content>
+      <categories>
+        <category>centos</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[I2C tools工具使用-记录]]></title>
+    <url>%2F2015%2F11%2F10%2FI2C-tools%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8-%E8%AE%B0%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。 使用 ： &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;**1.i2cdetect -l** &amp;nbsp;&amp;nbsp;&amp;nbsp; 列举出系统中所有的I2C总线。 &amp;nbsp;&amp;nbsp;&amp;nbsp;** 2.i2cdetect -y -r **&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;**0**&lt;/span&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; 列举一条I2C总线（&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;以0为例&lt;/span&gt;）上的所有设备(UU为使用中，即已经操作过) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5&amp;nbsp; 6&amp;nbsp; 7&amp;nbsp; 8&amp;nbsp; 9&amp;nbsp; a&amp;nbsp; b&amp;nbsp; c&amp;nbsp; d&amp;nbsp; e&amp;nbsp; f 00:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; – – – – – – – – – – – – – 10: – – – – – – – – – – UU – – – – – 20: – – – – – – – – – – – – – – – – 30: – – – – 34 – – – – – – – – – – – 40: – – – – – – – – – – – – – – – – 50: – – – – – – – – – – – – – – – – 60: – – – – – – – – – – – – – – – – 70: – – – – – – – – &amp;nbsp;&amp;nbsp;&amp;nbsp; **3.i2cdump -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; 读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备 &amp;nbsp;&amp;nbsp;&amp;nbsp; **4.i2cget -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器 &amp;nbsp;&amp;nbsp;&amp;nbsp; **5.i2cset -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; &lt;span style=&quot;background-color:#00D5FF;&quot;&gt;**0xfb**&lt;/span&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; 写I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器为&lt;span style=&quot;background-color:#00D5FF;&quot;&gt;0xfb&lt;/span&gt;]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>I2C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Cubieboard上kali初探]]></title>
+    <url>%2F2015%2F11%2F04%2FCubieboard%E4%B8%8Akali%E5%88%9D%E6%8E%A2%2F</url>
+    <content type="text"><![CDATA[本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。 开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。 后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/emoticons/images/23.gif)。下下来刷进了SD卡里，顺利跑起来了。 突然发现之前的USB网卡rtl8188eu不能用，于是又开始折腾&amp;nbsp;&amp;nbsp;rtl8188eu的驱动。 下了个&lt;span style=&quot;white-space:normal;&quot;&gt;rtl8188eu驱动源码，发现没有unzip。&lt;/span&gt;&lt;span style=&quot;display:none;&quot; id=&quot;__kindeditor_bookmark_start_31__&quot;&gt;&lt;span style=&quot;white-space:normal;&quot;&gt;发现没make，gcc，&lt;/span&gt;&lt;/span&gt; 开始编译，没有/lib/modules/3.4.10/bulid 的软链接无效，导致找不到路径。 没有make，gcc， ssh： kali默认是没有开启SSH，每次用串口很麻烦，于是就打开了ssh： 1.修改/etc/ssh/sshd_config: PasswordAuthentication yes PermitRootLogin without-password的后面&lt;span style=&quot;white-space:normal;&quot;&gt;without-password&lt;/span&gt;改为yes 保存退出 2.添加自启动： update-rc.d ssh enable &amp;nbsp;//开启 update-rc.d ssh disabled // 关闭]]></content>
+      <categories>
+        <category>kali</category>
+      </categories>
+      <tags>
+        <tag>Cubieboard</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[wpa_supplicant & iwconfig]]></title>
+    <url>%2F2015%2F10%2F27%2Fwpa-supplicant-iwconfig%2F</url>
+    <content type="text"><![CDATA[wpa_supplicant**** 用wpa_passphrase生成最基本的wpa_supplicant配置文件： wpa_passphrase TPLINK 12345678 |sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf wpa_supplication.conf的模板如下： ctrl_interface=/var/run/wpa_supplicant ctrl_interface_group=wheel update_config=1 network={ ssid="xxxx" scan_ssid=1 psk=xxxxxxxxx37bca5cf24a345f514d319211822f568bba28f8f0b74c894e7644 proto=RSN key_mgmt=WPA-PSK pairwise=CCMP auth_alg=OPEN } 连接命令： wpa_supplicant -B -d -iwlan0 -c/etc/wpa_supplicant.conf 动态获取IP： dhclient wlan0 **&lt;span style=&quot;font-size:24px;&quot;&gt;&lt;u&gt;iwconfig&lt;/u&gt;&lt;/span&gt;** 扫描AP节点： iwlist wlan4 scanning 配置MYSSID： iwconfig wlan0 essid "myssid" 加密码： iwconfig wlan0 key s:xxxxx/xxxxxxxxxxxxx（40－bit为5个ASSIC字符，128－bit为13个ASSIC字符，以字符为密钥时，密钥之前需要加s:表示字符）]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[openwrt 相关有用的]]></title>
+    <url>%2F2015%2F10%2F19%2Fopenwrt-%E7%9B%B8%E5%85%B3%E6%9C%89%E7%94%A8%E7%9A%84%2F</url>
+    <content type="text"><![CDATA[config_load等获取config配置文件： #!/bin/sh /etc/rc.common # Copyright (C) 2013 NXP Semiconductor # -s /dev/ttyTX0 -B 115200 --mode=coordinator -6 fd04:bd3:80e8:10::1 -c 15 -I zb0 START=99 PROG=zigbee-jip-daemon start_zigbee_jip_daemon() { local section="$1" config_get_bool ignore "$section" ignore 0 [ "$ignore" -ne 0 ] &amp;&amp; return 0 local tty config_get tty "${section}" tty [ -z $tty ] &amp;&amp; tty="/dev/ttyUSB0" local interface config_get interface "${section}" interface local baudrate config_get baudrate "${section}" baudrate [ -z $baudrate ] &amp;&amp; baudrate="1000000" local mode config_get mode "${section}" mode local borderrouter config_get borderrouter "${section}" borderrouter local channel config_get channel "${section}" channel local whitelisting config_get whitelisting "${section}" whitelisting local args args="-s $tty -B $baudrate --mode=$mode -6 $borderrouter -c $channel" if [ $interface ] then args="$args -I $interface" fi if [ $whitelisting -ne 0 ] then args="$args --whitelisting" fi echo "Starting $PROG with arguments: $args" /usr/sbin/$PROG $args } start () { config_load zigbee-jip-daemon config_foreach start_zigbee_jip_daemon zigbee-jip-daemon } stop () { killall $PROG } log操作： logread]]></content>
+      <categories>
+        <category>openwrt</category>
+      </categories>
+      <tags>
+        <tag>openwrt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[About]]></title>
+    <url>%2F2015%2F10%2F16%2FAbout%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux常用命令--（持续更新中。。。）]]></title>
+    <url>%2F2015%2F02%2F11%2FLinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%E3%80%82%E3%80%82%E3%80%82%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[## SSH： http://www.live-in.org/archives/832.html 不指定用户：ssh 192.168.0.11指定用户：ssh -l root 192.168.0.11ssh root@192.168.0.11如果修改过ssh登录端口的可以：ssh -p 12333 192.168.0.11ssh -l root -p 12333 216.230.230.114ssh -p 12333 root@216.230.230.114另外修改配置文件/etc/ssh/sshd_config，可以改ssh登录端口和禁止root登录。改端口可以防止被端口扫描。编辑配置文件：vim /etc/ssh/sshd_config找到#Port 22，去掉注释，修改成一个五位的端口：Port 12333找到#PermitRootLogin yes，去掉注释，修改为：PermitRootLogin no重启sshd服务：service sshd restart退出登陆Exit ## 查看显卡状态： lspci | grep VGArev ff 表示显卡已经关闭 ## Mount: sudo mount -r -t cifs //192.168.12.128/share /mnt/tmp -o username=lierda,password=123456 http://tutu.spaces.eepw.com.cn/articles/article/item/70737 ## 常用的APT命令参数 apt-cache search package 搜索包apt-cache show package 获取包的相关信息，如说明、大小、版本等sudo apt-get install package 安装包sudo apt-get install package - - reinstall 重新安装包sudo apt-get -f install 修复安装&quot;-f = ――fix-missing&quot;sudo apt-get remove package 删除包sudo apt-get remove package - - purge 删除包，包括删除配置文件等sudo apt-get update 更新源sudo apt-get upgrade 更新已安装的包sudo apt-get dist-upgrade 升级系统sudo apt-get dselect-upgrade 使用 dselect 升级apt-cache depends package 了解使用依赖apt-cache rdepends package 是查看该包被哪些包依赖sudo apt-get build-dep package 安装相关的编译环境apt-get source package 下载该包的源代码sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包sudo apt-get check 检查是否有损坏的依赖apt-get autoremove apt-cache search package 搜索包 apt-cache show package 获取包的相关信息 ## 磁盘空间查看： 用df命令查看分区情况 $df -h 用du命令查看文件或文件夹的磁盘使用空间:$ du -h –max-depth=1 或 $ du -h –max-depth=0 ## source source命令也称为“点命令”，也就是一个点符号（.）。source命令通常用于重新执行刚修改的初始化文件，使之立即生效，而不必注销并重新登录 ## 修改文件或目录用户组和用户 chown [-R] 账号名称:用户组名称 文件或目录 ## 防火墙 sudo ufw disable 关闭防火墙 sudo ufw enable 开启防火墙sudo ufw status 检查防火墙的状态 ## 解压： tar.gz 解压:tar -zxvf 压缩：tar -zcvf tar.bz2 解压:tar -jxvf xx.tar.bz2 ## 查找： find 路径 -name &amp;quot;*log&amp;quot; ## 修改网关与指定路由： 修改默认网关：route add default gw 192.168.0.254 指定路由：route add -net 192.168.10.0 netmask 255.255.255.0 dev eth0 ## Busybox的tftp命令： tftp -g -l /usr/APP -r APP 192.168.12.128 ## 实时监控网络： nethogs 安装使用Shadowsocks： apt-get&nbsp;install python-pippip install shadowsocks sslocal -s server_ip -p server_port &nbsp;-b 127.0.0.1 -l 1080 -k password &nbsp;-t 600 &nbsp;-m aes-256-cfb]]></content>
+      <categories>
+        <category>linux common</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ubuntu14.04环境配置]]></title>
+    <url>%2F2015%2F01%2F11%2Fubuntu14-04%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[## 1.重启后亮度无法保存 查看本机最大亮度值：cat /sys/class/backlight/XXX/max_brightness（XXX为你的显卡）编辑/etc/rc.local启动初始化文件，在最后一行（exit 0）之前添加：echo 15（你设置的值） &gt; /sys/class/backlight/XXX/brightness（XXX为你的显卡）exit 0&nbsp;(别忘了) ## 2.休眠后无法启动 Ubuntu 14.04系统下，休眠之后无法启动的问题解决：http://blog.csdn.net/blueheart20/article/details/37995049 （与显卡驱动有关）linux学习笔记（7）=》ubuntu挂起后无法唤醒-解决：（缺失laptop_mode）http://blog.sina.com.cn/s/blog_7ec12e960100rfpn.html ## 3.鼠标箭头闪烁问题，显卡驱动问题 安装NVIDIA显卡驱动：（bumblebee）—开始使用的方法http://www.jb51.net/os/Ubuntu/84218.html显卡切换，关闭独显在14.04上没用http://www.douban.com/note/298832176/Ubuntu 14.04为Intel/Nvidia双显卡调节亮度:(Prime，比 Bumblebee 成熟)—最终使用方法http://www.mintos.org/config/intel-nvidia-brightness.htmlsudo apt-get install nvidia-319 nvidia-settings-319 nvidia-prime安装完毕，还要安装一个 Nvidia Prime 双显卡切换指示器，用于在系统托盘中轻点鼠标即可切换显卡，而不必使用命令。在终端中使用如下 PPA 安装：sudo add-apt-repository ppa:nilarimogard/webupd8sudo apt-get updatesudo apt-get install prime-indicator想解决亮度及休眠问题–&gt;想安装显卡驱动—》不知道型号—&gt;想用官网的自动检测–&gt;缺少JAVA（TM）–&gt;下载安装了OpenJDK（使用软件中心）–&gt;安装浏览器插件Icedtea（使用软件中心）–&gt;浏览器检测不到插件–&gt;Icedtea不再支持高版本的chrome–&gt;安装其他版本的JAVA ## 安装JAVA： http://blog.sina.com.cn/s/blog_53a99cf30102v6o4.htmlsudo add-apt-repository ppa:webupd8team/javasudo apt-get updatesudo apt-get install Oracle-java8-installer设置 Java 8 环境变量：sudo apt-get install oracle-java8-set-default切换为 Java 7 ：sudo update-java-alternatives -s java-7-oracle再切换为 Java 8：sudo update-java-alternatives -s java-8-oracle切换JAVA版本update-alternatives –config javaupdate-alternatives –config javac在ubuntu的chrome中启用java plugin：http://blog.csdn.net/xiajian2010/article/details/10219589 ## QT安装： http://www.cnblogs.com/striver-zhu/p/3918275.html ## Samba共享 Ubuntu挂载windows共享文件夹：http://blog.csdn.net/fulinus/article/details/21086581samba:http://www.cnblogs.com/ouuy/archive/2011/10/24/2223164.htmlsudo gedit /etc/samba/smb.conf 新增如下语句:[share]path = /xxx &nbsp;//共享目录available = yesbrowsealbe = yespublic = yeswritable = yesread only=yesvalid users = xxx//用户名create mask = 0700directory mask = 0700force user = nobodyforce group = nogroupworkgroup = WORKGROUPdisplay charset = UTF-8 //防止windows显示乱码unix charset = UTF-8dos charset = cp936新增登录用户密码sudo touch /etc/samba/smbpasswdsudo smbpasswd -a xxx ## 安装flash插件： 1.Chromium谷歌的开源浏览器将不再支持Netscape浏览器插件API，Adobe公司的Flash将无法正常工作了。然而用户可以使用Pepper Flash Player，这是谷歌浏览器上一款替代Adobe Flash的插件。Ubuntu 14.04及衍生版本用户命令:sudo apt-get updatesudo apt-get install chromium-browsersudo apt-get install pepperflashplugin-nonfreesudo update-pepperflashplugin-nonfree –install卸载命令：sudo apt-get remove chromium-browser pepperflashplugin-nonfree2.firefox:sudo apt-get install flashplugin-installer ## NFS安装时： 注：rpcbind（Ubuntu14.04）就是高版本的portmap注意此时可能会出现：Not starting: portmapper is not running //重启Ubuntu系统后就好了;win7 中使用NFS共享：&nbsp;http://www.cnblogs.com/itech/archive/2012/06/17/2552514.html可以用来测试Cifs取代了smbfs ## VNC： 1.vino-server运行dconf-editor，注意一定要用当前用户来运行，不能加sudo，依次展开org-&gt;gnome-&gt;desktop-&gt;remote-access，这里也可以直接设置远程控制选项，但重要的是将“requre-encryption”去掉，但是没有密码,需要点图标设置。此方法有点卡，占用带宽太大 2.vnc4server ## 用户管理： 新建用户：useradd，修改密码：passwd，但home目录并没有创建对应的用户文件夹，我们需要添加选项,主动创建用户文件夹和指定shelluserdel -r xxx&nbsp;&nbsp; &nbsp;useradd xxx -m -s /bin/bashnote:useradd username不会在/home下建立一个文件夹usernameadduser username会在/home下建立一个文件夹usernameuseradd -m username跟adduser一样，可以建立一个文件夹username ## samba： sudo&nbsp;apt-get&nbsp;updatesudo&nbsp;apt-get&nbsp;install&nbsp;samba&nbsp;samba-commonsudo&nbsp;gedit&nbsp;/etc/samba/smb.conf&gt; max log size = 1000 security = user[mpushare]comment = mpu_sharepath = /home/sharebrowseable = yeswritable = yes 修改用户及加到smb组： sudo smbpasswd -a xxx重启服务： sudo service smbd restart]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[拯救我的Ubuntu14.04（kylin）]]></title>
+    <url>%2F2015%2F01%2F05%2F%E6%8B%AF%E6%95%91%E6%88%91%E7%9A%84Ubuntu14-04%EF%BC%88kylin%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[## 背景： 双硬盘，双系统（SSD-&amp;gt;win8.1，HDD-&amp;gt;Ubuntu14.04），HDD是原笔记本的硬盘，只有320G，而且本来就不咋地，很大的吱吱声音，速度也很慢很卡。HDD其中120G为Ubuntu，当时挂载分区的时候，根目录分的是50G，装完系统就剩40多G了，Home目录为70G。 打算自己开始编译imx6的Android源码，10G多的源码放在根目录下的/mnt，折腾了一天多，终于编译好了一个目标板的。接着没看剩余磁盘大小就编译第二个目标板的，从晚上开始编译，觉得早上应该就差不多了。第二天早上一看，系统提示磁盘空间不足，然后很卡。就用那个优客助手想清理下，结果系统就越来越卡，UI渐渐消失了，系统崩溃了。最后重启结果就进不了系统了，一直停在启动界面。 ## 自己解决步骤： ### 第一次： 在停住的启动界面按Esc进入非图形启动界面，发现lightdm&amp;nbsp;display&amp;nbsp;manager&amp;nbsp;fail。Ctrl+Alt+F1&amp;nbsp;由桌面图形模式进命令行模式，命令行中文乱码 修改Ubuntu的命令行语言环境： 1、修改/etc/default/locale 如不存在则新建一个 如下： LANG=’en_US’&amp;nbsp;#中文可以用zh_CN LANGUAGE=’en_US:en’&amp;nbsp;#中文可以用zh_CN:zh 2、reboot即可 locale命令可以列出当前系统所用的所有语言设置 查看/var/log/lightdm，发现默认配置都丢失了，查看/etc/lightdm/，果然没了。经过很多种尝试，发现桌面lightdm始终不行，打算重新安装桌面。 但发现Apt丢失了（apt-get&amp;nbsp;command&amp;nbsp;not&amp;nbsp;found），幸好dpkg还在，网也能通，打算用dpkg安装apt，找了半天资料，才找到个能下包的地方，小白啊，没办法，&amp;nbsp;安装apt（[http://www.cnblogs.com/huangbangshun/p/4174922.html](http://www.cnblogs.com/huangbangshun/p/4174922.html)），包： [http://mirrors.163.com/ubuntu/pool/main/a/apt/](http://mirrors.163.com/ubuntu/pool/main/a/apt/)&amp;nbsp;&amp;nbsp;（apt_1.0.1ubuntu2_amd64） 后面用apt安装其他包，又遇到Apt依赖项问题（Ubuntu&amp;nbsp;unmet&amp;nbsp;dependencies），安装任何包都会报依赖项问题，又折腾了半天，找了半天，apt-get&amp;nbsp;dist-upgrade&amp;nbsp;升级系统&amp;nbsp;，sudo&amp;nbsp;apt-get&amp;nbsp;upgrade&amp;nbsp;更新已安装的包&amp;nbsp;，重新安装桌面（ubuntu-desktop），搞定，可以正常了。 ### 第二次： 也是用优客助手（类似于win下面的360卫士，可以清理）后，系统又崩溃了。这次更彻底，Apt丢失，它的一些依赖包也丢了，网也不行了，无线网卡没起来，eth幸好敲命令能起来（ipconfig&amp;nbsp;eth0&amp;nbsp;up）。下载依赖包（[http://www.ubuntuupdates.org/](http://www.ubuntuupdates.org/)&amp;nbsp;），发现依赖包存在版本依赖，折腾半天终于安装好了apt，后面的步骤就同第一次了。 ## 总结： 越来越能体会命令行的好处了 ## 参考： ubuntu&amp;nbsp;lightdm登陆器不能用户登陆解决： [http://www.2cto.com/os/201305/213215.html](http://www.2cto.com/os/201305/213215.html) ubuntu中apt-get，dpkg与默认路径: [http://blog.chinaunix.net/uid-25436678-id-3853747.html](http://blog.chinaunix.net/uid-25436678-id-3853747.html) dpkg&amp;nbsp;-i&amp;nbsp;&amp;lt;package.deb&amp;gt;&amp;nbsp;&amp;nbsp;dpkg&amp;nbsp;-p&amp;lt;package.deb&amp;gt; Recovery模式&amp;nbsp;按e]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux驱动系列?1.Misc(混杂)设备之GPIO]]></title>
+    <url>%2F2014%2F12%2F12%2FLinux%E9%A9%B1%E5%8A%A8%E7%B3%BB%E5%88%97-1-Misc-%E6%B7%B7%E6%9D%82-%E8%AE%BE%E5%A4%87%E4%B9%8BGPIO%2F</url>
+    <content type="text"><![CDATA[## Misc设备&nbsp;–&nbsp;特殊的字符设备 本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&amp;nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操作，因此其驱动的主体工作还是file_operations的成员函数。 ### 1.&nbsp;**字符设备模板及说明解析：** 1.[http://blog.csdn.net/wdzxl198/article/details/8817147](http://blog.csdn.net/wdzxl198/article/details/8817147)&amp;nbsp;（自动创建设备节点） 2.[http://blog.chinaunix.net/uid-20698426-id-136243.html](http://blog.chinaunix.net/uid-20698426-id-136243.html) 主要是init函数(获取设备号，创建节点)&amp;nbsp;，exit函数（回收操作），及设备操作集对应的操作函数。 ### 2.&nbsp;**设备操作集&nbsp;file_operations结构体分析:** [http://www.linuxidc.com/Linux/2011-09/43530.htm](http://www.linuxidc.com/Linux/2011-09/43530.htm) 特别的异步IO轮询函数： **unsigned&amp;nbsp;int&amp;nbsp;(*poll)&amp;nbsp;(struct&amp;nbsp;file&amp;nbsp;*,&amp;nbsp;struct&amp;nbsp;poll_table_struct&amp;nbsp;*);** (这是一个设备驱动中的轮询函数，第一个参数为file结构指针，第二个为轮询表指针） 这个函数返回设备资源的可获取状态，即POLLIN，POLLOUT，POLLPRI，POLLERR，POLLNVAL等宏的位“或”结果。 每个宏都表明设备的一种状态，如：POLLIN（定义为0x0001）意味着设备可以无阻塞的读，POLLOUT（定义为0x0004）意味着设备可以无阻塞的写。 (poll&amp;nbsp;方法是&amp;nbsp;3&amp;nbsp;个系统调用的后端:&amp;nbsp;poll,&amp;nbsp;epoll,&amp;nbsp;和&amp;nbsp;select,&amp;nbsp;都用作查询对一个或多个文件描述符的读或写是否会阻塞. poll&amp;nbsp;方法应当返回一个位掩码指示是否非阻塞的读或写是可能的,&amp;nbsp;并且,&amp;nbsp;可能地,&amp;nbsp;提供给内核信息用来使调用进程睡眠直到&amp;nbsp;I/O&amp;nbsp;变为可能. 如果一个驱动的&amp;nbsp;poll&amp;nbsp;方法为&amp;nbsp;NULL,&amp;nbsp;设备假定为不阻塞地可读可写. (这里通常将设备看作一个文件进行相关的操作，而轮询操作的取值直接关系到设备的响应情况，可以是阻塞操作结果，同时也可以是非阻塞操作结果） ### 3.&nbsp;**ioctl函数详解：** [http://blog.csdn.net/shanshanpt/article/details/19897897](http://blog.csdn.net/shanshanpt/article/details/19897897) ioctl函数的cmd： cmd的大小为&amp;nbsp;32位，共分&amp;nbsp;4&amp;nbsp;个域： bit31~bit30&amp;nbsp;2位为&amp;nbsp;“区别读写”&amp;nbsp;区，作用是区分是读取命令还是写入命令。 bit29~bit15&amp;nbsp;14位为&amp;nbsp;&quot;数据大小&quot;&amp;nbsp;区，表示&amp;nbsp;ioctl()&amp;nbsp;中的&amp;nbsp;arg&amp;nbsp;变量传送的内存大小。 bit20~bit08&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;“魔数&quot;(&quot;幻数&quot;)区，这个值用以与其它设备驱动程序的&amp;nbsp;ioctl&amp;nbsp;命令进行区别。 bit07~bit00&amp;nbsp;&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;&quot;区别序号&quot;&amp;nbsp;区，是区分命令的命令顺序序号。 这几个宏的使用格式为： _IO&nbsp;(魔数，&nbsp;基数); _IOR&nbsp;(魔数，&nbsp;基数，&nbsp;变量型) _IOW&nbsp;&nbsp;(魔数，&nbsp;基数，&nbsp;变量型) _IOWR&nbsp;(魔数，&nbsp;基数，变量型&nbsp;) 魔数&nbsp;(magic&nbsp;number) 魔数范围为&nbsp;0~255&nbsp;。通常，用英文字符&nbsp;”A”&nbsp;~&nbsp;”Z”&nbsp;或者&nbsp;”a”&nbsp;~&nbsp;”z”&nbsp;来表示。设备驱动程序从传递进来的命令获取魔数，然后与自身处理的魔数想比较，如果相同则处理，不同则不处理。魔数是拒绝误使用的初步辅助状态。设备驱动&nbsp;程序可以通过&nbsp;_IOC_TYPE&nbsp;(cmd)&nbsp;来获取魔数。不同的设备驱动程序最好设置不同的魔数，但并不是要求绝对，也是可以使用其他设备驱动程序已用过的魔数。 基(序列号)数 基数用于区别各种命令。通常，从&nbsp;0开始递增，相同设备驱动程序上可以重复使用该值。例如，读取和写入命令中使用了相同的基数，设备驱动程序也能分辨出来，原因在于设备驱动程序区分命令时&nbsp;使用&nbsp;switch&nbsp;，且直接使用命令变量&nbsp;cmd值。创建命令的宏生成的值由多个域组合而成，所以即使是相同的基数，也会判断为不同的命令。设备驱动程序想要从命令中获取该基数，就使用下面的宏： _IOC_NR&nbsp;(cmd) 通常，switch&nbsp;中的&nbsp;case&nbsp;值使用的是命令的本身。 变量型 变量型使用&nbsp;arg&nbsp;变量指定传送的数据大小，但是不直接代入输入，而是代入变量或者是变量的类型，原因是在使用宏创建命令，已经包含了&nbsp;sizeof()&nbsp;编译命令。 Linux内核中_IO,_IOR,_IOW,_IOWR宏的用法与解析：http://blog.csdn.net/hzn407487204/article/details/7995041 ### 4.&nbsp;**misc设备相关：** **misc设备结构体：** struct&amp;nbsp;miscdevice&amp;nbsp;&amp;nbsp;{ int&amp;nbsp;minor;&amp;nbsp;&amp;nbsp;//次设备号，若为&amp;nbsp;MISC_DYNAMIC_MINOR&amp;nbsp;自动分配 const&amp;nbsp;char&amp;nbsp;*name;&amp;nbsp;&amp;nbsp;//设备名 const&amp;nbsp;struct&amp;nbsp;file_operations&amp;nbsp;*fops;&amp;nbsp;&amp;nbsp;//设备文件操作结构体 struct&amp;nbsp;list_head&amp;nbsp;list;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//misc_list链表头 struct&amp;nbsp;device&amp;nbsp;*parent; struct&amp;nbsp;device&amp;nbsp;*this_device; }; **misc设备注册和注销API：** int&amp;nbsp;misc_register(struct&amp;nbsp;miscdevice&amp;nbsp;*misc) int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc) **misc设备驱动模型及实例解析：** 参考：[http://blog.csdn.net/chenlong12580/article/details/7339127](http://blog.csdn.net/chenlong12580/article/details/7339127) ### 5.&nbsp;**具体实例：** 详见code文件夹 输出 输入 中断 4步曲： Step1：定义申明IO口，特别是管脚复用。 Step2：平台初始化时初始化对应IO。 Step3：创建编写对应的驱动代码&nbsp;C文件。 Step4：修改对应的Kconfig，Makefile文件，并配置加载编译。 中断参考： http://blog.csdn.net/mashang123456789/article/details/8623786 GPIO&nbsp;API: http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html 与中断有关的API： static&nbsp;inline&nbsp;int&nbsp;gpio_to_irq(unsigned&nbsp;gpio)]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux系列--2.磁盘分区和Linux根文件系统,目录结构]]></title>
+    <url>%2F2014%2F12%2F09%2FLinux%E7%B3%BB%E5%88%97-2-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8CLinux%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%2F</url>
+    <content type="text"><![CDATA[DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构---------- 来源：1.http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84 2.http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php **## 一、根文件系统 ##** /bin 这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。 /boot 这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。 /dev 在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。 /etc 该目录中包含系统和应用软件的配置文件。 /etc/passwd 该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。 /home 存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。 /lib 这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。 /lib64 64位系统有这个文件夹，64位程序的库。 /lost+found 这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。 /media 可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。 /mnt 临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区） /opt 多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。 /proc 它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。 /root 这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。 /sbin 供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。 /tmp 该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。 /usr 静态的用户级应用程序等，见下。 /var 动态的程序数据等，见下文。 var中包括了一些数据文件，如系统日志等。/var的存放使得/usr被只读挂载成为可能。 **## /var目录结构 ##** /var/cache 应用程序的缓存文件 /var/lib 应用程序的信息、数据。如数据库的数据等都存放在此文件夹。 /var/local /usr/local中程序的信息、数据 /var/lock 锁文件 /var/log 日志文件 /var/opt /opt中程序的信息、数据 /var/run 正在执行着的程序的信息，如PID文件应存放于此 /var/spool 存放程序的假脱机数据（即spool data） /var/tmp 临时文件 ****二、所以分区：**** 使用任何Linux系统，都要有至少两个分区：一个根分区，用“/”表示；另一个是swap（交换）分区（最小应该和内存一样大，最大一般不超过内存的两倍大小），最好把/boot单独创建一个分区上（200M左右）]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>根文件系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[开源许可-略知一二]]></title>
+    <url>%2F2014%2F10%2F29%2F%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF-%E7%95%A5%E7%9F%A5%E4%B8%80%E4%BA%8C%2F</url>
+    <content type="text"><![CDATA[很早就开始关注些开源项目，加上这段时间在学习linux的相关东西，毕竟商用与学习是不一样的，所以就不得不全面了解下开源许可了。在此Mark一下。 找了下度娘，搜到一篇很全的说明：[http://blog.csdn.net/techbirds_bao/article/details/8785413](http://blog.csdn.net/techbirds_bao/article/details/8785413)。 今天看到了一个开源IM工具，是蘑菇街的---[mogutt](https://github.com/mogutt)，它是基于Apache Licence V2.0的。对商业应用友好的许可。使用者也可以在需要的时候修改代码来满足需要并作为开源或商业产品发布/销售 现在也想学习下QT5，它的开源版本是基于LGPL的。商业软件可以使用，但不能修改LGPL协议的代码，只能使用类库引用。 Linux本身是基于GPL的。商业软件不能使用GPL协议的代码]]></content>
+      <categories>
+        <category>Open Source</category>
+      </categories>
+      <tags>
+        <tag>开源许可</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[与SSI的初遇]]></title>
+    <url>%2F2014%2F10%2F23%2F%E4%B8%8ESSI%E7%9A%84%E5%88%9D%E9%81%87%2F</url>
+    <content type="text"><![CDATA[之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。 首先补充了下基础知识（来源于网络）： SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含 (SSI）”指令将文本、图形或应用程序信息包含到网页中。默认扩展名是 .stm、.shtm 和 .shtml。 在Lwip里的httpd中，工作原理：LWIP对于.shtml,.ssi,.shtm后缀的文件，会检测文件中&lt;!–#name–&gt;格式的TAG标志。 然后再这个标记后面添加你想要的字符串。并不是替换，不过这个方法在脚本中不行， &lt;!–#name–&gt; 是html文件的注释，但是在 &lt;script&gt;…&lt;/script&gt;中就不是注释了，所以在添加js代码的时候必须把整个JS脚本添加进来。 对于SSI使用详解 可移步至：[http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html](http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html)]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>网络</tag>
+        <tag>lwip</tag>
+        <tag>SSI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[IP与MAC--ARP及W5500超时机制，非阻塞]]></title>
+    <url>%2F2014%2F10%2F16%2FIP%E4%B8%8EMAC-ARP%E5%8F%8AW5500%E8%B6%85%E6%97%B6%E6%9C%BA%E5%88%B6%EF%BC%8C%E9%9D%9E%E9%98%BB%E5%A1%9E%2F</url>
+    <content type="text"><![CDATA[1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，前提条件：由交换机组成的网络。 按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。 在不断电的情况下，电表中缓存着前一个集中器的IP和MAC映射关系，如果更换集中器之后且IP不变，电表进行UDP通信使用的还是之前的映射关系，所以会通信异常。 2.另一个客户反馈的W5500的TCP连接问题，connect。如果服务器断了，客户端会一直死在连接的while里面不断请求连接。很明显，使用的是类似阻塞模式，但是超时中断未发生。A，改为非阻塞方式，立即返回状态。B，设置中断及合理的超时时间（TCPto）。SIMR，SIR及RTR, RCR while ( IINCHIP_READ(Sn_SR(s)) != SOCK_SYNSENT ) { if(IINCHIP_READ(Sn_SR(s)) == SOCK_ESTABLISHED) { break; } if (getSn_IR(s) &amp; Sn_IR_TIMEOUT) { IINCHIP_WRITE(Sn_IR(s), (Sn_IR_TIMEOUT)); // clear TIMEOUT Interrupt ret = 0; break; } }]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>W5500</tag>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Lofter搬家到WordPress]]></title>
+    <url>%2F2014%2F10%2F14%2FLofter%E6%90%AC%E5%AE%B6%E5%88%B0WordPress%2F</url>
+    <content type="text"><![CDATA[差不多折腾了一天，终于写了个脚本可以把Lofter的文章搬到WordPress了，主要就是将Lofter的备份文件转成WordPress的备份文件格式。基本上可以搬文章主体，标签，日期，标题。评论没写，因为基本上俺的博客评论为0 ，O(∩_∩)O哈哈~，这也省事多了。功能的实现纯粹是体力活啦，主要就是XML的解析与重构啦，用的是python的类库xml.dom，还是挺方便的。主要遇到了一个时间的转换问题，也就是datatime,time,字符串之间的游戏，其他的真的就没啥了。 代码就不放了，个人觉得应该没啥人要用的，如果真的谁有需要的话，可以@我，Email，留言等都行。]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>Lofter</tag>
+        <tag>wordpress</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[DD初学Linux系列--1.环境安装搭建及启动过程]]></title>
+    <url>%2F2014%2F09%2F17%2FDD%E5%88%9D%E5%AD%A6Linux%E7%B3%BB%E5%88%97-1-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[DD初学Linux系列–环境安装搭建及启动过程&nbsp;---------- ##&amp;nbsp;一、PC版：&amp;nbsp;## &amp;ensp; &amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。 上周末，给自己的本本重装了下系统，SSD上装win8.1，原来硬盘装系统和软件的盘来装Ubuntu麒麟版。 先装了win8.1，再装Ubuntu，接下来就是引导了，用了EasyBCD来设置。 于是顺便了解了下Linux引导（LILO和Grub）—来源于网络 &amp;gt;&amp;nbsp;如果想要在同一机器上运行 Windows 和 Linux，那么应该先安装Windows OS，然后再安装 Linux OS，这样，在 Linux 安装中所选择的引导加载程序就不会被 Windows 引导加载程序所覆盖。与 Linux 引导加载程序不同，多数 Window 引导加载程序不支持引导 Linux。如果已经先安装了 Linux，那么只需要自己创建一张 Linux 引导盘，这样就可以在安装完 Windows 之后，回到 Linux 安装中并重写 MBR 二级引导加载程序： BIOS（BootLoader）–&gt;主引导记录MBR激活引导加载程序–&gt;初始程序加载程序（IPL）查询分区表–&gt;第二阶段引导加载程序–&gt;内核引导等 ---------- ##&nbsp;二、嵌入式版：&nbsp;## 现成的硬件平台，现成的内核，现成的文件系统，搭建Linux应用开发环境。 主要是：&lt;/br&gt; 1. tftp与NFS安装，让硬件平台从网络加载内核（tftp）并挂载网络文件系统（NFS）。&lt;/br&gt; 2. ARM交叉编译链安装&lt;/br&gt; &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt; tftp安装：&lt;/br&gt; 1、安装相关软件包 //apt-get install tftpd （服务端） //apt-get install tftp （客户端） sudo apt-get install tftp-hpa tftpd-hpa xinetd 2、建立配置文件 cd /etc/xinetd.d/ gedit tftp 输入 service tftp { socket_type = dgram protocol = udp wait = yes user = root server =&nbsp;/usr/sbin/in.tftpd server_args =&nbsp;-s&nbsp;/mnt/tftpboot disable = no per_source = 11 cps = 100 2 flags = IPv4 } 存盘退出 3、建立tftp服务文件目录 mkdir /mnt/tftpboot 4、从新启动服务 /etc/init.d/xinetd restart（针对xinetd） 安装完成！测试方法： 在/tftpboot 目录下随便放个文件abc 然后&nbsp;运行tftp 192.168.1.107 进入tftp命令行 输入get abc 看看是不是能把文件下下来，也可以put&nbsp;文件上去。注意：要在root权限下 **NFS安装：**&amp;lt;/br&amp;gt; 1.安装NFS sudo apt-get install nfs-kernel-server 2.执行命令：mkdir &nbsp;建立一个nfs服务的专有的文件夹 3.建立好文件夹后，接着执行命令：sudo gedit /etc/exports&nbsp;配置nfs， 在文章的最后一行添加：*/nfs (rw,sync,no_root_squash,no_subtree_check) 注：nfs允许挂载的目录及权限，在文件/etc/exports中进行定义，各字段含义如下： /mnt/NFS：要共享的目录 *：允许所有的网段访问 rw ：读写权限 sync：资料同步写入内在和硬盘 no_root_squash：nfs客户端共享目录使用者权限 特别要注意 ：insecure ro&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;只读访问 rw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;读写访问 sync&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有数据在请求时写入共享 async&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS在写入数据前可以相应请求 secure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS通过1024以下的安全TCP/IP端口发送 insecure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS通过1024以上的端口发送 wdelay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果多个用户要写入NFS目录，则归组写入（默认） no_wdelay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果多个用户要写入NFS目录，则立即写入，当使用async时，无需此设置。 hide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在NFS共享目录中不共享其子目录 no_hide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享NFS目录的子目录 subtree_check&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果共享/usr/bin之类的子目录时，强制NFS检查父目录的权限（默认） no_subtree_check&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和上面相对，不检查父目录权限 all_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享文件的UID和GID映射匿名用户anonymous，适合公用目录。 no_all_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保留共享文件的UID和GID（默认） root_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root用户的所有请求映射成如anonymous用户一样的权限（默认） no_root_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root用户具有根目录的完全管理访问权限 anonuid=xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的UID anongid=xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的GID 4.执行命令：sudo /etc/init.d/portmap restart 重启portmap服务。nfs是一个RPC程序，使用它前，需要映射好端口，通过portmap设定。 5.执行命令：sudo /etc/init.d/nfs-kernel-server restart 重启nfs服务 &lt;span data-mce-style=&quot;color: #ff0000;&quot; style=&quot;color:#FF0000;&quot;&gt;**注：rpcbind（Ubuntu14.04）就是高版本的portmap**&lt;/span&gt; 注意此时可能会出现：Not starting: portmapper is not running //重启Ubuntu系统后就好了; 6、测试 NFS showmount -e sudo mount&nbsp; 192.168.1.107:/mnt/NFS &nbsp;/home 看是否已经挂载成功 sudo umount 如果用在嵌入式设备上挂载，要加上参数-o nolock **添加环境变量：**&amp;lt;/br&amp;gt; 1&gt;gedit ~/.profile, 在最后一行添加：export PATH=$PATH:/usr/local/arm/4.3.2/bin， 接着source ~/.profile：立即生效 2&gt; sudo gedit /etc/environment，在最后一个:号之后和“号之前添加/usr/local/arm/4.3.2/bin]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[用pelican在github上创建自己的博客]]></title>
+    <url>%2F2013%2F09%2F25%2Fpython-github-blog%2F</url>
+    <content type="text"><![CDATA[今天在网上查用Python生成静态网页，偶然中发现了这个pelican好东东，而且发现可以自己用它在github上创建博客，经过一段的折腾，终于基本上会用了。 MarkdownPad2编辑.md的文章代码，当然也可以用.rst。然后用pelican生成静态网页，通过Github上传到我的Git仓库，今天终于知道了Git的另一个用途，真是太强悍了。MarkdownPad2也感觉挺好用的。]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[串口上位机（接收同步显示FFT波形） 问题Mark！]]></title>
+    <url>%2F2013%2F08%2F30%2F%E4%B8%B2%E5%8F%A3%E4%B8%8A%E4%BD%8D%E6%9C%BA%EF%BC%88%E6%8E%A5%E6%94%B6%E5%90%8C%E6%AD%A5%E6%98%BE%E7%A4%BAFFT%E6%B3%A2%E5%BD%A2%EF%BC%89-%E9%97%AE%E9%A2%98Mark%EF%BC%81%2F</url>
+    <content type="text"><![CDATA[//———————————————————————— 1.消除: warning C4996:&amp;nbsp;’sprintf’: This function or variable may be unsafe. Consider 的方法: http://blog.csdn.net/lllxy/article/details/6859289 最简单的可以用的方法: 选项Project &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; Configuration &amp;nbsp; Properties &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; C/C++&amp;nbsp;&amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; Preprocessor &amp;nbsp;&amp;nbsp;|&amp;nbsp;&amp;nbsp; Preprocessor &amp;nbsp; Definitions &amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;添加_CRT_SECURE_NO_DEPRECATE和_SCL_SECURE_NO_DEPRECATE 或用sprintf_s(char *buffer,size_t sizeOfBuffer,const char *format&amp;nbsp;[argument]&amp;nbsp;...);替换 //------------------------------------------------------------------------ 2.vc2008错误：不能将参数 1 从“const char []”转换为“LPCTSTR” http://90chuanlin.blog.163.com/blog/static/4042992920114233169866/ 是因为vs 2008之后项目使用的是unicode字符集，在“项目-属性”中将&quot;unicode字符集&quot;换成&quot;多字节字符集&quot;就行了，也可以将文本内容放在_T()里面，不变字符集。 //------------------------------------------------------------------------ 3.unicode编码与多字节编码 //------------------------------------------------------------------------ 4.oncreat不行要注册MSChart控件&amp;nbsp; //------------------------------------------------------------------------ 5.MsChart实现无闪烁动态曲线(MFC) http://www.cnblogs.com/wy-wangyan/archive/2011/05/13/2045851.html //------------------------------------------------------------------------ 6.VS2010 VC Project的default Include设置 http://blog.csdn.net/jeffchen/article/details/5491435 //------------------------------------------------------------------------ 7.ADC采样，DAC输出sin 8.CString函数大全，去掉最后一个字符 9.CString转float 要考虑字符编码问题 _tstof //------------------------------------------------------------------------ 10.vc中如何对float型数保留两位小数？ http://liangjun1800.blog.163.com/blog/static/349705912009013843523/ &amp;nbsp; loat &amp;nbsp; fMoney &amp;nbsp;&amp;nbsp;=&amp;nbsp;&amp;nbsp; 1.12345;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; fMoney &amp;nbsp;&amp;nbsp;=&amp;nbsp;&amp;nbsp;&amp;nbsp;((long)(fMoney*100)/100.0);&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;或者：&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; float &amp;nbsp; fMoney &amp;nbsp;&amp;nbsp;=&amp;nbsp;&amp;nbsp; 1.12345;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; CString &amp;nbsp; strMoney;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; strMoney.Format(&quot;%.2f&quot;,&amp;nbsp;&amp;nbsp; fMoney);&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp; fMoney &amp;nbsp;&amp;nbsp;=&amp;nbsp;&amp;nbsp; atof(strMoney);&amp;nbsp;&amp;nbsp; //------------------------------------------------------------------------ 11.绘图闪烁问题&amp;nbsp;双缓存法&amp;nbsp; //------------------------------------------------------------------------ 12.m_Picture在初始化之后不能使用m_Picture.BringWindowToTop(); m_Picture.ShowWindow(SW_NORMAL);进异常中断，由以前的类的成员变量改成&amp;nbsp;全局的static CStatic&amp;nbsp; m_Picture;就行了。 //------------------------------------------------------------------------ 13.靠自己是最靠谱的，写程序有感（参考别人的程序，特别是很古老的程序） //------------------------------------------------------------------------ 14.xx.MoveWindow 时候 ASSERT(::IsWindow(m_hWnd))? 动态加载一个窗体窗体里面有一些控件。在重载窗体的onsize函数后对控件的大小进行修改。 http://blog.csdn.net/vip_wanrui/article/details/6550607 解决办法是 if (xxxx.GetSafeHwnd()!=NULL)//必须先判断hwnd是否已经生成。。。。 //------------------------------------------------------------------------ 15.添加状态栏 static UINT BASED_CODE indicators[]=&amp;nbsp;&amp;nbsp;&amp;nbsp; //状态栏的指示器列表，如有未定义的字符串名，需在Resource View的String Table中添加定义 //------------------------------------------------------------------------ 16.添加状态栏导致退出时进入异常中断。 改成&amp;nbsp;全局的static f=(0:length(y)-1)’*fs/length(y);%进行对应的频率转换 点数，及&amp;nbsp;采样率 //------------------------------------------------------------------------ 17.自定义控件（12，16）Picture控件和状态栏 18.ONSize 时要考虑最小化与最大化或尺寸拉伸，分开处理 //------------------------------------------------------------------------ 19.用GetDC()得到的DC,&amp;nbsp;必须调用ReleaseDC()&amp;nbsp;用CreateDC()创建的DC,&amp;nbsp;必须调用DeleteDC() 一般情况下,&amp;nbsp;上面这个代码也能够工作,&amp;nbsp;就是有时要报一点 CHandleMap::RemoveHandle(HANDLE h)异常,&amp;nbsp;跟踪进代码也看不出啥问题. 区别: ReleaseDC()仅是释放对DC的引用 DeleteDC()是删除DC对象,&amp;nbsp;使用GetDC()的时候,&amp;nbsp;明显的这个DC不是我们自己创建的,&amp;nbsp;使用DeleteDC()的话就会将别人(通常是MFC框架)创建的DC干掉,&amp;nbsp;这样当别人要使用自己创建的DC时,&amp;nbsp;就会产生异常&amp;nbsp;了. ReleaseDC()恰好解决这个问题,&amp;nbsp;它仅是释放一个引用,&amp;nbsp;告诉创建者DC,&amp;nbsp;我已经不用了. 最小化，最大化，尺寸拉伸异常中断问题解决！！（因为最小化，最大化，尺寸拉伸时都要调用DC来重绘） //------------------------------------------------------------------------ 20. 添加//DDX_Control(pDX, IDC_PICTURE, m_Picture);&amp;nbsp;&amp;nbsp;//自定义的picture控件 的问题 添加编辑框&amp;nbsp;的问题只能用GetDlgItem(IDC_Freq)，不能用CEdit m_Freq;&amp;nbsp; //------------------------------------------------------------------------ 21. 添加有字符显示的控件&amp;nbsp;就有问题，拷贝的图像从那个控件开始显示&amp;nbsp;原来自定义的IDC_PICTURE的ID号和刚添加的控件ID重复相同了！！！！！！！！！！！！！！！！！ //------------------------------------------------------------------------ 22. InitInstance Run-Time Check Failure #2&amp;nbsp;- Stack around the variable ’dlg’ was corrupted. 缓冲区溢出 原因终于找到：：之前是&amp;gt;&amp;nbsp;,不是&amp;gt;= //一组数据接收完成&amp;nbsp;显示 if(Data_Index &amp;gt;= m_Chart.GetRowCount()) 但改为&amp;gt;=&amp;nbsp;数据就少了一个，图向右移 最终原因： m_Data[]数组溢出，越界 由m_Data[Data_Length]&amp;nbsp;改为m_Data[Data_Length+1];问题解决。]]></content>
+      <categories>
+        <category>PC Soft</category>
+      </categories>
+      <tags>
+        <tag>上位机</tag>
+        <tag>串口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[FM3应用笔记调试+串口上位机（大数据量，高波特率，保存到WAV文件） 问题Mark！]]></title>
+    <url>%2F2013%2F08%2F30%2FFM3%E5%BA%94%E7%94%A8%E7%AC%94%E8%AE%B0%E8%B0%83%E8%AF%95-%E4%B8%B2%E5%8F%A3%E4%B8%8A%E4%BD%8D%E6%9C%BA%EF%BC%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%EF%BC%8C%E9%AB%98%E6%B3%A2%E7%89%B9%E7%8E%87%EF%BC%8C%E4%BF%9D%E5%AD%98%E5%88%B0WAV%E6%96%87%E4%BB%B6%EF%BC%89-%E9%97%AE%E9%A2%98Mark%EF%BC%81%2F</url>
+    <content type="text"><![CDATA[//———————————————————————— 9.2 使用富士通驱动库，启动文件要统一用驱动库的启动文件 FM3 //------------------------------------------------------------------------ 1.FM3使用串口printf打印调试信息步骤 A.keil 打开串口头文件（pdl_user.h文件里ON）--》添加UART驱动库文件（uart_fm3.c，mfs_fm3.c）到工程driver --》添加自己定义的UserUART.c和UserUART.h到工程（里面有重定向printf和包含stdio.h头文件），并包含进去&amp;nbsp;--》勾选option的Target的Use MicroLIB --》添加串口初始化函数UserUART_Init(USER_UART_CH1);对应的串口号要根据重定向里的串口号修改。 B.IAR 将Library Configuration 中的Library&amp;nbsp;设置由&quot;Normal&quot;改为&quot;Full&quot; //------------------------------------------------------------------------ 2.CR_Trimming要添加中断驱动，ICU 等有个中断回调函数 //------------------------------------------------------------------------ 3.对Main Flash擦写，需要使用RAM code，不同的开发环境下的使用，请参考驱动库v1.0的flash章节说明。 //------------------------------------------------------------------------ 4.回车的转义字符&amp;nbsp;n &amp;nbsp;r 程序完毕，开始笔记撰写 //------------------------------------------------------------------------ 5.CRC，字节顺序（大小端模式）和位顺序（），软件算法。单个字节CRC时，要注意异或开关 //------------------------------------------------------------------------ 6.msOS FM3_218s移植问题&amp;nbsp;&amp;nbsp;需研究内核，系统框架及运行流程，硬件错误中断，多数是堆栈溢出，有调试方法。 &amp;nbsp; 8.22?16:28 在FM3_218s基本移植成功，开始正常运行，串口，LED，可以运行（差不多一天时间完成） //------------------------------------------------------------------------ 7.bootloader 注意通信接收的数据和flash32位数据宽度，做适当转换。设置APP程序运行ROM起始地址，中断向量表地址修改（IAR里面只涉及到仿真的时候有用，keil里面很麻烦） //------------------------------------------------------------------------ 8\. 8.23 低功耗的问题，用keil下低功耗的程序之后，下其他程序直接死在系统初始化的晶振起振的地方，用IAR下其他程序却又OK! 时钟与低功耗之间的问题 //------------------------------------------------------------------------ 9\. 8.27 Cortex-M3内核提供了一个ITM(Instrumentation Trace Macrocell)接口, http://blog.sina.com.cn/s/blog_79b01f660101a9e7.html &amp;nbsp;&amp;nbsp;&amp;nbsp;通过JLink的SWD接口实现printf功能! //------------------------------------------------------------------------ 10.MQX与MQX Lite &amp;nbsp; 8.27 //------------------------------------------------------------------------ 11\. 8.28 数据位数，类型，大小要注意。 short 16位， reinterpret_cast CopyMemory realloc 如何：显示“内存”窗口 wave file format //------------------------------------------------------------------------ 12.8.29大数据量出问题，8000点OK！，现在由数组改为指针，还是不行，可以到19000。降低波特率可以有。现修改SerialPort类的接收函数，在其函数内直接存储，不让其每接收一个字节就发送消息，而是接收存储完成发送消息，问题解决。导致前面的问题的原因可能是大数据接收，大量发送消息&amp;nbsp;通信时序堵塞。 指针拼接有问题，文件大小比理论计算的大小减半。其实是存储文件时大小的问题，也顺带检查到拼接的错误。 //------------------------------------------------------------------------ 13\. 8.30 开始优化，加入可选择波特率，设置采样率，采样点数，并优化数据结构，所有存储数据数组改为指针。固定窗口大小。用成员变量要实体化， 修复计算机没有发现串口，串口打开时出现异常。基本完成]]></content>
+      <categories>
+        <category>ARM</category>
+      </categories>
+      <tags>
+        <tag>FM3</tag>
+        <tag>上位机</tag>
+        <tag>串口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[FM3和FSL（M0+）问题Mark]]></title>
+    <url>%2F2013%2F08%2F30%2FFM3%E5%92%8CFSL%EF%BC%88M0-%EF%BC%89%E9%97%AE%E9%A2%98Mark%2F</url>
+    <content type="text"><![CDATA[7.15 以下是我今天的一些笔记或是值得注意不懂的&amp;nbsp;一个小结： 1.资料，平台，工具的发放，准备 2,总线地址。寻址 3.内核+外设，内核的概念。 4.内存保护单元的利用。比如故意出错等。 5.nm工艺（成本）与EMC的权衡。 6.看内存 7.两种keil，IAR开发环境的配置，驱动库的移植。 8.启动文件不要公用 9.hex bin文件烧写的区别 10.flash的擦除,主要是flash的分块，有些型号的是不同的 11.时钟配置，&amp;nbsp;启动代码&amp;nbsp; SysTick内核定时器，&amp;nbsp; GPIO ,bit band 存储器映射。 技术培训的第一天&amp;nbsp;,确实就开始感受到了这次培训的强度，学习的内容多，时间紧,所以技术培训开始的第一天就开始加班了,可能这才进入节奏，虽然一天下来高强度地接收一大堆东西，有点小累，但是很有收获很充实。 ------------------------------------------------------------------------------- 7.16 以下是我今天的一些笔记或是值得注意不懂的一个小结： 1.IAR下.flash文件&amp;nbsp;.board文件 2.boot升级，flash加密 3.NVIC 嵌套向量中断控制器&amp;nbsp;优先级（子优先级，抢占优先级） 4.程序跳转，地址SP PC ，双操作单操作flash，flash升级。 5.看门狗定时器，软&amp;nbsp;硬件看门狗区别及用途。喂狗，复位，中断 6.作业1讲解&amp;nbsp; PLL =&amp;nbsp;&amp;nbsp;/K&amp;nbsp;*N&amp;nbsp;*M&amp;nbsp;/M&amp;nbsp;&amp;nbsp; M的作用。 7.BT，Base Timer, RT ,PWM, PPG 8.低功耗模式，SLEEP ,TIMER, STOP 三种模式的一些差异，及注意事项。 相比以前接触的M3的东西，可能是产品比较新，相关的资料，支持比较少，驱动库还不是很完善，底层的一些东西（内核，地址等）以前也接触的比较少，也没怎么研究，开始比较吃力，现在逐渐开始上手了，进入正轨了，毕竟基于驱动库的编程都是大同小异了，思想，思路都是差不多，只是略微的一些差异，没有ST的驱动库详细全面而已。 --------------------------------------------------------------------------------- 7.17 1.vincent 示波器的一些操作及注意事项。接地，sweep触发方式（auto，，single）捕获信号，使用接头的一些小技巧，&amp;nbsp;&amp;nbsp; roll扫描模式等。 2.进低功耗模式调试接口关闭。 3.中断向量表的一些有效利用 4.完善消化理解前面的一些东西和作业， 5.中断唤醒&amp;nbsp;低功耗模式，要再次进入低功耗。 6.多功能串口，UART时序分析，SPI时序分析 7.ADC，DMA的一些功能介绍，例程分析。 ---------------------------------------------------------------------------------- 7.18 1.简单了解USB了的一些基本知识（简介，发展，协议）。USB的线上的阻抗匹配，FS/LS速度识别（硬件上拉电阻），HS速度识别，动态加载某设备会产生强电流，FM3的USB的一些特征。 2.USB的HID类，USB插入检测过程机制，USB枚举过程，USB描述符（备描述符、配置描述符、端点描述符等），USB HID设备报告描述符详解，USB调试软件工具Bus Hound的使用和一些基本功能。 3.完善前面的PWM，串口程序。 4.实验：FM3板（MB9F218S）的USB移植实验（USB时钟设置，中断入口，IO功能引脚） 5.通过USB boot升级程序的大致过程和基本原理。 ---------------------------------------------------------------------------------- 7.19 1.了解了Ethernet的一些简单概念，物理连接介质， Fujitsu Ethernet功能，结构描述，数据链路层MAC，以太网连接的一些典型电路，物理层PHY，以太网帧结构和分用过程，TCP/IP协议栈，数据格式分析。 2.TCP/IP协议栈的一些简单了解，TCP/IP的具体实现，LwIP &amp;amp; uIP介绍，通过具体例程学习了LwIP &amp;amp; uIP的实际使用过程，测试实验：使用LwIP进行UDP和TCP通信测试实验。综合实验：一个学习板做TCP服务器，一个学习板做TCP客户端，实现两块板子间相互通信。 //3.自己计划LwIP1.4在富士通板子上（MB9F128S）的移植（无OS），加入新的驱动库，以便以后的学习和使用（暂定） 4.自己计划综合实验（前面的AD，PWM，以太网，DMA，UART等综合） 5.一周的富士通FM3的培训结束了，课程也基本上跟着学完了，很多东西都只有在实践中才能检验出来，也只有通过后面的实践，后面的工作不断地巩固，不断地完善，才能更好地服务于工作。 ----------------------------------------------------------------------------------- 7.22 1.飞思卡尔M0+的整体了解，包括多种系列外设的一些比较，几种低功耗模式，ARM Cortex M0+的一些特点。 2.FSLM0+开发环境的配置，调试模式的配置，新建工程的一些注意事项，FSLM0+的GPIO介绍，一些简单的使用操作，进行GPIO闪灯+按键检测实验。 3.MCG 时钟模式之间的区别与对比，时钟模式之间的切换过程及关系。时钟模式切换，分析例程分析和实验。 4.中断，中断优先级，中断向量表，不可屏蔽中断NMI ----------------------------------------------------------------------------------- 7.23 1.WDOG 窗口看门狗的特点及意义。相关寄存器的对应配置，例程demo程序分析，可能由于硬件原因，看门狗好像无法正常工作。 2.PIT的功能，作为触发源，PIT的框图，相关的例程example分析。 3.RTC的时钟源，OSC对RTC时钟源的影响，相关寄存器说明，例程程序分析，可能由于硬件原因，外部32768晶振无法正常工作，导致RTC的外部时钟源不可用。 4.LPTMR的模块概况，几种操作模式，相关寄存器的配置。LPTMR的几种功能说明：LPTMR比较，LPTMR计数器，LPTMR硬件触发器，LPTMR中断等，例程分析。 5.TPM模块的整体架构，及大致工作原理。TPM模块相关功能：计数器，输入捕捉模式，输出比较模式，边沿对齐PWM(EPWM)模式，中心对其PWM模式(CPWM)TPM中断等等，对应库函数说明，分析。 ------------------------------------------------------------------------------------ 7.24 1.DMA 周期性触发模式仅适用于渠道0-1，flash赋值要通过寄存器操作，数据传输时间对比实验（直接赋值，指针，DMA）&amp;nbsp; 32bit的传输 2.UART 0低功耗串口，过采样，发送接收中断的触发（start，stop，re-start等），特殊的10bit地址模式，中断源，地址匹配，例程代码实验，分析，与DMA的综合实验。 SPI，协议时序分析，多种工作模式，FIFO模式，SPI传输DMA，SPI时钟格式分析。 4.飞思卡尔M0+的USB电压调节器。 5.软件模拟I2C ------------------------------------------------------------------------------------ 7.25 1.SPI的调试，SCL,MOSI看到数据波形，这也是后面用SPI操作SD卡的基础 2.SD的一些简单知识了解（硬件，及发展），SPI模式下操作SD卡初始化，实现简单的读写。 3.硬件错误中断可能的原因（时钟配置，O初始化），示波器的触发电平要合适，系统滴答时钟的作用 4.FAT32文件系统的简单了解，其发展过程和一些基本的知识，移植时候的注意事项和关键点。&amp;nbsp; 5.FAT32文件系统在飞思卡尔M0+上的简单移植。 6.清零的模式，好像不习惯被动接受的这种模式。 ------------------------------------------------------------------------------------ 7.26 1.COMP 滞环特性 2.DAC &amp;nbsp;+ OMP，初始化的先后顺序，中断开启或功能使能最好最后操作，引脚干扰问题 3.M0+ ADC，时钟MHZ，&amp;nbsp;同步采样问题，各种低功耗模式下的，LSB的含义，内部温度传感器 4.重定向printf函数 MDK（keil）工程属性的“Target“-》”Code Generation“中勾选”Use MicroLIB #ifdef __GNUC__ /* With GCC/RAISONANCE, small printf (option LD Linker-&amp;gt;Libraries-&amp;gt;Small printf &amp;nbsp;&amp;nbsp;&amp;nbsp; set to ’Yes’) calls __io_putchar()&amp;nbsp;*/&amp;nbsp; #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)&amp;nbsp; #else #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)&amp;nbsp; #endif /* __GNUC__ */&amp;nbsp; /**&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@brief &amp;nbsp; Retargets the C library printf function to the USART.&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@param &amp;nbsp; None&amp;nbsp; printf &amp;nbsp;&amp;nbsp;&amp;nbsp;*&amp;nbsp;@retval None &amp;nbsp;&amp;nbsp;&amp;nbsp;*/&amp;nbsp; PUTCHAR_PROTOTYPE {&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;/* Place your implementation of fputc here */&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp;//UART0_PutStr(&amp;nbsp;(uint8_t*)ch);&amp;nbsp; while(&amp;nbsp;!(UART0_S1&amp;amp;UART_S1_TDRE_MASK));// UART0_D =&amp;nbsp;(uint8_t)ch; &amp;nbsp;&amp;nbsp; return ch;&amp;nbsp; }&amp;nbsp; 5.周末：RTC+LCD+UART+ADC_TEMP综合调试完成，主要问题是段式的显示驱动 6.python 语音识别，语音操作，利用周围的一切可以利用的工具或资源（编程语言或是软件工具等），只为能高效地实现自己的东西，如此下去，从而达到一个很好地良性循环。 ----------------------------------------------------------------------------------- 7.29 1.复习回顾上周学的一些东西。 2.各种低功耗模式分析，对比，和其他产品的对比（48M，），各种低功耗模式下各外设的情况，低功耗模式唤醒源介绍及对比。能耗。进入低功耗模式之前，最好delay以下。 3.整机时，进入低功耗之前要每个IO初始化（低电平（悬空），高电平（上拉））。 4.低功耗实验：Vlps_LPTMR实验，LLS低功耗模式下LPTMR中断唤醒实验，BLPI时钟模式下Vlpr低功耗实验 5.切换时钟源之后要更新内核时钟 SystemCoreClockUpdate();&amp;nbsp;&amp;nbsp;注意时钟源的选择。 6.进入LLS或VLLSx模式之前，(具备唤醒功能的外设)外设中断标志必须由软件清零才可以进入，以避免立即退出模式。 对一个外部输入引脚，过滤和未过滤的相关的标志，也必须清除，在进入LLS或VLLSx模式之前。 7.低功耗模式切换时，注意外部主时钟的开启与关闭。 -----------------------------------------------------------------------------------7.30 ----------------------------------------------------------------------------------- 7.31 1.时钟选择，IO复用了。 9.37&amp;nbsp; 100.6&amp;nbsp; 11.736 2.Edge_Aligned_PWM的模式与占空比的控制要相匹配，Edge_Aligned_PWM_Highpulses/Edge_Aligned_PWM_Lowpulses,控制方向是相反的。 3.值溢出错误 ------------------------------------------------------------------------------------ 8.2 1.晶振匹配电容，起振，很微妙，几个pf 2.VCWizards/2052/Common.js VCWizards/AppWiz/MFC/Application/html/2052/GetnerateClasses.htm 解决VS2012 新建工程&amp;nbsp;上两个JS脚本运行不了，用安装光盘修复 3.莎士比亚&amp;nbsp;说过，简洁才是美！&amp;nbsp;《漫画半导体》，越简单越好，不论是交互还是学习，方法论，1:3:6 4.要有市场概念，市场意识，只有有人用的东西才是好东西，不能闭门造车。 http://www.admin10000.com/document/2411.html Do the right thing, Wait to get fired 敢于去冒险，风险分析，成本（时间）分析，发展空间分析，短长时间阶段分析，SWOT分析 抓住key //———————————- 10.25 FSL KL系列BootLoader程序，S19文件 Keil生成S19文件： 在option的user选项的run user program After Build添加命令行： fromelf –m32combined –output=outfile.s19 &nbsp;.axf文件路径 BootLoader程序解决，修改上位机源代码，Keil 生成的S19文件开始的存储的起始地址始终为0x400 S19 //———————————-12.4Flash操作，首先检查Flash的类型，使用RAM Code，Keil和IAR不同，是否中断,通信口记得要禁用模拟输入程序过大，进硬件错误中断，可以考虑RAM大小及堆栈大小，.s文件里面生成bin fromelf –bin –output .oot.bin .objBt2E.axf //———————————- 富士通 读保护：读保护写不进去，即0x0001写不进0x00100000地址修改驱动库函数 ，14-7.28Keil将库文件或是C文件编译到指定地址，优化选项的：One ELF]]></content>
+      <categories>
+        <category>ARM</category>
+      </categories>
+      <tags>
+        <tag>FM3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[毕设Mark！]]></title>
+    <url>%2F2013%2F06%2F13%2F%E6%AF%95%E8%AE%BEMark%EF%BC%81%2F</url>
+    <content type="text"><![CDATA[虽然被批没得工作量，但还是把一些调试问题Mark一下，留点记忆。快点坑完，开店走人。。。 以前都能正常工作的一个函数，今天突然不行了，纠结了大半个下午这个问题，重启下电脑就好了。。。。无语了。。 串口异步通信非阻塞。一般使用多线程，，读操作和写操作在不同的线程里面，执行操作后会立即返回，而不管读写有没有成功， 在同步执行时，函数直到操作完成后才返回。这意味着在同步执行时线程会被阻塞 最好还是用中断写串口，调了一两天的乱码的问题，从无线模块到串口，要么是最前面多个字符要么是最后少个字符，或是经常乱码（重复最后一个字符），但是奇怪的是两个程序的串口的可以，另外一个不行，都是用的查询方式，最后都改成中断的方式就行了 看来不是啥东西高级就好，以前的代码现在用就不行了，Vs2010默认的是unicode编码，好多东西都要先处理成宽字节，今天调了一天发现又是编码的问题，以前就遇到了很多的编码问题，包括Vs，python 等等，调试助手可以调通，自己写的就不行，不是不行，只是最多开始能发一两次正确的，之后就Over了 WideCharToMultiByte&amp;nbsp;//unicode转多字符 在发送串口数据前使用此函数 另外优化经典的串口类CSerialPort的WriteChar函数，解决发送次数过多程序死机的问题 单步调试一点问题都没有，直接运行过段时间就会直接崩溃掉，在网上查了很多，和自己的想法差不多，要么是线程堵塞，要么是内存泄漏。特别是又涉及到数据通信相关，多线程问题尤其重要，最后屏蔽掉很多问题依旧在，不过缩小范围，锁定到了发送的部分。接着查看任务管理器，看该程序运行时占用内存在不断的增加，就知道肯定是内存泄漏了，首先就开始找new之类的部分，也锁定到了给串口发数据的部分，因为涉及到要把unicode转到多字节字符，就用到下面函数： char * buf= new char[S_buf.GetLength()]; WideCharToMultiByte(CP_ACP, 0, S_buf,&amp;nbsp;-1, buf,&amp;nbsp; S_buf.GetLength(), NULL, NULL);//unicode字符转多字符 m_Port.WriteToPort(buf,S_buf.GetLength()); app-&amp;gt;m_Process_OK = false; delete []buf&amp;nbsp;; 发现只有new&amp;nbsp;没有 delete。而且之前用的是new()，很明显这里要用数组， new[]配对delete []。 多回传一个字符串而且是发送过去的字符串，接收到的字符串是定义的两倍长度，即定义的是10，收到的是20&amp;nbsp;长度的，其中前10&amp;nbsp;是正确的，后10&amp;nbsp;就是刚刚发送到下位机的，原来是extern的缘故 时序和逻辑很重要 看来我的灵感一般是在吃饭，上厕所，睡前三种情况下才能闪现啊。 组网： 1.由主机寻找所有从机，即连续发送要找的所有从机地址（有问题，以前的方法） 2.从机主动找主机。比较麻烦。 3.主机寻找第一个从机，再第一个接力下去（现在开始实验） 语境运算]]></content>
+      <categories>
+        <category>PC Soft</category>
+      </categories>
+      <tags>
+        <tag>上位机</tag>
+        <tag>毕设</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python之编码问题]]></title>
+    <url>%2F2012%2F10%2F10%2FPython%E4%B9%8B%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[好久没在点点上活动了，没想到dongblog的访问量已经突破10000了！ 最近遇到了个很纠结的问题，Python的问题，可能这对新手来说，是个普遍的问题了。但谁要Python是外国人发明的呢！我们中国人也来弄个只能用中文编码的来瞧瞧，哈哈。 在程序调试的时候，可能这个问题很容易解决，就一句#&nbsp;--coding:utf-8--&nbsp;&nbsp;搞定！ 但是在直接用python.exe或打包成.exe的时候就头疼了，始终报错，编码问题！我也知道是代码中有中文的问题，因为中文在里面看起来就很别扭！呵呵，最后google之，终于在http://www.cnblogs.com/WebClerk/archive/2012/09/29/2708672.html找到了成功解决的办法！虽然之前十六很多种&nbsp;都没成功！（ps.还是google强大！百度不知道的问题google知道，可惜啊，google经常被潜了，要不是打不开就是很慢，连个googlegroup都打不开！） 具体就是在&nbsp;程序开头设置编码： ##&nbsp;&nbsp;编码处理 import&nbsp;sys reload(sys) if&nbsp;hasattr(sys,”setdefaultencoding”): sys.setdefaultencoding(’gb2312’) ##&nbsp;&nbsp;编码处理 over！最后顺带发两个刚刚打包好的exe（我们学校和川大的招聘信息批量获取）： http://pan.baidu.com/share/link?shareid=77199&amp;uk=1427077211]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[菜鸟学Android（1）]]></title>
+    <url>%2F2012%2F09%2F13%2F%E8%8F%9C%E9%B8%9F%E5%AD%A6Android%EF%BC%881%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[一、环境配置相关： adb forward tcp:6100 tcp:7100 Android 模拟器加载 SD： http://www.cnblogs.com/jerrychoi/archive/2009/09/12/1565281.html 好像不支持中文文件名。。。（4.1的） Android requires compiler compliance level 5.0 or 6.0. Found ’1.7’ instead. Please use Android Tools &gt; Fix Project Properties. 解决方法： 1.项目右键 -&gt;android tools-&gt;Fix Project 2.如果不可以，检查Project-&gt;Properties-&gt;Java Compiler 确认JDK compliance被设置为1.6,并且enable specific seetings. 经过这两步问题基本解决。 修改AVD的路径 xml文件名是不能有大写的 eclipse中绑定android源码 http://eagle0824.iteye.com/blog/982733 二、一些控件等具体的细节： android ListView详解 http://www.cnblogs.com/allin/archive/2010/05/11/1732200.html Android–文件保存与读取 http://tdq222.iteye.com/blog/701161 http://blog.csdn.net/cbirdlg/article/details/5908581 Android 数据存取之Databases http://blog.csdn.net/zhiyi2010/article/details/6570828 Android 中数据库查询方法 query() 中的 selectionArgs 的用法 http://blog.csdn.net/uoyevoli/article/details/4970860 Android SQLite数据库增删改查操作 http://iaiai.iteye.com/blog/1066721 SQLite数据库查看工具 http://mysuperbaby.iteye.com/blog/902232 SQLite数据库操作笔记 http://www.360doc.com/content/11/0210/17/3639038_91920936.shtml Android 中关于 【Cursor】 类的介绍 http://www.cnblogs.com/TerryBlog/archive/2010/07/05/1771459.html Android菜单详解 http://www.cnblogs.com/codingmyworld/archive/2011/08/22/2149323.html Android 如何建立你的菜单 http://blog.csdn.net/wangjinyu501/article/details/7627438 android PopupWindow模拟Windows开始菜单显示消失效果 http://blog.csdn.net/maylian7700/article/details/6726425 Android学习笔记（四二）：SQLite、ListView、ContextMenu http://blog.csdn.net/flowingflying/article/details/6846991 一个类里调用另一个类里的函数： 实体化 new一个 使用静态函数 intent 机制 Sqlite 清空表中所有数据 并重置自增长数据 http://emowuyi.iteye.com/blog/1331662 http://ganw.blog.163.com/blog/static/2034931972012122111445141/ http://www.iteye.com/topic/351001 Android sqlite中判断某个表是否存在方法 http://mycoding.iteye.com/blog/939683 Android控件之Spinner探究 http://www.apkbus.com/android-2440-1-1.html &nbsp; 。。。 。。。]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[菜鸟学Python（1）]]></title>
+    <url>%2F2012%2F06%2F27%2F%E8%8F%9C%E9%B8%9F%E5%AD%A6Python%EF%BC%881%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[学语言从写播放器开始！写个播放器，很多语法，用法。。。都会用到 自己写的Lrc解析终于能用了，至此播放器终于有了个雏形了，Python也开始上手了。 贴上自己遇到的诸多问题及解决方法，以此纪念，也留下个记号。（为了尊重版权，只贴上相应的链接） wxpython pydev 断点&nbsp; &nbsp; ctrl + F10 pydev运行和调试 http://hi.baidu.com/chjj910/item/8f90b688fb4824c098255f96 python format string (转) http://www.cnblogs.com/end/archive/2012/06/20/2556008.html 用python+wxpython写的闹钟程序 http://blog.csdn.net/cfeibiao/article/details/6754618 PYTHON对文件及文件夹的一些操作 http://www.cnblogs.com/phoebus0501/archive/2011/01/19/1939646.html http://my.oschina.net/u/131802/blog/61610 http://hi.baidu.com/leejun_2005/item/3f6f8ddc8a8b3b56d73aae64 清空文件内容 f.truncate() 注意：仅当以 “r+” “rb+” “w” “wb” “wb+”等以可写模式打开的文件才可以执行 该功能。 Python 3D Software Collection&nbsp;&nbsp;http://www.vrplumber.com/py3d.py PyKyra&nbsp; &nbsp;&nbsp;http://www.alobbs.com/pykyra pygame&nbsp;&nbsp;http://www.pygame.org/news.html python小脚本让你的电脑说英语&nbsp;&nbsp; &nbsp;http://ipython.iteye.com/blog/328109&nbsp;（这个有点意思！） 窗口操作：要确保你对想要的子窗口有一个正确的引用，那么使用GetWindow1()和 GetWindow2()方法。GetWindow1()方法返回顶部或左边的子窗口，而GetWindow2()方法返 回底部或右边的窗口。由于没有一个直接的设置方法来改变一个子窗口，所以使用方法 ReplaceWindow(winOld, winNew)，winOld是你要替换的wx.Window对象，winNew是要显示 的新窗口。 http://www.czug.org/python/wxpythoninaction/ch08.htm GetParent() GetWindow2 python类之间的相互调用 http://topic.csdn.net/u/20090319/10/8997f7c3-8333-4c09-bb5e-6b1969c23f5a.html http://stackoverflow.com/questions/805066/how-to-call-a-parent-classs-method- from-child-class-in-python 模块用import 如何获得Python脚本所在目录的位置 os.getcwd() “C:test”，取的是起始执行目录 sys.path[0]或sys.argv[0] “C:testgetpath”，取的是被初始执行的脚本的所在目录 os.path.split(os.path.realpath(file))[0] “C:testgetpathsub”，取的是 file所在文件sub_path.py的所在目录 http://www.elias.cn/Python/GetPythonPath?from=Develop.GetPythonPath wxpython学习之listctrl(一） http://hi.baidu.com/newharvar/blog/item/d396c0c460a397ca38db4916.html py2exe使用方法 (含一些调试技巧，如压缩email 类) http://justcoding.iteye.com/blog/900993 py2exe遇到的问题 ：路径问题（还未解决） py中的路径分割与合并 &gt;&gt;&gt; import os 导入os模块 &gt;&gt;&gt; os.path.expanduser(“D:”) ’D:’ &gt;&gt;&gt; os.path.expanduser(“~”) 返回扩展当前用户根目录 ’C:Documents and SettingsAdministrator.4DB853E547A44B6’ &gt;&gt;&gt; os.path.join(os.path.expanduser(“~”), “Python”) ’C:Documents and SettingsAdministrator.4DB853E547A44B6Python’ &gt;&gt;&gt; os.path.split(“D:Python25python.exe”) 分割路径名 (’D:Python25’, ’python.exe’) 返回一个Tuple &gt;&gt;&gt; (filepath, filename) = os.path.split(“D:Python25python.exe”) 一 一对应 &gt;&gt;&gt; filepath ’D:Python25’ &gt;&gt;&gt; filename ’python.exe’ &gt;&gt;&gt; (shorton) = os.path.splitext(filename) 分割文件名，仍然是个Tuple &gt;&gt;&gt; shortname ’python’ &gt;&gt;&gt; extension ’.exe’ &gt;&gt;&gt; Python正则表达式指南 http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html Python中的正则表达式2 http://hi.baidu.com/gylxue/item/7121d00a402334e83499020a python类型转换 http://jayzotion.iteye.com/blog/349654 Python 处理字符串 http://marinzou.blogbus.com/logs/66589754.html http://blog.csdn.net/lanphaday/article/details/2610733 用正则表达式解析LRC文件 http://www.java3z.com/cwbwebhome/article/article5/51331.html?id=4221 Python的map、filter、reduce函数 Python list 操作 Python 列表 list 数组 array http://justcoding.iteye.com/blog/902282 Python字典的应用详解 http://skyfen.iteye.com/blog/567571 python 字典 添加 http://www.cnpythoner.com/post/64.html python天天进步(3)–字典排序 http://www.cnblogs.com/vivilisa/archive/2009/03/01/1400972.html mp3歌词显示乱码 http://blog.163.com/yingang_2006@126/blog/static/373004672011519103015328/ 出现同样情况的机友用记事本方式打开LRC格式，选另存为，编码选ANSI即可 &nbsp;]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于Python]]></title>
+    <url>%2F2012%2F06%2F18%2F%E5%85%B3%E4%BA%8EPython%2F</url>
+    <content type="text"><![CDATA[最近发现Python 很不错，以前我的同学弄的时候没怎么注意，面向对象。 于是开始在自己的电脑上搭建环境。环境搭建感觉都有点复杂。。。。 开始在VS上的环境搭建成功（PTVS工具） eclipse + Pydev搭建完成不久，纠结了很久的是版本的问题，看来有些东西不是最新版本越好，特别是对于那种需要多种东西来配置环境的 就如在eclipse配置Python的环境，要eclipse+Pydev+Python+JAVA… 后来又纠结Python基于GUI编程，选项很多，框架也很多，但感觉网上都说不咋好的，就发现了新的好玩的kivy（不支持中文路径） 感觉中国玩Python不是很多，kivy就更少了，资料少得可怜！有都是英文的。。。 &nbsp;]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>eclipse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[菜鸟学Matlab（3）]]></title>
+    <url>%2F2012%2F06%2F18%2F%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%883%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[打算弄点Matlab音频方面的，于是有了想法，做个MP3 播放器。 开始以为很简单，后来才发现原来因为Malab的本身的机制，它本来就不适合做MP3 播放器，在网上查，资料都很少很少，不过到现在还是做了个雏形出来了。真是步步艰辛啊，和VC的思路很不一样，而且还要借助别人写的库，功能还只能readMP3,。。。 下面说说遇到的一些问题，当然还没完。。。 Matlab播放音频（Mp3）1.toolbox &nbsp; &nbsp; 2.simulink &nbsp; 3.ActiveX控件 simulink的signal processing下，platform-specific I/O，双击进入可以看到WIN32,再双击就找到这两个模块了。.toolbox 只能播放wav的 matlab的文件打开对话框函数 uigetfile http://hi.baidu.com/hxk622/blog/item/26569485ae8d6227c75cc3f6.html [FileName,PathName,FilterIndex] = uigetfile(FilterSpec,DialogTitle,DefaultName) FileName：返回的文件名 PathName：返回的文件的路径名 FilterIndex：选择的文件类型 FilterSpec：文件类型设置 DialogTitle：打开对话框的标题 DefaultName：默认指向的文件名 没有在最后加guidata(hObject,handles); guidata函数可暂存图像fig内的数据，故在函数之间，可方便的作为一个中介。当在一个函数存入后，可在另一函数中取出 在handles.r=audioplayer(Y,FS); 要暂存handles.r 没有所以没声音 没资料，还得靠自己，从root出发，见截图 ![](http://imglf2.ph.126.net/CHAMCvmXAIWExRwyv7nHeg==/1682657410876303073.jpg) &nbsp; audioplayer http://www.weizmann.ac.il/matlab/techdoc/ref/audioplayer.html MATLAB LISTBOX http://blog.sina.com.cn/s/blog_51eea616010091pc.html out of memory 内存管理 内存确实是个问题 ，特别对于Matlab来说！ http://hi.baidu.com/daizhengxian/blog/item/8c46f948ddeaf63209f7efac.html Matlab中的actxcontrol函数 http://bbs.sciencenet.cn/blog-287752-294549.html Matlab对ActiveX控件的支持]]></content>
+      <categories>
+        <category>Matlab</category>
+      </categories>
+      <tags>
+        <tag>Matlab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[菜鸟学Matlab（2）]]></title>
+    <url>%2F2012%2F06%2F16%2F%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%882%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[经过这几天的“奋战”，真的是废寝忘食啊，接口环境基本上已经搭建成功！VC和Matlab的串口，Matlab的视频采集框架都已OK，基于此的数据采集，数字信号处理，数字图像处理都进行了！ 下面是调试Matlab的视频采集和串口遇到的一些问题： Matlab 串口：有3种处理方式（M， simulink，toolbox） 纠结了很久的一个问题:显示乱码，，开始始终以为是数据类型的问题， 后来发现原来是在算数据位的时候算错了！！ 开始一直没有显示，以为 是其他程序的原因，一直纠结，后来发现是最根本的问题，打开串口都 错了，一个疏忽，调试的时候一个地方没改过来，一切要开始从根慢慢 找Bug matlab使用多个toggle按钮&nbsp;早上起来终于知道这个了，原来多个不能 放在同一个button group 里面，否则达到的效果就是单选，即一个按钮 按下去，其他会全部弹上来 axes坐标图 http://blog.csdn.net/hustspy1990/article/details/4664996 用MATLAB中的comet函数出动态图 str2num(S(:))’将字符串转换成数组 如何使用MATLAB进行USB2.0摄像头的编程 http://blog.renren.com/share/304992101/7618043741 关于matlab中的waitbar http://blog.csdn.net/yihandk666/article/details/6900596 如果matlab在运行需要很长时间的程序，或者是要循环很多遍的时候， 用户就不知道程序运行到了什么地方了。每次输出循环变量i是一个办法 ，但太丑陋了。Matlab提供了waitbar函数。 简单运行如下： h = waitbar(0,’Please wait…’); n = 1000; for i = 1:n pause(0.01) % Do something important0, waitbar (i/n,h) end 这个函数有三个缺点： 1. 没有显示完成的百分比 2. 没有显示剩余 完成时间 3. 中途无法关闭waitbar 有人改进了这个函数[http://blinkdagger.com/matlab/matlab-gui- tutorial-progress-status-bar/](http://blinkdagger.com/matlab/matlab-gui- tutorial-progress-status-bar/) clear all； n = 1000; for i = 1:n stopBar= progressbar(x/n,0); if (stopBar) break; end end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %% progressbar需要两个输入变量，第一个，完成百分比，第二个，位 置。 [x, y] - Position of lower left corner in normalized units (0.0 - 1.0) 0 - Centered (Default) 1 - Upper right 2 - Upper left 3 - Lower left 4 - Lower right 5 - Random [x, y] position 另外还可以去 [http://www.mathworks.com/matlabcentral/fileexchange/22161- waitbar-with-time-estimation](http://www.mathworks.com/matlabcentral/fileexchange/22161- waitbar-with-time-estimation)&nbsp;这里可以下载到另一个版本的waitbar h = waitbar(0,’Please wait…’); n = 1000; % progressbar % Create figure and set starting time for i = 1:n pause(0.01) % Do something important0, waitbar(i/1000,h) end 这个版本的一个问题就是，当中途关闭waitbar时，会有错误提示。推荐&nbsp;使用第一个版本的。 ?? Multiple VIDEOINPUT objects can not access the same device&nbsp; simultaneously. 你是不是用了多个摄像头插在USB接口上的？ 而且你的是通过USB Hub接 出来的，matlab没有办法识别通过Hub分解出来的地址，所以认为出现你 的问题，你换一个独立的USB接口就可以了，如果你本身电脑商独立USB 接口比较少就没有办法了??当然电脑集成的多个USB接口也有可能是通 过Hub来扩展的。 http://www.ilovematlab.cn/thread-12034-1-1.html 实在没法，重启Mtlab，由于有时候编程的不规范导致有些资源一直被占用，没有释放，从而会出现一些莫名其妙的Bug！特别是用一些设备的时候（串口，USB。。。） &nbsp;]]></content>
+      <categories>
+        <category>Matlab</category>
+      </categories>
+      <tags>
+        <tag>串口</tag>
+        <tag>Matlab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[菜鸟学Matlab（1）]]></title>
+    <url>%2F2012%2F06%2F14%2F%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%881%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[Matlab博大精深，无比强悍，今天有发现了个秘密：LEGO MINSTORMS NXT 最近弄了些Matlab的程序，（图像处理的，ECG信号处理的），虽然都是些皮毛，而且有些还是在别人程序上改的，但遇到了很多问题，用到了很多函数，在这把它们在这总结一些。 &nbsp; 1.这是一个Matlab初学者经常遇到的问题~网上也有很多的解决方法，比如 先复制到txt，再转帖到word~~ 但是这些都不是从根本上解决问题的，本文提供一种一劳永逸的方法： File–preference-fonts–custom–你选editor然后旁边选custom，然 后找你的字体吧。选宋体之类的都可以。 http://my.oschina.net/duluo180/blog/4658?from=rss 2.MATLAB 类型转换（转载） int转string:int2str(m) double转string:num2str(m) 在matlanb中help uint8，就可以看到matlab中常用的数据类型，如 double, single, datatypes, isinteger, uint16, uint32, uint64, int8, int16, int32, int64,等，至于每种数据类型 在计算机中占几个字节，精度高的向精度低的转换会丢失哪些信息则没 有仔细研究。如果部考虑信息损失问题，类型转换就比较 简单了。假如 现在有一double型的变量i要转换成uint8型，则只需i=uint8（i）就行 了。datatypes没去研究过，应当跟一般的数值 类型有所区别，其它的 数值类型就以此类推，v=datatype（v）。 [http://hi.baidu.com/%D7%CF%E4%EC%CD%AC %C3%CE/blog/item/96c611211f8c41ffd6cae242.html](http://hi.baidu.com/%D7%CF%E4%EC%CD%AC %C3%CE/blog/item/96c611211f8c41ffd6cae242.html) 3.Matlab关于pop-up menu的运用 在设置一个GUI中用到了pop-up menu弹起式菜单，该菜单中共 列有5个选项：即”A”，“B”，“C”，“D”，“E”。最开始时“D”和 “E”选项是不可用的，把他俩设置为灰色，只有先运行了“A”或“B” 或“C”之后，其得到的结果F，才可使“D”和“E”选项可用(也即F是 D,E中的参数) 做法： 那就可以可以在程序开始运行时，在pop-up menu里只设置三个 string：”A”(回车)“B”(回车)“C”(回车)，当选择”A”(回车)“B”( 回车)“C”(回车)中的任意一个时，再向pop-up menu里面添加D和E项， 这样也能满足要求。 程序代码： function popupmenu1_Callback(hObject, eventdata, handles) global isexec value=get(hObject,’value’); str1=get(hObject,’string’); switch value case 1 %执行A if isexec==0 str1=[str1;’”D”(回车)’;’”E”’]; set(hObject,’string’,str1); isexc=1; end case 2 %执行B if isexec==0 str1=[str1;’”D”(回车)’;’”E”’]; set(hObject,’string’,str1); isexc=1; end case 3 %执行C if isexec==0 str1=[str1;’”D”(回车)’;’”E”’]; set(hObject,’string’,str1); isexc=1; end case 4 %执行D msgbox(’D’); case 5 %执行E msgbox(’E’); end 4.reshape 和matlab中的不等于 5.matlab简单交互式对话框 http://hi.baidu.com/einyboy/item/421cb94cdd1ca6e9a5c066a0 msgbox(’你要显示的内容’, ’对话框标题’); matlab中inputdlg函数用户交互中使用方法如下： answer = inputdlg(prompt,dlg_title,num_lines,defAns,options) prompt：输入文本框的标签 dlg_title：对话框的标题 num_lines：输入文本框的行数 defAns：默认的文本框内容 options：一些可选的对话框选项 如 prompt={’Enter the matrix size for x^2:’,… ’Enter the colormap name:’}; name=’Input for Peaks function’; numlines=1; defaultanswer={’20’,’hsv’}; options.Resize=’on’; options.WindowStyle=’normal’; options.Interpreter=’tex’; answer=inputdlg(prompt,name,numlines,defaultanswer,options); 返回为字符串，如果想转化为数字，可以是使用函数eval。 另外input函数也可以实现用户信息输入，不过是在命令行中输入，也很 简单、常用。 6.Matlab的GUI的全局变量 。。。。。。 &nbsp;]]></content>
+      <categories>
+        <category>Matlab</category>
+      </categories>
+      <tags>
+        <tag>Matlab</tag>
+        <tag>图像处理</tag>
+      </tags>
+  </entry>
+</search>
