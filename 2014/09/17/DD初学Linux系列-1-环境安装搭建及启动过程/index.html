@@ -89,28 +89,19 @@
 
 
 
-<meta name="description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;----------
-
-##&amp;amp;nbsp;一、PC版：&amp;amp;nbsp;##
-&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。
-上周末，给自己的本本重装了下系统，SSD上装win8.1">
+<meta name="description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;
+一、PC版：&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。上周末，给自己的本本重装了下系统，SSD上装win8.1，原来硬盘装系统和软件的盘来装Ubuntu麒麟版。先装了win8.1，再装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DD初学Linux系列--1.环境安装搭建及启动过程">
 <meta property="og:url" content="mark.z-dd.net/2014/09/17/DD初学Linux系列-1-环境安装搭建及启动过程/index.html">
 <meta property="og:site_name" content="DD'echo">
-<meta property="og:description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;----------
-
-##&amp;amp;nbsp;一、PC版：&amp;amp;nbsp;##
-&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。
-上周末，给自己的本本重装了下系统，SSD上装win8.1">
-<meta property="og:updated_time" content="2017-04-27T03:59:03.373Z">
+<meta property="og:description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;
+一、PC版：&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。上周末，给自己的本本重装了下系统，SSD上装win8.1，原来硬盘装系统和软件的盘来装Ubuntu麒麟版。先装了win8.1，再装">
+<meta property="og:updated_time" content="2017-05-07T05:35:18.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DD初学Linux系列--1.环境安装搭建及启动过程">
-<meta name="twitter:description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;----------
-
-##&amp;amp;nbsp;一、PC版：&amp;amp;nbsp;##
-&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。
-上周末，给自己的本本重装了下系统，SSD上装win8.1">
+<meta name="twitter:description" content="DD初学Linux系列–环境安装搭建及启动过程&amp;nbsp;
+一、PC版：&amp;amp;ensp;　&amp;amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。上周末，给自己的本本重装了下系统，SSD上装win8.1，原来硬盘装系统和软件的盘来装Ubuntu麒麟版。先装了win8.1，再装">
 
 
 
@@ -359,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:35:18+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -413,105 +404,22 @@
       
 
       
-        <h1 id="DD初学Linux系列–环境安装搭建及启动过程-nbsp"><a href="#DD初学Linux系列–环境安装搭建及启动过程-nbsp" class="headerlink" title="DD初学Linux系列–环境安装搭建及启动过程&nbsp;"></a>DD初学Linux系列–环境安装搭建及启动过程&nbsp;</h1><pre><code>----------
-
-##&amp;nbsp;一、PC版：&amp;nbsp;##
-</code></pre><p>&amp;ensp;　&amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。</p>
-<p>上周末，给自己的本本重装了下系统，SSD上装win8.1，原来硬盘装系统和软件的盘来装Ubuntu麒麟版。</p>
-<p>先装了win8.1，再装Ubuntu，接下来就是引导了，用了EasyBCD来设置。</p>
-<p>于是顺便了解了下Linux引导（LILO和Grub）—来源于网络</p>
-<pre><code>&amp;gt;&amp;nbsp;如果想要在同一机器上运行 Windows 和 Linux，那么应该先安装Windows OS，然后再安装 Linux OS，这样，在 Linux 安装中所选择的引导加载程序就不会被 Windows 引导加载程序所覆盖。与 Linux 引导加载程序不同，多数 Window 引导加载程序不支持引导 Linux。如果已经先安装了 Linux，那么只需要自己创建一张 Linux 引导盘，这样就可以在安装完 Windows 之后，回到 Linux 安装中并重写 MBR
-
-二级引导加载程序：
-</code></pre><p>BIOS（BootLoader）–&gt;主引导记录MBR激活引导加载程序–&gt;初始程序加载程序（IPL）查询分区表–&gt;第二阶段引导加载程序–&gt;内核引导等</p>
-<pre><code>----------
-</code></pre><p>##&nbsp;二、嵌入式版：&nbsp;##</p>
-<p>现成的硬件平台，现成的内核，现成的文件系统，搭建Linux应用开发环境。</p>
-<p>主要是：&lt;/br&gt;</p>
-<p>1. tftp与NFS安装，让硬件平台从网络加载内核（tftp）并挂载网络文件系统（NFS）。&lt;/br&gt;</p>
-<p>2. ARM交叉编译链安装&lt;/br&gt;</p>
-<pre><code>&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;
-</code></pre><p><strong>tftp安装：</strong>&lt;/br&gt;</p>
-<p>1、安装相关软件包</p>
-<p>//apt-get install tftpd （服务端）</p>
-<p>//apt-get install tftp （客户端）</p>
-<p>sudo apt-get install tftp-hpa tftpd-hpa xinetd</p>
-<p>2、建立配置文件</p>
-<p>cd /etc/xinetd.d/</p>
-<p>gedit tftp</p>
-<p>输入</p>
-<p>service tftp</p>
-<p>{</p>
-<p>socket_type = dgram</p>
-<p>protocol = udp</p>
-<p>wait = yes</p>
-<p>user = root</p>
-<p>server =&nbsp;/usr/sbin/in.tftpd</p>
-<p>server_args =&nbsp;-s&nbsp;/mnt/tftpboot</p>
-<p>disable = no</p>
-<p>per_source = 11</p>
-<p>cps = 100 2</p>
-<p>flags = IPv4</p>
-<p>}</p>
-<p>存盘退出</p>
-<p>3、建立tftp服务文件目录</p>
-<p>mkdir /mnt/tftpboot</p>
-<p>4、从新启动服务</p>
-<p>/etc/init.d/xinetd restart（针对xinetd）</p>
-<p>安装完成！测试方法：</p>
-<p>在/tftpboot 目录下随便放个文件abc</p>
-<p>然后&nbsp;运行tftp 192.168.1.107 进入tftp命令行</p>
-<p>输入get abc 看看是不是能把文件下下来，也可以put&nbsp;文件上去。注意：要在<strong>root权限</strong>下</p>
-<pre><code>**NFS安装：**&amp;lt;/br&amp;gt;
-</code></pre><p>1.安装NFS sudo apt-get install nfs-kernel-server</p>
-<p>2.执行命令：mkdir &nbsp;建立一个nfs服务的专有的文件夹</p>
-<p>3.建立好文件夹后，接着执行命令：sudo gedit /etc/exports&nbsp;配置nfs，</p>
-<p>在文章的最后一行添加：<em>*/nfs </em>(rw,sync,no_root_squash,no_subtree_check)</p>
+        <h3 id="DD初学Linux系列–环境安装搭建及启动过程-nbsp"><a href="#DD初学Linux系列–环境安装搭建及启动过程-nbsp" class="headerlink" title="DD初学Linux系列–环境安装搭建及启动过程&nbsp;"></a>DD初学Linux系列–环境安装搭建及启动过程&nbsp;</h3><hr>
+<h4 id="一、PC版："><a href="#一、PC版：" class="headerlink" title="一、PC版："></a>一、PC版：</h4><p>&amp;ensp;　&amp;ensp;前段时间生日，自己入手了一块三星的SSD作为生日礼物。具体型号：（840EVO，mSATA接口），因为刚好我的本本有mSATA接口，就不需要拆原来的硬盘了。<br>上周末，给自己的本本重装了下系统，SSD上装win8.1，原来硬盘装系统和软件的盘来装Ubuntu麒麟版。<br>先装了win8.1，再装Ubuntu，接下来就是引导了，用了EasyBCD来设置。<br>于是顺便了解了下Linux引导（LILO和Grub）—来源于网络<br>    如果想要在同一机器上运行 Windows 和 Linux，那么应该先安装Windows OS，然后再安装 Linux OS，这样，在 Linux 安装中所选择的引导加载程序就不会被 Windows 引导加载程序所覆盖。与 Linux 引导加载程序不同，多数 Window 引导加载程序不支持引导 Linux。如果已经先安装了 Linux，那么只需要自己创建一张 Linux 引导盘，这样就可以在安装完 Windows 之后，回到 Linux 安装中并重写 MBR<br>二级引导加载程序：<br>BIOS（BootLoader）–&gt;主引导记录MBR激活引导加载程序–&gt;初始程序加载程序（IPL）查询分区表–&gt;第二阶段引导加载程序–&gt;内核引导等</p>
+<hr>
+<h4 id="二、嵌入式版："><a href="#二、嵌入式版：" class="headerlink" title="二、嵌入式版："></a>二、嵌入式版：</h4><p>现成的硬件平台，现成的内核，现成的文件系统，搭建Linux应用开发环境。<br>主要是：<br>1. tftp与NFS安装，让硬件平台从网络加载内核（tftp）并挂载网络文件系统（NFS）。<br>2. ARM交叉编译链安装</p>
+<p><strong>tftp安装：</strong><br>1、安装相关软件包<br>//apt-get install tftpd （服务端）<br>//apt-get install tftp （客户端）<br>sudo apt-get install tftp-hpa tftpd-hpa xinetd</p>
+<p>2、建立配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/xinetd.d/</span><br><span class="line">gedit tftp</span><br><span class="line">输入</span><br><span class="line">service tftp</span><br><span class="line">&#123;</span><br><span class="line">  socket_type = dgram</span><br><span class="line">  protocol = udp</span><br><span class="line">  wait = yes</span><br><span class="line">  user = root</span><br><span class="line">  server =/usr/sbin/in.tftpd</span><br><span class="line">  server_args =-s/mnt/tftpboot</span><br><span class="line">  disable = no</span><br><span class="line">  per_source = 11</span><br><span class="line">  cps = 100 2</span><br><span class="line">  flags = IPv4</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>存盘退出<br>3、建立tftp服务文件目录<br>mkdir /mnt/tftpboot<br>4、从新启动服务<br>/etc/init.d/xinetd restart（针对xinetd）</p>
+<p>安装完成！测试方法：<br>在/tftpboot 目录下随便放个文件abc<br>然后&nbsp;运行tftp 192.168.1.107 进入tftp命令行<br>输入get abc 看看是不是能把文件下下来，也可以put&nbsp;文件上去。注意：要在<strong>root权限</strong>下</p>
+<p><strong>NFS安装：</strong><br>1.安装NFS sudo apt-get install nfs-kernel-server<br>2.执行命令：mkdir &nbsp;建立一个nfs服务的专有的文件夹<br>3.建立好文件夹后，接着执行命令：sudo gedit /etc/exports&nbsp;配置nfs，<br>在文章的最后一行添加：<em>*/nfs </em>(rw,sync,no_root_squash,no_subtree_check)<br>注：nfs允许挂载的目录及权限，在文件/etc/exports中进行定义，各字段含义如下：<br>/mnt/NFS：要共享的目录<br>*：允许所有的网段访问<br>rw ：读写权限<br>sync：资料同步写入内在和硬盘<br>no_root_squash：nfs客户端共享目录使用者权限<br>特别要注意 ：insecure</p>
 <blockquote>
-<p>注：nfs允许挂载的目录及权限，在文件/etc/exports中进行定义，各字段含义如下：</p>
-<p>/mnt/NFS：要共享的目录</p>
-<p>*：允许所有的网段访问</p>
-<p>rw ：读写权限</p>
-<p>sync：资料同步写入内在和硬盘</p>
-<p>no_root_squash：nfs客户端共享目录使用者权限</p>
-<pre><code>特别要注意 ：insecure
-
-
-ro&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;只读访问
-</code></pre><p>rw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;读写访问</p>
-<p>sync&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所有数据在请求时写入共享</p>
-<p>async&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS在写入数据前可以相应请求</p>
-<p>secure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS通过1024以下的安全TCP/IP端口发送</p>
-<p>insecure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NFS通过1024以上的端口发送</p>
-<p>wdelay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果多个用户要写入NFS目录，则归组写入（默认）</p>
-<p>no_wdelay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果多个用户要写入NFS目录，则立即写入，当使用async时，无需此设置。</p>
-<p>hide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在NFS共享目录中不共享其子目录</p>
-<p>no_hide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享NFS目录的子目录</p>
-<p>subtree_check&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果共享/usr/bin之类的子目录时，强制NFS检查父目录的权限（默认）</p>
-<p>no_subtree_check&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和上面相对，不检查父目录权限</p>
-<p>all_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共享文件的UID和GID映射匿名用户anonymous，适合公用目录。</p>
-<p>no_all_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保留共享文件的UID和GID（默认）</p>
-<p>root_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root用户的所有请求映射成如anonymous用户一样的权限（默认）</p>
-<p>no_root_squash&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root用户具有根目录的完全管理访问权限</p>
-<p>anonuid=xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的UID</p>
-<p>anongid=xxx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的GID</p>
+<p>ro 只读访问<br>rw 读写访问<br>sync&nbsp;所有数据在请求时写入共享<br>async&nbsp;NFS在写入数据前可以相应请求<br>secure&nbsp;NFS通过1024以下的安全TCP/IP端口发送<br>insecure&nbsp;NFS通过1024以上的端口发送<br>wdelay&nbsp;如果多个用户要写入NFS目录，则归组写入（默认）<br>no_wdelay&nbsp;如果多个用户要写入NFS目录，则立即写入，当使用async时，无需此设置。<br>hide&nbsp;在NFS共享目录中不共享其子目录<br>no_hide&nbsp;共享NFS目录的子目录<br>subtree_check&nbsp;如果共享/usr/bin之类的子目录时，强制NFS检查父目录的权限（默认）<br>no_subtree_check&nbsp;和上面相对，不检查父目录权限<br>all_squash&nbsp;共享文件的UID和GID映射匿名用户anonymous，适合公用目录。<br>no_all_squash&nbsp;保留共享文件的UID和GID（默认）<br>root_squash&nbsp;root用户的所有请求映射成如anonymous用户一样的权限（默认）<br>no_root_squash&nbsp;root用户具有根目录的完全管理访问权限<br>anonuid=xxx&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的UID<br>anongid=xxx&nbsp;指定NFS服务器/etc/passwd文件中匿名用户的GID</p>
 </blockquote>
-<pre><code>4.执行命令：sudo /etc/init.d/portmap restart
-</code></pre><p>重启portmap服务。nfs是一个RPC程序，使用它前，需要映射好端口，通过portmap设定。</p>
-<p>5.执行命令：sudo /etc/init.d/nfs-kernel-server restart 重启nfs服务</p>
-<pre><code>&lt;span data-mce-style=&quot;color: #ff0000;&quot; style=&quot;color:#FF0000;&quot;&gt;**注：rpcbind（Ubuntu14.04）就是高版本的portmap**&lt;/span&gt;
-</code></pre><p><span data-mce-style="color: #ff0000;" style="color:#FF0000;"><strong>注意此时可能会出现：Not starting: portmapper is not running //重启Ubuntu系统后就好了;</strong></span></p>
-<p>6、测试 NFS</p>
-<p>showmount -e</p>
-<p>sudo mount&nbsp; 192.168.1.107:/mnt/NFS &nbsp;/home</p>
-<p>看是否已经挂载成功</p>
-<p>sudo umount</p>
-<p>如果用在嵌入式设备上挂载，要加上参数-o nolock</p>
-<pre><code>**添加环境变量：**&amp;lt;/br&amp;gt;
-</code></pre><p>1&gt;gedit ~/.profile,</p>
-<p>在最后一行添加：export PATH=$PATH:/usr/local/arm/4.3.2/bin，</p>
-<p>接着source ~/.profile：立即生效</p>
-<p>2&gt; sudo gedit /etc/environment，在最后一个:号之后和“号之前添加/usr/local/arm/4.3.2/bin</p>
+<p>4.执行命令：sudo /etc/init.d/portmap restart<br>重启portmap服务。nfs是一个RPC程序，使用它前，需要映射好端口，通过portmap设定。<br>5.执行命令：sudo /etc/init.d/nfs-kernel-server restart 重启nfs服务<br><strong>注：rpcbind（Ubuntu14.04）就是高版本的portmap</strong></p>
+<p><strong>注意此时可能会出现：Not starting: portmapper is not running //重启Ubuntu系统后就好了;</strong></p>
+<p>6、测试 NFS<br>showmount -e<br>sudo mount&nbsp; 192.168.1.107:/mnt/NFS &nbsp;/home<br>看是否已经挂载成功<br>sudo umount<br>如果用在嵌入式设备上挂载，要加上参数-o nolock</p>
+<p><strong>添加环境变量：</strong><br>gedit ~/.profile,<br>在最后一行添加：export PATH=$PATH:/usr/local/arm/4.3.2/bin，<br>接着source ~/.profile：立即生效<br>sudo gedit /etc/environment，在最后一个:号之后和“号之前添加/usr/local/arm/4.3.2/bin</p>
 
       
     </div>
@@ -702,7 +610,7 @@ ro&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -778,7 +686,7 @@ ro&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DD初学Linux系列–环境安装搭建及启动过程-nbsp"><span class="nav-number">1.</span> <span class="nav-text">DD初学Linux系列–环境安装搭建及启动过程 </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DD初学Linux系列–环境安装搭建及启动过程-nbsp"><span class="nav-number">1.</span> <span class="nav-text">DD初学Linux系列–环境安装搭建及启动过程 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、PC版："><span class="nav-number">1.1.</span> <span class="nav-text">一、PC版：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、嵌入式版："><span class="nav-number">1.2.</span> <span class="nav-text">二、嵌入式版：</span></a></li></ol></li></ol></div>
             
 
           </div>

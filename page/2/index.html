@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T11:55:31+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -407,8 +407,8 @@
       
         
           
-            <pre>config_load等获取config配置文件：
-<pre class="prettyprint lang-bsh linenums">#!/bin/sh /etc/rc.common
+            <p>config_load等获取config配置文件：</p>
+<pre><code>#!/bin/sh /etc/rc.common
 # Copyright (C) 2013 NXP Semiconductor
 # -s /dev/ttyTX0 -B 115200 --mode=coordinator -6 fd04:bd3:80e8:10::1 -c 15 -I zb0
 
@@ -417,65 +417,60 @@ START=99
 PROG=zigbee-jip-daemon
 
 start_zigbee_jip_daemon() {
-    local section="$1"
+    local section=&quot;$1&quot;
 
-    config_get_bool ignore "$section" ignore 0
-    [ "$ignore" -ne 0 ] &amp;&amp; return 0
+    config_get_bool ignore &quot;$section&quot; ignore 0
+    [ &quot;$ignore&quot; -ne 0 ] &amp;amp;&amp;amp; return 0
 
     local tty
-    config_get tty "${section}" tty
-    [ -z $tty ] &amp;&amp; tty="/dev/ttyUSB0"
+    config_get tty &quot;${section}&quot; tty
+    [ -z $tty ] &amp;amp;&amp;amp; tty=&quot;/dev/ttyUSB0&quot;
 
     local interface
-    config_get interface "${section}" interface
+    config_get interface &quot;${section}&quot; interface
 
     local baudrate
-    config_get baudrate "${section}" baudrate
-    [ -z $baudrate ] &amp;&amp; baudrate="1000000"
+    config_get baudrate &quot;${section}&quot; baudrate
+    [ -z $baudrate ] &amp;amp;&amp;amp; baudrate=&quot;1000000&quot;
 
     local mode
-    config_get mode "${section}" mode
+    config_get mode &quot;${section}&quot; mode
 
     local borderrouter
-    config_get borderrouter "${section}" borderrouter
+    config_get borderrouter &quot;${section}&quot; borderrouter
 
     local channel
-    config_get channel "${section}" channel
+    config_get channel &quot;${section}&quot; channel
 
     local whitelisting
-    config_get whitelisting "${section}" whitelisting
+    config_get whitelisting &quot;${section}&quot; whitelisting
 
     local args
-    args="-s $tty -B $baudrate --mode=$mode -6 $borderrouter -c $channel"
+    args=&quot;-s $tty -B $baudrate --mode=$mode -6 $borderrouter -c $channel&quot;
 
     if [ $interface ]
     then
-        args="$args -I $interface"
+        args=&quot;$args -I $interface&quot;
     fi
 
     if [ $whitelisting -ne 0 ]
     then
-        args="$args --whitelisting"
+        args=&quot;$args --whitelisting&quot;
     fi
 
-    echo "Starting $PROG with arguments: $args"
+    echo &quot;Starting $PROG with arguments: $args&quot;
     /usr/sbin/$PROG $args
 }
-
 start () {
     config_load zigbee-jip-daemon
     config_foreach start_zigbee_jip_daemon zigbee-jip-daemon
 }
-
 stop () {
     killall $PROG
 }
-</pre>
-
-<p>log操作：</p>
-<p>logread</p>
-<p></p></pre><p></p>
-
+</code></pre><p>log操作：</p>
+<pre><code>logread
+</code></pre>
           
         
       
@@ -515,7 +510,7 @@ stop () {
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2015/10/16/About/">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2015/10/16/hello-echo/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="shell">
@@ -540,8 +535,8 @@ stop () {
             
               
                 
-                <a class="post-title-link" href="/2015/10/16/About/" itemprop="url">
-                  About
+                <a class="post-title-link" href="/2015/10/16/hello-echo/" itemprop="url">
+                  hello,echo! hello,world!
                 </a>
               
             
@@ -557,7 +552,7 @@ stop () {
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-16T23:58:55+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-16T21:27:20+08:00">
                 2015-10-16
               </time>
             
@@ -573,8 +568,8 @@ stop () {
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:41:37+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -607,7 +602,7 @@ stop () {
       
         
           
-            
+            <h2 id="hello-echo-hello-world"><a href="#hello-echo-hello-world" class="headerlink" title="hello,echo! hello,world!"></a>hello,echo! hello,world!</h2><h2 id="DD’echo-echo-z-dd-net"><a href="#DD’echo-echo-z-dd-net" class="headerlink" title="DD’echo: echo.z-dd.net"></a><a href="http://echo.z-dd.net/" target="_blank" rel="external">DD’echo</a>: <a href="">echo.z-dd.net</a></h2>
           
         
       
@@ -1086,8 +1081,8 @@ stop () {
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:44:47+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1142,54 +1137,16 @@ stop () {
       
         
           
-            <p>##<br>    背景：</p>
-<pre><code>双硬盘，双系统（SSD-&amp;gt;win8.1，HDD-&amp;gt;Ubuntu14.04），HDD是原笔记本的硬盘，只有320G，而且本来就不咋地，很大的吱吱声音，速度也很慢很卡。HDD其中120G为Ubuntu，当时挂载分区的时候，根目录分的是50G，装完系统就剩40多G了，Home目录为70G。
+            <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>双硬盘，双系统（SSD-&gt;win8.1，HDD-&gt;Ubuntu14.04），HDD是原笔记本的硬盘，只有320G，而且本来就不咋地，很大的吱吱声音，速度也很慢很卡。HDD其中120G为Ubuntu，当时挂载分区的时候，根目录分的是50G，装完系统就剩40多G了，Home目录为70G。<br>打算自己开始编译imx6的Android源码，10G多的源码放在根目录下的/mnt，折腾了一天多，终于编译好了一个目标板的。接着没看剩余磁盘大小就编译第二个目标板的，从晚上开始编译，觉得早上应该就差不多了。第二天早上一看，系统提示磁盘空间不足，然后很卡。就用那个优客助手想清理下，结果系统就越来越卡，UI渐渐消失了，系统崩溃了。最后重启结果就进不了系统了，一直停在启动界面。</p>
+<h3 id="自己解决步骤："><a href="#自己解决步骤：" class="headerlink" title="自己解决步骤："></a>自己解决步骤：</h3><h4 id="第一次："><a href="#第一次：" class="headerlink" title="第一次："></a>第一次：</h4><p>在停住的启动界面按Esc进入非图形启动界面，发现lightdm&nbsp;display&nbsp;manager&nbsp;fail。Ctrl+Alt+F1&nbsp;由桌面图形模式进命令行模式，命令行中文乱码<br>修改Ubuntu的命令行语言环境：<br>1、修改/etc/default/locale<br>如不存在则新建一个<br>如下：<br>LANG=’en_US’&nbsp;#中文可以用zh_CN<br>LANGUAGE=’en_US:en’&nbsp;#中文可以用zh_CN:zh<br>2、reboot即可<br>locale命令可以列出当前系统所用的所有语言设置<br>查看/var/log/lightdm，发现默认配置都丢失了，查看/etc/lightdm/，果然没了。经过很多种尝试，发现桌面lightdm始终不行，打算重新安装桌面。<br>但发现Apt丢失了（apt-get&nbsp;command&nbsp;not&nbsp;found），幸好dpkg还在，网也能通，打算用dpkg安装apt，找了半天资料，才找到个能下包的地方，小白啊，没办法，安装<a href="http://www.cnblogs.com/huangbangshun/p/4174922.html" target="_blank" rel="external">apt</a>，包:<a href="http://mirrors.163.com/ubuntu/pool/main/a/apt/" target="_blank" rel="external">（apt_1.0.1ubuntu2_amd64）</a></p>
+<p>后面用apt安装其他包，又遇到Apt依赖项问题（Ubuntu&nbsp;unmet&nbsp;dependencies），安装任何包都会报依赖项问题，又折腾了半天，找了半天，apt-get&nbsp;dist-upgrade&nbsp;升级系统&nbsp;，sudo&nbsp;apt-get&nbsp;upgrade&nbsp;更新已安装的包&nbsp;，重新安装桌面（ubuntu-desktop），搞定，可以正常了。</p>
+<h4 id="第二次："><a href="#第二次：" class="headerlink" title="第二次："></a>第二次：</h4><p>也是用优客助手（类似于win下面的360卫士，可以清理）后，系统又崩溃了。这次更彻底，Apt丢失，它的一些依赖包也丢了，网也不行了，无线网卡没起来，eth幸好敲命令能起来（ipconfig&nbsp;eth0&nbsp;up）。下载依赖包（<a href="http://www.ubuntuupdates.org/" target="_blank" rel="external">http://www.ubuntuupdates.org/</a>&nbsp;），发现依赖包存在版本依赖，折腾半天终于安装好了apt，后面的步骤就同第一次了。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>越来越能体会命令行的好处了</p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p>ubuntu&nbsp;lightdm登陆器不能用户登陆解决：<br><a href="http://www.2cto.com/os/201305/213215.html" target="_blank" rel="external">http://www.2cto.com/os/201305/213215.html</a> </p>
+<p>ubuntu中apt-get，dpkg与默认路径:<br><a href="http://blog.chinaunix.net/uid-25436678-id-3853747.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-25436678-id-3853747.html</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i &lt;package.deb&gt;  dpkg -p&lt;package.deb&gt;</span><br></pre></td></tr></table></figure>
+<p>Recovery模式&nbsp;按e</p>
 
-打算自己开始编译imx6的Android源码，10G多的源码放在根目录下的/mnt，折腾了一天多，终于编译好了一个目标板的。接着没看剩余磁盘大小就编译第二个目标板的，从晚上开始编译，觉得早上应该就差不多了。第二天早上一看，系统提示磁盘空间不足，然后很卡。就用那个优客助手想清理下，结果系统就越来越卡，UI渐渐消失了，系统崩溃了。最后重启结果就进不了系统了，一直停在启动界面。
-</code></pre><p>##<br>    自己解决步骤：</p>
-<p>###<br>    第一次：</p>
-<pre><code>在停住的启动界面按Esc进入非图形启动界面，发现lightdm&amp;nbsp;display&amp;nbsp;manager&amp;nbsp;fail。Ctrl+Alt+F1&amp;nbsp;由桌面图形模式进命令行模式，命令行中文乱码
-
-修改Ubuntu的命令行语言环境：
-
-1、修改/etc/default/locale
-
-如不存在则新建一个
-
-如下：
-
-LANG=’en_US’&amp;nbsp;#中文可以用zh_CN
-
-LANGUAGE=’en_US:en’&amp;nbsp;#中文可以用zh_CN:zh
-
-2、reboot即可
-
-locale命令可以列出当前系统所用的所有语言设置
-
-查看/var/log/lightdm，发现默认配置都丢失了，查看/etc/lightdm/，果然没了。经过很多种尝试，发现桌面lightdm始终不行，打算重新安装桌面。
-
-但发现Apt丢失了（apt-get&amp;nbsp;command&amp;nbsp;not&amp;nbsp;found），幸好dpkg还在，网也能通，打算用dpkg安装apt，找了半天资料，才找到个能下包的地方，小白啊，没办法，&amp;nbsp;安装apt（[http://www.cnblogs.com/huangbangshun/p/4174922.html](http://www.cnblogs.com/huangbangshun/p/4174922.html)），包：
-
-[http://mirrors.163.com/ubuntu/pool/main/a/apt/](http://mirrors.163.com/ubuntu/pool/main/a/apt/)&amp;nbsp;&amp;nbsp;（apt_1.0.1ubuntu2_amd64）
-
-后面用apt安装其他包，又遇到Apt依赖项问题（Ubuntu&amp;nbsp;unmet&amp;nbsp;dependencies），安装任何包都会报依赖项问题，又折腾了半天，找了半天，apt-get&amp;nbsp;dist-upgrade&amp;nbsp;升级系统&amp;nbsp;，sudo&amp;nbsp;apt-get&amp;nbsp;upgrade&amp;nbsp;更新已安装的包&amp;nbsp;，重新安装桌面（ubuntu-desktop），搞定，可以正常了。
-</code></pre><p>###<br>    第二次：</p>
-<pre><code>也是用优客助手（类似于win下面的360卫士，可以清理）后，系统又崩溃了。这次更彻底，Apt丢失，它的一些依赖包也丢了，网也不行了，无线网卡没起来，eth幸好敲命令能起来（ipconfig&amp;nbsp;eth0&amp;nbsp;up）。下载依赖包（[http://www.ubuntuupdates.org/](http://www.ubuntuupdates.org/)&amp;nbsp;），发现依赖包存在版本依赖，折腾半天终于安装好了apt，后面的步骤就同第一次了。
-</code></pre><p>##<br>    总结：</p>
-<pre><code>越来越能体会命令行的好处了
-</code></pre><p>##<br>    参考：</p>
-<pre><code>ubuntu&amp;nbsp;lightdm登陆器不能用户登陆解决：
-
-[http://www.2cto.com/os/201305/213215.html](http://www.2cto.com/os/201305/213215.html) 
-
-ubuntu中apt-get，dpkg与默认路径:
-
-[http://blog.chinaunix.net/uid-25436678-id-3853747.html](http://blog.chinaunix.net/uid-25436678-id-3853747.html) 
-
-dpkg&amp;nbsp;-i&amp;nbsp;&amp;lt;package.deb&amp;gt;&amp;nbsp;&amp;nbsp;dpkg&amp;nbsp;-p&amp;lt;package.deb&amp;gt;
-
-Recovery模式&amp;nbsp;按e
-</code></pre>
           
         
       
@@ -1287,8 +1244,8 @@ Recovery模式&amp;nbsp;按e
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:57:57+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1343,111 +1300,38 @@ Recovery模式&amp;nbsp;按e
       
         
           
-            <p>##<br>    <strong>Misc设备&nbsp;–&nbsp;特殊的字符设备</strong> </p>
-<pre><code>本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&amp;nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操作，因此其驱动的主体工作还是file_operations的成员函数。
-</code></pre><p>###<br>    <a name="_Toc31631"></a><strong>1.&nbsp;**</strong><a name="_Toc3127"></a>字符设备模板及说明解析：** </p>
-<pre><code>1.[http://blog.csdn.net/wdzxl198/article/details/8817147](http://blog.csdn.net/wdzxl198/article/details/8817147)&amp;nbsp;（自动创建设备节点）
-
-2.[http://blog.chinaunix.net/uid-20698426-id-136243.html](http://blog.chinaunix.net/uid-20698426-id-136243.html) 
-
-主要是init函数(获取设备号，创建节点)&amp;nbsp;，exit函数（回收操作），及设备操作集对应的操作函数。
-</code></pre><p>###<br>    <a name="_Toc3209"></a><strong>2.&nbsp;**</strong><a name="_Toc29371"></a>设备操作集&nbsp;file_operations结构体分析:** </p>
-<pre><code>[http://www.linuxidc.com/Linux/2011-09/43530.htm](http://www.linuxidc.com/Linux/2011-09/43530.htm) 
-
-特别的异步IO轮询函数：
-
-**unsigned&amp;nbsp;int&amp;nbsp;(*poll)&amp;nbsp;(struct&amp;nbsp;file&amp;nbsp;*,&amp;nbsp;struct&amp;nbsp;poll_table_struct&amp;nbsp;*);** 
-
-(这是一个设备驱动中的轮询函数，第一个参数为file结构指针，第二个为轮询表指针）
-
-这个函数返回设备资源的可获取状态，即POLLIN，POLLOUT，POLLPRI，POLLERR，POLLNVAL等宏的位“或”结果。
-
-每个宏都表明设备的一种状态，如：POLLIN（定义为0x0001）意味着设备可以无阻塞的读，POLLOUT（定义为0x0004）意味着设备可以无阻塞的写。
-
-(poll&amp;nbsp;方法是&amp;nbsp;3&amp;nbsp;个系统调用的后端:&amp;nbsp;poll,&amp;nbsp;epoll,&amp;nbsp;和&amp;nbsp;select,&amp;nbsp;都用作查询对一个或多个文件描述符的读或写是否会阻塞.
-
-poll&amp;nbsp;方法应当返回一个位掩码指示是否非阻塞的读或写是可能的,&amp;nbsp;并且,&amp;nbsp;可能地,&amp;nbsp;提供给内核信息用来使调用进程睡眠直到&amp;nbsp;I/O&amp;nbsp;变为可能.
-
-如果一个驱动的&amp;nbsp;poll&amp;nbsp;方法为&amp;nbsp;NULL,&amp;nbsp;设备假定为不阻塞地可读可写.
-
-(这里通常将设备看作一个文件进行相关的操作，而轮询操作的取值直接关系到设备的响应情况，可以是阻塞操作结果，同时也可以是非阻塞操作结果）
-</code></pre><p>###<br>    <a name="_Toc645"></a><strong>3.&nbsp;**</strong><a name="_Toc13436"></a>ioctl函数详解：** </p>
-<pre><code>[http://blog.csdn.net/shanshanpt/article/details/19897897](http://blog.csdn.net/shanshanpt/article/details/19897897) 
-
-ioctl函数的cmd：
-
-cmd的大小为&amp;nbsp;32位，共分&amp;nbsp;4&amp;nbsp;个域：
-
-bit31~bit30&amp;nbsp;2位为&amp;nbsp;“区别读写”&amp;nbsp;区，作用是区分是读取命令还是写入命令。
-
-bit29~bit15&amp;nbsp;14位为&amp;nbsp;&quot;数据大小&quot;&amp;nbsp;区，表示&amp;nbsp;ioctl()&amp;nbsp;中的&amp;nbsp;arg&amp;nbsp;变量传送的内存大小。
-
-bit20~bit08&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;“魔数&quot;(&quot;幻数&quot;)区，这个值用以与其它设备驱动程序的&amp;nbsp;ioctl&amp;nbsp;命令进行区别。
-
-bit07~bit00&amp;nbsp;&amp;nbsp;&amp;nbsp;8位为&amp;nbsp;&quot;区别序号&quot;&amp;nbsp;区，是区分命令的命令顺序序号。
-
-这几个宏的使用格式为：
-</code></pre><ul>
+            <p>## </p>
+<h3 id="Misc设备-nbsp-–-nbsp-特殊的字符设备"><a href="#Misc设备-nbsp-–-nbsp-特殊的字符设备" class="headerlink" title="Misc设备&nbsp;–&nbsp;特殊的字符设备"></a>Misc设备&nbsp;–&nbsp;特殊的字符设备</h3><p>本质上仍然是字符设备，只是被增加了以层封装而已。Misc设备共享一个主设备号MISC_MAJOR（10），但次设备号不同（系统最多有255个杂项设备），所有的misc设备形成一个链表，对设备访问时内核根据次设备号查找对应的&nbsp;misc设备，然后调用其中的file_operations结构体中注册的文件操作接口进行操作，因此其驱动的主体工作还是file_operations的成员函数。</p>
+<h4 id="1-字符设备模板及说明解析："><a href="#1-字符设备模板及说明解析：" class="headerlink" title="1.字符设备模板及说明解析："></a>1.字符设备模板及说明解析：</h4><p>1.<a href="http://blog.csdn.net/wdzxl198/article/details/8817147" target="_blank" rel="external">http://blog.csdn.net/wdzxl198/article/details/8817147</a>&nbsp;（自动创建设备节点）<br>2.<a href="http://blog.chinaunix.net/uid-20698426-id-136243.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-20698426-id-136243.html</a><br>主要是init函数(获取设备号，创建节点)&nbsp;，exit函数（回收操作），及设备操作集对应的操作函数。</p>
+<h4 id="2-设备操作集file-operations结构体分析"><a href="#2-设备操作集file-operations结构体分析" class="headerlink" title="2.设备操作集file_operations结构体分析:"></a>2.设备操作集file_operations结构体分析:</h4><p><a href="http://www.linuxidc.com/Linux/2011-09/43530.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2011-09/43530.htm</a> </p>
+<p>特别的异步IO轮询函数：<br>    unsigned int (<em>poll)(struct file </em>, struct poll_table_struct *);<br>(这是一个设备驱动中的轮询函数，第一个参数为file结构指针，第二个为轮询表指针）<br>这个函数返回设备资源的可获取状态，即POLLIN，POLLOUT，POLLPRI，POLLERR，POLLNVAL等宏的位“或”结果。<br>每个宏都表明设备的一种状态，如：POLLIN（定义为0x0001）意味着设备可以无阻塞的读，POLLOUT（定义为0x0004）意味着设备可以无阻塞的写。<br>(poll&nbsp;方法是&nbsp;3&nbsp;个系统调用的后端:&nbsp;poll,&nbsp;epoll,&nbsp;和&nbsp;select,&nbsp;都用作查询对一个或多个文件描述符的读或写是否会阻塞.<br>poll&nbsp;方法应当返回一个位掩码指示是否非阻塞的读或写是可能的,&nbsp;并且,&nbsp;可能地,&nbsp;提供给内核信息用来使调用进程睡眠直到&nbsp;I/O&nbsp;变为可能.<br>如果一个驱动的&nbsp;poll&nbsp;方法为&nbsp;NULL,&nbsp;设备假定为不阻塞地可读可写.<br>(这里通常将设备看作一个文件进行相关的操作，而轮询操作的取值直接关系到设备的响应情况，可以是阻塞操作结果，同时也可以是非阻塞操作结果）</p>
+<h4 id="3-ioctl函数详解："><a href="#3-ioctl函数详解：" class="headerlink" title="3.ioctl函数详解："></a>3.ioctl函数详解：</h4><p><a href="http://blog.csdn.net/shanshanpt/article/details/19897897" target="_blank" rel="external">http://blog.csdn.net/shanshanpt/article/details/19897897</a> </p>
+<p>ioctl函数的cmd：<br>cmd的大小为&nbsp;32位，共分&nbsp;4&nbsp;个域：<br>bit31~bit30&nbsp;2位为&nbsp;“区别读写”&nbsp;区，作用是区分是读取命令还是写入命令。<br>bit29~bit15&nbsp;14位为&nbsp;”数据大小”&nbsp;区，表示&nbsp;ioctl()&nbsp;中的&nbsp;arg&nbsp;变量传送的内存大小。<br>bit20~bit08&nbsp;&nbsp;8位为&nbsp;“魔数”(“幻数”)区，这个值用以与其它设备驱动程序的&nbsp;ioctl&nbsp;命令进行区别。<br>bit07~bit00&nbsp;&nbsp;&nbsp;8位为&nbsp;”区别序号”&nbsp;区，是区分命令的命令顺序序号。</p>
+<p>这几个宏的使用格式为：</p>
+<ul>
 <li>_IO&nbsp;(魔数，&nbsp;基数);</li>
 <li>_IOR&nbsp;(魔数，&nbsp;基数，&nbsp;变量型)</li>
 <li>_IOW&nbsp;&nbsp;(魔数，&nbsp;基数，&nbsp;变量型)</li>
 <li><p>_IOWR&nbsp;(魔数，&nbsp;基数，变量型&nbsp;)</p>
-<p><strong>魔数&nbsp;(magic&nbsp;number)</strong> </p>
-<p>魔数范围为&nbsp;0~255&nbsp;。通常，用英文字符&nbsp;”A”&nbsp;~&nbsp;”Z”&nbsp;或者&nbsp;”a”&nbsp;~&nbsp;”z”&nbsp;来表示。设备驱动程序从传递进来的命令获取魔数，然后与自身处理的魔数想比较，如果相同则处理，不同则不处理。魔数是拒绝误使用的初步辅助状态。设备驱动&nbsp;程序可以通过&nbsp;_IOC_TYPE&nbsp;(cmd)&nbsp;来获取魔数。不同的设备驱动程序最好设置不同的魔数，但并不是要求绝对，也是可以使用其他设备驱动程序已用过的魔数。</p>
-<p><strong>基(序列号)数</strong> </p>
-<p>基数用于区别各种命令。通常，从&nbsp;0开始递增，相同设备驱动程序上可以重复使用该值。例如，读取和写入命令中使用了相同的基数，设备驱动程序也能分辨出来，原因在于设备驱动程序区分命令时&nbsp;使用&nbsp;switch&nbsp;，且直接使用命令变量&nbsp;cmd值。创建命令的宏生成的值由多个域组合而成，所以即使是相同的基数，也会判断为不同的命令。设备驱动程序想要从命令中获取该基数，就使用下面的宏：</p>
-<p>_IOC_NR&nbsp;(cmd)</p>
-<p>通常，switch&nbsp;中的&nbsp;case&nbsp;值使用的是命令的本身。</p>
-<p><strong>变量型</strong> </p>
-<p>变量型使用&nbsp;arg&nbsp;变量指定传送的数据大小，但是不直接代入输入，而是代入变量或者是变量的类型，原因是在使用宏创建命令，已经包含了&nbsp;sizeof()&nbsp;编译命令。</p>
+<p><strong>魔数&nbsp;(magic&nbsp;number)</strong><br>魔数范围为&nbsp;0~255&nbsp;。通常，用英文字符&nbsp;”A”&nbsp;~&nbsp;”Z”&nbsp;或者&nbsp;”a”&nbsp;~&nbsp;”z”&nbsp;来表示。设备驱动程序从传递进来的命令获取魔数，然后与自身处理的魔数想比较，如果相同则处理，不同则不处理。魔数是拒绝误使用的初步辅助状态。设备驱动&nbsp;程序可以通过&nbsp;_IOC_TYPE&nbsp;(cmd)&nbsp;来获取魔数。不同的设备驱动程序最好设置不同的魔数，但并不是要求绝对，也是可以使用其他设备驱动程序已用过的魔数。</p>
+<p><strong>基(序列号)数</strong><br>基数用于区别各种命令。通常，从&nbsp;0开始递增，相同设备驱动程序上可以重复使用该值。例如，读取和写入命令中使用了相同的基数，设备驱动程序也能分辨出来，原因在于设备驱动程序区分命令时&nbsp;使用&nbsp;switch&nbsp;，且直接使用命令变量&nbsp;cmd值。创建命令的宏生成的值由多个域组合而成，所以即使是相同的基数，也会判断为不同的命令。设备驱动程序想要从命令中获取该基数，就使用下面的宏：<br>_IOC_NR&nbsp;(cmd)<br>通常，switch&nbsp;中的&nbsp;case&nbsp;值使用的是命令的本身。</p>
+<p><strong>变量型</strong><br>变量型使用&nbsp;arg&nbsp;变量指定传送的数据大小，但是不直接代入输入，而是代入变量或者是变量的类型，原因是在使用宏创建命令，已经包含了&nbsp;sizeof()&nbsp;编译命令。</p>
 <p>Linux内核中_IO,_IOR,_IOW,_IOWR宏的用法与解析：<a href="http://blog.csdn.net/hzn407487204/article/details/7995041" target="_blank" rel="external">http://blog.csdn.net/hzn407487204/article/details/7995041</a> </p>
 </li>
 </ul>
-<p>###<br>    <a name="_Toc29957"></a><strong>4.&nbsp;**</strong><a name="_Toc10881"></a>misc设备相关：** </p>
-<pre><code>**misc设备结构体：** 
-
-struct&amp;nbsp;miscdevice&amp;nbsp;&amp;nbsp;{
-
-int&amp;nbsp;minor;&amp;nbsp;&amp;nbsp;//次设备号，若为&amp;nbsp;MISC_DYNAMIC_MINOR&amp;nbsp;自动分配
-
-const&amp;nbsp;char&amp;nbsp;*name;&amp;nbsp;&amp;nbsp;//设备名
-
-const&amp;nbsp;struct&amp;nbsp;file_operations&amp;nbsp;*fops;&amp;nbsp;&amp;nbsp;//设备文件操作结构体
-
-struct&amp;nbsp;list_head&amp;nbsp;list;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;//misc_list链表头
-
-struct&amp;nbsp;device&amp;nbsp;*parent;
-
-struct&amp;nbsp;device&amp;nbsp;*this_device;
-
-};
-
-**misc设备注册和注销API：** 
-
-int&amp;nbsp;misc_register(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
-
-int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
-
-**misc设备驱动模型及实例解析：** 
-
-参考：[http://blog.csdn.net/chenlong12580/article/details/7339127](http://blog.csdn.net/chenlong12580/article/details/7339127) 
-</code></pre><p>###<br>    <a name="_Toc29344"></a><strong>5.&nbsp;**</strong><a name="_Toc1286"></a>具体实例：** </p>
-<pre><code>详见code文件夹
-</code></pre><ul>
+<h4 id="4-misc设备相关："><a href="#4-misc设备相关：" class="headerlink" title="4.misc设备相关："></a>4.misc设备相关：</h4><p><strong>misc设备结构体：</strong><br>struct&nbsp;miscdevice&nbsp;&nbsp;{<br>int&nbsp;minor;&nbsp;&nbsp;//次设备号，若为&nbsp;MISC_DYNAMIC_MINOR&nbsp;自动分配<br>const&nbsp;char&nbsp;<em>name;&nbsp;&nbsp;//设备名<br>const&nbsp;struct&nbsp;file_operations&nbsp;</em>fops;&nbsp;&nbsp;//设备文件操作结构体<br>struct&nbsp;list_head&nbsp;list;&nbsp;&nbsp;&nbsp;&nbsp;//misc_list链表头<br>struct&nbsp;device&nbsp;<em>parent;<br>struct&nbsp;device&nbsp;</em>this_device;</p>
+<p>};</p>
+<p><strong>misc设备注册和注销API：</strong><br>int&nbsp;misc_register(struct&nbsp;miscdevice&nbsp;<em>misc)<br>int&nbsp;misc_deregister(struct&nbsp;miscdevice&nbsp;</em>misc)</p>
+<p><strong>misc设备驱动模型及实例解析：</strong><br>参考：<a href="http://blog.csdn.net/chenlong12580/article/details/7339127" target="_blank" rel="external">http://blog.csdn.net/chenlong12580/article/details/7339127</a> </p>
+<h4 id="5-具体实例："><a href="#5-具体实例：" class="headerlink" title="5.具体实例："></a>5.具体实例：</h4><p>详见code文件夹</p>
+<ul>
 <li>输出</li>
 <li>输入</li>
 <li><p>中断</p>
-<p>4步曲：</p>
-<p>Step1：定义申明IO口，特别是管脚复用。</p>
-<p>Step2：平台初始化时初始化对应IO。</p>
-<p>Step3：创建编写对应的驱动代码&nbsp;C文件。</p>
-<p>Step4：修改对应的Kconfig，Makefile文件，并配置加载编译。</p>
-<p>中断参考：</p>
-<p><a href="http://blog.csdn.net/mashang123456789/article/details/8623786" target="_blank" rel="external">http://blog.csdn.net/mashang123456789/article/details/8623786</a> </p>
-<p>GPIO&nbsp;API:</p>
-<p><a href="http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html</a> </p>
-<p>与中断有关的API：</p>
-<p>static&nbsp;inline&nbsp;int&nbsp;gpio_to_irq(unsigned&nbsp;gpio)</p>
+<p>4步曲：<br>Step1：定义申明IO口，特别是管脚复用。<br>Step2：平台初始化时初始化对应IO。<br>Step3：创建编写对应的驱动代码&nbsp;C文件。<br>Step4：修改对应的Kconfig，Makefile文件，并配置加载编译。</p>
+<p>中断参考：<br><a href="http://blog.csdn.net/mashang123456789/article/details/8623786" target="_blank" rel="external">http://blog.csdn.net/mashang123456789/article/details/8623786</a> </p>
+<p>GPIO&nbsp;API:<br><a href="http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_a6559d9201015vx9.html</a> </p>
+<p>与中断有关的API：<br>static&nbsp;inline&nbsp;int&nbsp;gpio_to_irq(unsigned&nbsp;gpio)</p>
 </li>
 </ul>
 
@@ -1548,8 +1432,8 @@ int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:03:18+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1604,69 +1488,47 @@ int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
       
         
           
-            <h1 id="DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构"><a href="#DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构" class="headerlink" title="DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构"></a>DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构</h1><pre><code>----------
-</code></pre><p>来源：1.<a href=""><a href="http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" target="_blank" rel="external">http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84</a></a></p>
-<p>2.<a href="&quot;鸟哥的私房菜&quot;"><a href="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php" target="_blank" rel="external">http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php</a></a></p>
-<pre><code>**## 一、根文件系统 ##**
-</code></pre><p><strong>/bin</strong></p>
-<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
-<p><strong>/boot</strong></p>
-<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
-<p><strong>/dev</strong></p>
-<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
-<p><strong>/etc</strong></p>
-<p>该目录中包含系统和应用软件的配置文件。</p>
-<p><strong>/etc/passwd</strong></p>
-<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。</p>
-<p><strong>/home</strong></p>
-<p>存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。</p>
-<p><strong>/lib</strong></p>
-<p>这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。</p>
-<p><strong>/lib64</strong></p>
-<p>64位系统有这个文件夹，64位程序的库。</p>
-<p><strong>/lost+found</strong></p>
-<p>这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。</p>
-<p><strong>/media</strong></p>
-<p>可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。</p>
-<p><strong>/mnt</strong></p>
-<p>临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区）</p>
-<p><strong>/opt</strong></p>
-<p>多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。</p>
-<p><strong>/proc</strong></p>
-<p>它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。</p>
-<p><strong>/root</strong></p>
-<p>这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。</p>
-<p><strong>/sbin</strong></p>
-<p>供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。</p>
-<p><strong>/tmp</strong></p>
-<p>该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。</p>
-<p><strong>/usr</strong></p>
-<p>静态的用户级应用程序等，见下。</p>
-<p><strong>/var</strong></p>
-<p>动态的程序数据等，见下文。</p>
-<pre><code>var中包括了一些数据文件，如系统日志等。/var的存放使得/usr被只读挂载成为可能。
-
-**## /var目录结构 ##**
-</code></pre><p><strong>/var/cache</strong></p>
-<p>应用程序的缓存文件</p>
-<p><strong>/var/lib</strong></p>
-<p>应用程序的信息、数据。如数据库的数据等都存放在此文件夹。</p>
-<p><strong>/var/local</strong></p>
-<p>/usr/local中程序的信息、数据</p>
-<p><strong>/var/lock</strong></p>
-<p>锁文件</p>
-<p><strong>/var/log</strong></p>
-<p>日志文件</p>
-<p><strong>/var/opt</strong></p>
-<p>/opt中程序的信息、数据</p>
-<p><strong>/var/run</strong></p>
-<p>正在执行着的程序的信息，如PID文件应存放于此</p>
-<p><strong>/var/spool</strong></p>
-<p>存放程序的假脱机数据（即spool data）</p>
-<p><strong>/var/tmp</strong></p>
-<p>临时文件</p>
-<pre><code>****二、所以分区：****
-</code></pre><p>使用任何Linux系统，都要有至少两个分区：一个根分区，用“/”表示；另一个是swap（交换）分区（最小应该和内存一样大，最大一般不超过内存的两倍大小），最好把/boot单独创建一个分区上（200M左右）</p>
+            <p>##DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构 #</p>
+<pre><code>----------
+</code></pre><p>来源：1.<a href=""><a href="http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" target="_blank" rel="external">http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84</a></a><br>2.<a href="&quot;鸟哥的私房菜&quot;"><a href="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php" target="_blank" rel="external">http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php</a></a></p>
+<h4 id="一、根文件系统"><a href="#一、根文件系统" class="headerlink" title="一、根文件系统"></a>一、根文件系统</h4><p><strong>/bin</strong><br>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong><br>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong><br>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong><br>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong><br>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。</p>
+<p><strong>/home</strong><br>存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。</p>
+<p><strong>/lib</strong><br>这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。</p>
+<p><strong>/lib64</strong><br>64位系统有这个文件夹，64位程序的库。</p>
+<p><strong>/lost+found</strong><br>这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。</p>
+<p><strong>/media</strong><br>可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。</p>
+<p><strong>/mnt</strong><br>临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区）</p>
+<p><strong>/opt</strong><br>多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。</p>
+<p><strong>/proc</strong><br>它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。</p>
+<p><strong>/root</strong><br>这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。</p>
+<p><strong>/sbin</strong><br>供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。</p>
+<p><strong>/tmp</strong><br>该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。</p>
+<p><strong>/usr</strong><br>静态的用户级应用程序等，见下。</p>
+<p><strong>/var</strong><br>动态的程序数据等，见下文。<br>    var中包括了一些数据文件，如系统日志等。/var的存放使得/usr被只读挂载成为可能。</p>
+<pre><code>**## /var目录结构 ##**
+**/var/cache**
+应用程序的缓存文件
+**/var/lib**
+应用程序的信息、数据。如数据库的数据等都存放在此文件夹。
+**/var/local**
+/usr/local中程序的信息、数据
+**/var/lock**
+锁文件
+**/var/log**
+日志文件
+**/var/opt**
+/opt中程序的信息、数据
+**/var/run**
+正在执行着的程序的信息，如PID文件应存放于此
+**/var/spool**
+存放程序的假脱机数据（即spool data）
+**/var/tmp**
+临时文件
+</code></pre><h4 id="二、所以分区："><a href="#二、所以分区：" class="headerlink" title="二、所以分区："></a>二、所以分区：</h4><p>使用任何Linux系统，都要有至少两个分区：一个根分区，用“/”表示；另一个是swap（交换）分区（最小应该和内存一样大，最大一般不超过内存的两倍大小），最好把/boot单独创建一个分区上（200M左右）</p>
 
           
         
@@ -1765,8 +1627,8 @@ int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:03:47+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1822,14 +1684,11 @@ int&amp;nbsp;misc_deregister(struct&amp;nbsp;miscdevice&amp;nbsp;*misc)
         
           
             <p>很早就开始关注些开源项目，加上这段时间在学习linux的相关东西，毕竟商用与学习是不一样的，所以就不得不全面了解下开源许可了。在此Mark一下。</p>
-<pre><code>找了下度娘，搜到一篇很全的说明：[http://blog.csdn.net/techbirds_bao/article/details/8785413](http://blog.csdn.net/techbirds_bao/article/details/8785413)。
+<p>找了下度娘，搜到一篇很全的说明：<a href="http://blog.csdn.net/techbirds_bao/article/details/8785413" target="_blank" rel="external">http://blog.csdn.net/techbirds_bao/article/details/8785413</a>。</p>
+<p>今天看到了一个开源IM工具，是蘑菇街的—<a href="https://github.com/mogutt" target="_blank" rel="external">mogutt</a>，它是基于Apache Licence V2.0的。对商业应用友好的许可。使用者也可以在需要的时候修改代码来满足需要并作为开源或商业产品发布/销售</p>
+<p>现在也想学习下QT5，它的开源版本是基于LGPL的。商业软件可以使用，但不能修改LGPL协议的代码，只能使用类库引用。</p>
+<p>Linux本身是基于GPL的。商业软件不能使用GPL协议的代码</p>
 
-今天看到了一个开源IM工具，是蘑菇街的---[mogutt](https://github.com/mogutt)，它是基于Apache Licence V2.0的。对商业应用友好的许可。使用者也可以在需要的时候修改代码来满足需要并作为开源或商业产品发布/销售
-
-现在也想学习下QT5，它的开源版本是基于LGPL的。商业软件可以使用，但不能修改LGPL协议的代码，只能使用类库引用。
-
-Linux本身是基于GPL的。商业软件不能使用GPL协议的代码
-</code></pre>
           
         
       
@@ -1927,8 +1786,8 @@ Linux本身是基于GPL的。商业软件不能使用GPL协议的代码
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:04:59+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1984,16 +1843,15 @@ Linux本身是基于GPL的。商业软件不能使用GPL协议的代码
         
           
             <p>之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。</p>
-<pre><code>首先补充了下基础知识（来源于网络）：
-
-SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含 (SSI）”指令将文本、图形或应用程序信息包含到网页中。默认扩展名是 .stm、.shtm 和 .shtml。
-</code></pre><blockquote>
+<p>首先补充了下基础知识（来源于网络）：</p>
+<p><code>SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含 (SSI）”指令将文本、图形或应用程序信息包含到网页中。默认扩展名是 .stm、.shtm 和 .shtml。</code></p>
+<blockquote>
 <p>在Lwip里的httpd中，工作原理：LWIP对于.shtml,.ssi,.shtm后缀的文件，会检测文件中&lt;!–#name–&gt;格式的TAG标志。</p>
 <p>然后再这个标记后面添加你想要的字符串。并不是替换，不过这个方法在脚本中不行， &lt;!–#name–&gt;</p>
 <p>是html文件的注释，但是在 &lt;script&gt;…&lt;/script&gt;中就不是注释了，所以在添加js代码的时候必须把整个JS脚本添加进来。</p>
 </blockquote>
-<pre><code>对于SSI使用详解 可移步至：[http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html](http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html) 
-</code></pre>
+<p>对于SSI使用详解 可移步至：<a href="http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html" target="_blank" rel="external">http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html</a> </p>
+
           
         
       
@@ -2091,8 +1949,8 @@ SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制�
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:08:44+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -2148,25 +2006,11 @@ SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制�
         
           
             <p>1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，<strong>前提条件：由交换机组成的网络</strong>。</p>
-<pre><code>按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。
-
-在不断电的情况下，电表中缓存着前一个集中器的IP和MAC映射关系，如果更换集中器之后且IP不变，电表进行UDP通信使用的还是之前的映射关系，所以会通信异常。
-
-2.另一个客户反馈的W5500的TCP连接问题，connect。如果服务器断了，客户端会一直死在连接的while里面不断请求连接。很明显，使用的是类似阻塞模式，但是超时中断未发生。A，改为非阻塞方式，立即返回状态。B，设置中断及合理的超时时间（TCPto）。SIMR，SIR及RTR, RCR
-</code></pre><blockquote>
-<p>while ( IINCHIP_READ(Sn_SR(s)) != SOCK_SYNSENT )</p>
-<p>{</p>
-<p>if(IINCHIP_READ(Sn_SR(s)) == SOCK_ESTABLISHED)</p>
-<p>{</p>
-<p>break;</p>
-<p>}</p>
-<p>if (getSn_IR(s) &amp; Sn_IR_TIMEOUT)</p>
-<p>{</p>
-<p>IINCHIP_WRITE(Sn_IR(s), (Sn_IR_TIMEOUT)); // clear TIMEOUT Interrupt</p>
-<p>ret = 0;</p>
-<p>break;</p>
-<p>}</p>
-<p>}</p>
+<p>按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。</p>
+<p>在不断电的情况下，电表中缓存着前一个集中器的IP和MAC映射关系，如果更换集中器之后且IP不变，电表进行UDP通信使用的还是之前的映射关系，所以会通信异常。</p>
+<p>2.另一个客户反馈的W5500的TCP连接问题，connect。如果服务器断了，客户端会一直死在连接的while里面不断请求连接。很明显，使用的是类似阻塞模式，但是超时中断未发生。A，改为非阻塞方式，立即返回状态。B，设置中断及合理的超时时间（TCPto）。SIMR，SIR及RTR, RCR</p>
+<blockquote>
+<p>while ( IINCHIP_READ(Sn_SR(s)) != SOCK_SYNSENT )<br>{<br>​    if(IINCHIP_READ(Sn_SR(s)) == SOCK_ESTABLISHED)<br>​    {<br>​        break;<br>​    }<br>​    if (getSn_IR(s) &amp; Sn_IR_TIMEOUT)<br>​    {<br>​        IINCHIP_WRITE(Sn_IR(s), (Sn_IR_TIMEOUT)); // clear TIMEOUT Interrupt<br>​        ret = 0;<br>​        break;<br>​    }<br>}</p>
 </blockquote>
 
           
@@ -2264,7 +2108,7 @@ SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

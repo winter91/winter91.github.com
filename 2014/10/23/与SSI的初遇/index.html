@@ -91,7 +91,6 @@
 
 <meta name="description" content="之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。
 首先补充了下基础知识（来源于网络）：
-
 SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含">
 <meta property="og:type" content="article">
 <meta property="og:title" content="与SSI的初遇">
@@ -99,14 +98,12 @@ SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制�
 <meta property="og:site_name" content="DD'echo">
 <meta property="og:description" content="之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。
 首先补充了下基础知识（来源于网络）：
-
 SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含">
-<meta property="og:updated_time" content="2017-04-27T03:59:03.374Z">
+<meta property="og:updated_time" content="2017-05-07T05:04:59.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="与SSI的初遇">
 <meta name="twitter:description" content="之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。
 首先补充了下基础知识（来源于网络）：
-
 SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含">
 
 
@@ -356,8 +353,8 @@ SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制�
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:04:59+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -411,16 +408,15 @@ SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制�
 
       
         <p>之前只弄过CGI，今天接触了下SSI（Lwip里httpd的）。</p>
-<pre><code>首先补充了下基础知识（来源于网络）：
-
-SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含 (SSI）”指令将文本、图形或应用程序信息包含到网页中。默认扩展名是 .stm、.shtm 和 .shtml。
-</code></pre><blockquote>
+<p>首先补充了下基础知识（来源于网络）：</p>
+<p><code>SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制作技术。SSI 具有强大的功能，只要使用一条简单的SSI 命令就可以实现整个网站的内容更新，动态显示时间和日期，以及执行shell和CGI脚本程序等复杂的功能。将内容发送到浏览器之前，可以使用“服务器端包含 (SSI）”指令将文本、图形或应用程序信息包含到网页中。默认扩展名是 .stm、.shtm 和 .shtml。</code></p>
+<blockquote>
 <p>在Lwip里的httpd中，工作原理：LWIP对于.shtml,.ssi,.shtm后缀的文件，会检测文件中&lt;!–#name–&gt;格式的TAG标志。</p>
 <p>然后再这个标记后面添加你想要的字符串。并不是替换，不过这个方法在脚本中不行， &lt;!–#name–&gt;</p>
 <p>是html文件的注释，但是在 &lt;script&gt;…&lt;/script&gt;中就不是注释了，所以在添加js代码的时候必须把整个JS脚本添加进来。</p>
 </blockquote>
-<pre><code>对于SSI使用详解 可移步至：[http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html](http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html) 
-</code></pre>
+<p>对于SSI使用详解 可移步至：<a href="http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html" target="_blank" rel="external">http://www.dedecms.com/web-art/PHP_jiaocheng/20010528/31257.html</a> </p>
+
       
     </div>
 
@@ -611,7 +607,7 @@ SSI :Server Side Include，是一种类似于ASP的基于服务器的网页制�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -293,7 +293,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2017/05/03/hello-world/">
+  <link itemprop="mainEntityOfPage" href="mark.z-dd.net/2017/05/07/hello-hexo/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="shell">
@@ -318,7 +318,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/03/hello-world/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/07/hello-hexo/" itemprop="url">
                   Hello World
                 </a>
               
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-03T09:40:31+08:00">
-                2017-05-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-07T10:57:29+08:00">
+                2017-05-07
               </time>
             
 
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2016-03-20T17:31:16+08:00">
-                2016-03-20
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:41:48+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -385,7 +385,7 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+            <h1 id="转战到Hexo，Node-js"><a href="#转战到Hexo，Node-js" class="headerlink" title="转战到Hexo，Node.js !"></a><strong>转战到Hexo，Node.js !</strong></h1><h2 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello ,Hexo !"></a><strong>Hello ,Hexo !</strong></h2><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -492,8 +492,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:20:56+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -549,30 +549,17 @@
         
           
             <p>&nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。</p>
-<p><strong>#引导：</strong></p>
-<p>&nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win10选择项。终于想起来了，之前装mint的时候是用MBR引导grub(在window下用的easyBCD，很简单)。</p>
+<p><strong>#引导：</strong><br>​    于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win10选择项。终于想起来了，之前装mint的时候是用MBR引导grub(在window下用的easyBCD，很简单)。</p>
 <p>然后硬着头皮去研究grub，后面发现了篇类似的文章(<a href="http://www.2cto.com/os/201411/354914.html" target="_blank" rel="external">http://www.2cto.com/os/201411/354914.html</a>)，然后用里面的方案一就OK了：</p>
 <p>在grub的配置文件/boot/grub/grub.cfg添加win10的启动项声明：</p>
 <blockquote>
-<h3 id="BEGIN-etc-grub-d-30-os-prober"><a href="#BEGIN-etc-grub-d-30-os-prober" class="headerlink" title="BEGIN /etc/grub.d/30_os-prober"></a>BEGIN /etc/grub.d/30_os-prober</h3><p>menuentry &#39;Windows 7 (loader) (on /dev/sda1)&#39; –class windows –class os $menuentry_id_option &#39;osprober-chain-XXX&#39; {</p>
-<p>insmod part_msdos</p>
-<p>insmod ntfs</p>
-<p>set root=&#39;hd0,msdos1&#39;</p>
-<p>chainloader +1</p>
-<p>}</p>
+<h3 id="BEGIN-etc-grub-d-30-os-prober"><a href="#BEGIN-etc-grub-d-30-os-prober" class="headerlink" title="BEGIN /etc/grub.d/30_os-prober"></a>BEGIN /etc/grub.d/30_os-prober</h3><p>menuentry &#39;Windows 7 (loader) (on /dev/sda1)&#39; –class windows –class os $menuentry_id_option &#39;osprober-chain-XXX&#39; {<br>insmod part_msdos<br>insmod ntfs<br>set root=&#39;hd0,msdos1&#39;<br>chainloader +1<br>}</p>
 <h3 id="END-etc-grub-d-30-os-prober"><a href="#END-etc-grub-d-30-os-prober" class="headerlink" title="END /etc/grub.d/30_os-prober"></a>END /etc/grub.d/30_os-prober</h3></blockquote>
 <p>加在### END /etc/grub.d/00_header ###之后。其中的XXX为你的Windows 系统分区的UUID。查看分区UUID的命令：sudo blkid</p>
-<p><strong>#安装中文输入法，字体(解决中文乱码):</strong></p>
-<p>apt-get install fcitx fcitx-table-wbpy &nbsp;ttf-wqy-microhei ttf-wqy-zenhei &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-<p>手工配置：</p>
-<p>im-config</p>
-<p><strong>#添加用户（因为Kali默认就是root用户）:</strong></p>
-<p>useradd -m -G video,audio,cdrom,sudo -s /bin/bash 用户名</p>
-<p>passwd 用户名</p>
-<p><strong>#安装多窗口终端：</strong></p>
-<p>apt-get install terminator &nbsp; &nbsp;</p>
-<p><strong><strong style="white-space: normal;">#</strong>浏览器：</strong></p>
-<p>虽然Kali里面的是iceweasel，但是和firefox是同一家族的，所以和之前装mint类似： <a href="http://echo.z-dd.net/post-34.html" target="_blank" rel="external">http://echo.z-dd.net/post-34.html</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+<p><strong>#安装中文输入法，字体(解决中文乱码):</strong><br>    apt-get install fcitx fcitx-table-wbpy &nbsp;ttf-wqy-microhei ttf-wqy-zenhei<br>手工配置：<br>    im-config</p>
+<p><strong>#添加用户（因为Kali默认就是root用户）:</strong><br>    useradd -m -G video,audio,cdrom,sudo -s /bin/bash 用户名<br>    passwd 用户名</p>
+<p><strong>#安装多窗口终端：</strong><br>    apt-get install terminator &nbsp; &nbsp;</p>
+<p><strong><strong style="white-space: normal;">#</strong>浏览器：</strong><br>    虽然Kali里面的是iceweasel，但是和firefox是同一家族的，所以和之前装mint类似： <a href="http://echo.z-dd.net/post-34.html" target="_blank" rel="external">http://echo.z-dd.net/post-34.html</a>&nbsp; </p>
 
           
         
@@ -833,8 +820,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T13:58:04+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T11:24:35+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -889,7 +876,7 @@
       
         
           
-            <p>&nbsp;&nbsp;最近公司换新手机了–P8乞丐版，以前的那个就没啥用了（其实早就没用了<img src="http://img.baidu.com/hi/jx2/j_0063.gif" alt="">，一方面质量太差，经常失灵，另一方面带两个手机太麻烦了）。反正放在那闲着也是闲着，于是琢磨着能不能在上面装个linux,后面在网上一查，真的可以哇，于是说干就干。</p>
+            <p>&nbsp;&nbsp;最近公司换新手机了–P8乞丐版，以前的那个就没啥用了（其实早就没用了，一方面质量太差，经常失灵，另一方面带两个手机太麻烦了）。反正放在那闲着也是闲着，于是琢磨着能不能在上面装个linux,后面在网上一查，真的可以哇，于是说干就干。</p>
 <p>​    先刷个机，刷得干净清爽点，那个是定制机，里面乱七八糟的太多的太卡了Deploy linux和Busybox都需要root权限，而且。开始装个Deploy linux，感觉就是类似PC上的虚拟机，虚拟化chroot容器。安装好了后面发现在里面安装Linux要依赖Busybox，于是又安了个<a href="https://github.com/meefik/busybox/releases" target="_blank" rel="external">Busybox</a>。一切开始准备Ok，开始傻瓜式安装Kali。注意安装期间千万别断网，否则要重新开始。安装Ok后，用SSH和VNC都可以连上去，感觉还是有点卡哇，毕竟是容器里面的跑的。</p>
 <p>&nbsp;&nbsp;2016-01-24&nbsp;20:44:34</p>
 
@@ -990,8 +977,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:46:04+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1046,8 +1033,7 @@
       
         
           
-            <p>repo:</p>
-<p>curl <a href="http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo" target="_blank" rel="external">http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo</a> &gt; ~/bin/repo</p>
+            <p>repo:<br>curl <a href="http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo" target="_blank" rel="external">http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo</a> &gt; ~/bin/repo</p>
 <p><a href="https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernel" target="_blank" rel="external">https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernel</a><br>MACHINE=imx6qsabresd source fsl-setup-release.sh -b build-x11 -e x11<br>bitbake -c menuconfig linux-imx<br>bitbake fsl-image-qt5</p>
 <p>bitbake -c cleansstate u-boot<br>bitbake -c patch u-boot<br>bitbake -c cleansstate linux-imx<br>bitbake -c cleanall fsl-image-qt5<br>bitbake meta-toolchain-qt5&nbsp; #生成的sdk在 deploy/sdk/，一样先运行环境脚本</p>
 <p>bitbake meta-ide-support:生成交叉编译环境脚本<br>source 交叉编译环境脚本<br>查看编译链:<br>echo $CC<br>arm-poky-linux-gnueabi-gcc -v<br>//bitbake meta-toolchain</p>
@@ -1151,8 +1137,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:14:33+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1207,83 +1193,21 @@
       
         
           
-            <p>//————————————————————————</p>
-<pre><code>14.9.2 给世成解决在windows下python逐行拷贝sql文件的问题，要以“rb”，二进制的方式打开，不能直接“r”，文件的存储的编码方式的问题。
-
-//----------------------------------------------------------------------
-</code></pre><p>9.17 python 串口操作</p>
-<p><a href="http://blog.chinaunix.net/uid-9787595-id-1997667.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-9787595-id-1997667.html</a></p>
-<p>//———————————————————————-</p>
-<p>9.18 python log，&nbsp; wxpython&nbsp; wx.Choice</p>
-<p>python 模块间，函数间的调用</p>
-<p><a href="http://www.2cto.com/kf/201212/175349.html" target="_blank" rel="external">http://www.2cto.com/kf/201212/175349.html</a></p>
-<p>python 类</p>
-<p>【Python】TypeError: ’module’ object is not callable 原因分析</p>
-<p><a href="http://blog.csdn.net/kenkywu/article/details/6743520" target="_blank" rel="external">http://blog.csdn.net/kenkywu/article/details/6743520</a></p>
-<p>//———————————————————————-</p>
-<p>9.24 Python 操作注册表</p>
-<p><a href="http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp" target="_blank" rel="external">http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp</a>; (_winreg和win32api)</p>
-<p>wxpython ComboBox</p>
-<p>pyhon字符串操作，选择其中部分的字符，转整型</p>
-<p>Python通过查找注册表，找到COM口，并打开串口，接收数据，OK！！！</p>
-<p>Python TCP端口监听</p>
-<p>//———————————————————————-</p>
-<p>9.25</p>
-<p>python pip, easy_install</p>
-<p>由 Python ??的?????生工具－ jemdoc</p>
-<p><a href="http://www.openfoundry.org/en/foss-programs/8709?task=view" target="_blank" rel="external">http://www.openfoundry.org/en/foss-programs/8709?task=view</a></p>
-<p>用pelican在github上创建自己的博客!(Python静态网页生成工具pelican)</p>
-<p><a href="http://x-wei.github.io/pelican_github_blog.html" target="_blank" rel="external">http://x-wei.github.io/pelican_github_blog.html</a></p>
-<p><a href="http://dengzhp.github.io/hello-pelican.html" target="_blank" rel="external">http://dengzhp.github.io/hello-pelican.html</a></p>
-<p>安装后不支持Markdown语法?</p>
-<p>这个是因为Markdown没有与pelican包一起安装(pelican默认的还是支持rst格式), 安装上Markdown包就行了:install Markdown</p>
-<p>编写的.md文件除了标签之外必须要有内容，Github必须要同步到仓库的master分支才能创建博客</p>
-<p>//———————————————————————-</p>
-<p>9.26</p>
-<p>博客生成命令已全部写成批处理命令，并打开GitHub来同步，一键搞定</p>
-<p>cmd 下xcopy/?，复制目录所有文件到目标文件夹</p>
-<p>DISQUS_SITENAME 设置Disqus短域名，来绑定Disqus评论插件</p>
-<p>wxpython编程之 grid(数据表格),布局：BoxSizer&nbsp; ，，TextCtrl</p>
-<p>//——————————–</p>
-<p>10.23</p>
-<p>python扩展问题”unable to find vcvarsall.bat“的解决</p>
-<p><a href="http://blog.csdn.net/ren911/article/details/6448696" target="_blank" rel="external">http://blog.csdn.net/ren911/article/details/6448696</a></p>
-<p>Zbar安装失败</p>
-<p>//———————————-</p>
-<p>10.28</p>
-<p>不能启动PyQt4uic 解决方法：</p>
-<p>1.自己调用命令行</p>
-<p>pyuic4 -o codeFile.py -x yourUIfile.ui</p>
-<p>2.写一个批处理,每次双击就行了,跟你的源文件放在同一文件夹下</p>
-<p>import os</p>
-<p>for root, dirs, files in os.walk(’.’):</p>
-<p>&nbsp;&nbsp;&nbsp; for file in files:</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if file.endswith(’.ui’):</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyuic4 -o %s.py -x %s’ </p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file))</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; elif file.endswith(’.qrc’):</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os.system(’pyrcc4 -o %s_rc.py %s’ </p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; % (file.rsplit(’.’, 1)[0], file))</p>
-<p>3.使用Eric</p>
-<pre><code>//----------------------------------
-
-Boa Constructor - wxPython GUI Builder 
-</code></pre><p>python下处理带空格的路径：</p>
-<p>&nbsp;&nbsp;&nbsp; import os</p>
-<p>&nbsp;&nbsp;&nbsp; cmd1=r’c:”Program FilesInternet Explorer”iexplore.exe’</p>
-<p>&nbsp;&nbsp;&nbsp; cmd2 = r’copy E:”Program Files””flash magic”fm.exe 2.exe’</p>
-<p>&nbsp;&nbsp;&nbsp; def main():</p>
-<p>&nbsp;&nbsp;&nbsp; #cmd = ’ “ “ 带空格的可执行程序 “&nbsp; 空格 “ 带空格的参数或文件名等” “ ’</p>
-<p>&nbsp;&nbsp;&nbsp; #cmd=’””D:\Program Files\Microsoft Office\OFFICE11\winword.exe” “d:\11.doc””’</p>
-<p>&nbsp;&nbsp;&nbsp; #cmd = ’””copy” “E:\Program Files\flash magic\fm.exe”&nbsp; “2.exe””’</p>
-<p>&nbsp;&nbsp; &nbsp;</p>
-<p>&nbsp;&nbsp;&nbsp; #print os.system(cmd2).read()</p>
-<p>&nbsp;&nbsp;&nbsp; print os.popen(cmd2).read()</p>
-<p>&nbsp;&nbsp; &nbsp;</p>
-<p>&nbsp;&nbsp;&nbsp; if <strong>name</strong> == ’<strong>main</strong>’:</p>
-<p>&nbsp;&nbsp;&nbsp; main()</p>
-<p>处理中文路径：</p>
-<p>filepath=unicode(filepath,’utf8’)</p>
+            <p>//————————————————————————<br>14.9.2 给世成解决在windows下python逐行拷贝sql文件的问题，要以“rb”，二进制的方式打开，不能直接“r”，文件的存储的编码方式的问题。</p>
+<p>9.17 python 串口操作<br><a href="http://blog.chinaunix.net/uid-9787595-id-1997667.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-9787595-id-1997667.html</a></p>
+<p>//———————————————————————-<br>9.18 python log，&nbsp; wxpython&nbsp; wx.Choice<br>python 模块间，函数间的调用<br><a href="http://www.2cto.com/kf/201212/175349.html" target="_blank" rel="external">http://www.2cto.com/kf/201212/175349.html</a></p>
+<p>python 类<br>【Python】TypeError: ’module’ object is not callable 原因分析<br><a href="http://blog.csdn.net/kenkywu/article/details/6743520" target="_blank" rel="external">http://blog.csdn.net/kenkywu/article/details/6743520</a></p>
+<p>//———————————————————————-<br>9.24 Python 操作注册表<br><a href="http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp" target="_blank" rel="external">http://www.cnblogs.com/JeffreySun/archive/2010/01/04/1639117.html&amp;nbsp</a>; (_winreg和win32api)</p>
+<p>wxpython ComboBox<br>pyhon字符串操作，选择其中部分的字符，转整型<br>Python通过查找注册表，找到COM口，并打开串口，接收数据，OK！！！<br>Python TCP端口监听</p>
+<p>//———————————————————————-<br>9.25<br>python pip, easy_install<br>由 Python ??的?????生工具－ jemdoc:<br><a href="http://www.openfoundry.org/en/foss-programs/8709?task=view" target="_blank" rel="external">http://www.openfoundry.org/en/foss-programs/8709?task=view</a></p>
+<p>用pelican在github上创建自己的博客!(Python静态网页生成工具pelican)<br><a href="http://x-wei.github.io/pelican_github_blog.html" target="_blank" rel="external">http://x-wei.github.io/pelican_github_blog.html</a><br><a href="http://dengzhp.github.io/hello-pelican.html" target="_blank" rel="external">http://dengzhp.github.io/hello-pelican.html</a></p>
+<p>安装后不支持Markdown语法?<br>这个是因为Markdown没有与pelican包一起安装(pelican默认的还是支持rst格式), 安装上Markdown包就行了:install Markdown<br>编写的.md文件除了标签之外必须要有内容，Github必须要同步到仓库的master分支才能创建博客</p>
+<p>//———————————————————————-<br>9.26<br>博客生成命令已全部写成批处理命令，并打开GitHub来同步，一键搞定<br>cmd 下xcopy/?，复制目录所有文件到目标文件夹<br>DISQUS_SITENAME 设置Disqus短域名，来绑定Disqus评论插件<br>wxpython编程之 grid(数据表格),布局：BoxSizer&nbsp; ，，TextCtrl</p>
+<p>//——————————–<br>10.23<br>python扩展问题”unable to find vcvarsall.bat“的解决<br><a href="http://blog.csdn.net/ren911/article/details/6448696" target="_blank" rel="external">http://blog.csdn.net/ren911/article/details/6448696</a><br>Zbar安装失败</p>
+<p>//———————————-<br>10.28<br>不能启动PyQt4uic 解决方法：<br>1.自己调用命令行<br>pyuic4 -o codeFile.py -x yourUIfile.ui<br>2.写一个批处理,每次双击就行了,跟你的源文件放在同一文件夹下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(<span class="string">'.'</span>):</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        <span class="keyword">if</span> file.endswith(<span class="string">'.ui'</span>):</span><br><span class="line">            os.system(<span class="string">'pyuic4 -o %s.py -x %s'</span> \</span><br><span class="line">                      % (file.rsplit(<span class="string">'.'</span>, <span class="number">1</span>)[<span class="number">0</span>], file))</span><br><span class="line">        <span class="keyword">elif</span> file.endswith(<span class="string">'.qrc'</span>):</span><br><span class="line">         os.system(<span class="string">'pyrcc4 -o %s_rc.py %s'</span> \</span><br><span class="line">                      % (file.rsplit(<span class="string">'.'</span>, <span class="number">1</span>)[<span class="number">0</span>], file))</span><br></pre></td></tr></table></figure></p>
+<p>3.使用Eric<br>//———————————-<br>Boa Constructor - wxPython GUI Builder </p>
+<p>python下处理带空格的路径：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">   cmd1=<span class="string">r'c:\"Program Files\Internet Explorer"\iexplore.exe'</span></span><br><span class="line">   cmd2 = <span class="string">r'copy E:\"Program Files"\"flash magic"\fm.exe 2.exe'</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">   <span class="comment">#cmd = ' \" \" 带空格的可执行程序 \"  空格 \" 带空格的参数或文件名等\" \" '</span></span><br><span class="line">   <span class="comment">#cmd='\"\"D:\\Program Files\\Microsoft Office\\OFFICE11\\winword.exe\" \"d:\\11.doc\"\"'</span></span><br><span class="line">   <span class="comment">#cmd = '\"\"copy\" \"E:\\Program Files\\flash magic\\fm.exe\"  \"2.exe\"\"'</span></span><br><span class="line">   </span><br><span class="line">   <span class="comment">#print os.system(cmd2).read()</span></span><br><span class="line">   <span class="keyword">print</span> os.popen(cmd2).read()</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">   main()</span><br></pre></td></tr></table></figure></p>
+<p>处理中文路径：<br>filepath=unicode(filepath,’utf8’)</p>
 
           
         
@@ -1382,8 +1306,8 @@ Boa Constructor - wxPython GUI Builder
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T11:35:00+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1438,16 +1362,13 @@ Boa Constructor - wxPython GUI Builder
       
         
           
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下：</p>
-<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; 1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 2.修改符号链接：
-</code></pre><pre class="prettyprint lang-bsh linenums">    rm -rf /usr/bin/python
-    ln -s /usr/local/bin/python2.7 /usr/bin/python</pre>
-
-<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; 3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;python -V
+            <p>​    最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下：</p>
+<pre><code>1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++
+2.修改符号链接： 
+rm -rf /usr/bin/python
+ln -s /usr/local/bin/python2.7 /usr/bin/python&lt;/pre&gt;
+3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6
+  python -V
 </code></pre>
           
         
@@ -1546,8 +1467,8 @@ Boa Constructor - wxPython GUI Builder
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:11:20+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1603,36 +1524,18 @@ Boa Constructor - wxPython GUI Builder
         
           
             <p>下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。</p>
-<pre><code>使用 ：
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;**1.i2cdetect -l**
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举出系统中所有的I2C总线。
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;** 2.i2cdetect -y -r **&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;**0**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举一条I2C总线（&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;以0为例&lt;/span&gt;）上的所有设备(UU为使用中，即已经操作过)
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5&amp;nbsp; 6&amp;nbsp; 7&amp;nbsp; 8&amp;nbsp; 9&amp;nbsp; a&amp;nbsp; b&amp;nbsp; c&amp;nbsp; d&amp;nbsp; e&amp;nbsp; f
-</code></pre><p>00:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; – – – – – – – – – – – – –</p>
-<p>10: – – – – – – – – – – UU – – – – –</p>
-<p>20: – – – – – – – – – – – – – – – –</p>
-<p>30: – – – – 34 – – – – – – – – – – –</p>
-<p>40: – – – – – – – – – – – – – – – –</p>
-<p>50: – – – – – – – – – – – – – – – –</p>
-<p>60: – – – – – – – – – – – – – – – –</p>
-<p>70: – – – – – – – –</p>
-<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; **3.i2cdump -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; **4.i2cget -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; **5.i2cset -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; &lt;span style=&quot;background-color:#00D5FF;&quot;&gt;**0xfb**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 写I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器为&lt;span style=&quot;background-color:#00D5FF;&quot;&gt;0xfb&lt;/span&gt; 
+<p>使用 ：</p>
+<p><strong>1.i2cdetect -l</strong></p>
+<pre><code>列举出系统中所有的I2C总线。
+</code></pre><p><strong>2.i2cdetect -y -r 0</strong></p>
+<pre><code>列举一条I2C总线（以0为例）上的所有设备(UU为使用中，即已经操作过)
+</code></pre><p>0&nbsp; 1&nbsp; 2&nbsp; 3&nbsp; 4&nbsp; 5&nbsp; 6&nbsp; 7&nbsp; 8&nbsp; 9&nbsp; a&nbsp; b&nbsp; c&nbsp; d&nbsp; e&nbsp; f<br>00:               – – – – – – – – – – – – –<br>10: – – – – – – – – – – UU – – – – –<br>20: – – – – – – – – – – – – – – – –<br>30: – – – – 34 – – – – – – – – – – –<br>40: – – – – – – – – – – – – – – – –<br>50: – – – – – – – – – – – – – – – –<br>60: – – – – – – – – – – – – – – – –<br>70: – – – – – – – –</p>
+<p><strong>3. i2cdump -f -y 0 0x34</strong></p>
+<pre><code>读取I2C总线（0）上地址为0x34的设备
+</code></pre><p><strong>4. i2cget -f -y 0 0x34 0x28</strong></p>
+<pre><code>读取I2C总线（0）上地址为0x34的设备的0x28寄存器
+</code></pre><p><strong>5. i2cset -f -y 0 0x34 0x28 0xfb</strong></p>
+<pre><code>写I2C总线（0）上地址为0x34的设备的0x28寄存器为0xfb
 </code></pre>
           
         
@@ -1731,8 +1634,8 @@ Boa Constructor - wxPython GUI Builder
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:10:11+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1787,35 +1690,12 @@ Boa Constructor - wxPython GUI Builder
       
         
           
-            <p>本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。</p>
-<pre><code>开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
-
-后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/emoticons/images/23.gif)。下下来刷进了SD卡里，顺利跑起来了。
-
-突然发现之前的USB网卡rtl8188eu不能用，于是又开始折腾&amp;nbsp;&amp;nbsp;rtl8188eu的驱动。
-
-下了个&lt;span style=&quot;white-space:normal;&quot;&gt;rtl8188eu驱动源码，发现没有unzip。&lt;/span&gt;&lt;span style=&quot;display:none;&quot; id=&quot;__kindeditor_bookmark_start_31__&quot;&gt;&lt;span style=&quot;white-space:normal;&quot;&gt;发现没make，gcc，&lt;/span&gt;&lt;/span&gt; 
-
-开始编译，没有/lib/modules/3.4.10/bulid 的软链接无效，导致找不到路径。
-
-没有make，gcc，
-
-ssh：
-
-kali默认是没有开启SSH，每次用串口很麻烦，于是就打开了ssh：
-
-1.修改/etc/ssh/sshd_config:
-
-PasswordAuthentication yes
-
-PermitRootLogin without-password的后面&lt;span style=&quot;white-space:normal;&quot;&gt;without-password&lt;/span&gt;改为yes
-
-保存退出
-
-2.添加自启动：
-
-update-rc.d ssh enable &amp;nbsp;//开启
-</code></pre><p>update-rc.d ssh disabled // 关闭</p>
+            <p>​    本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。</p>
+<p>​    开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。</p>
+<p>​    后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分。下下来刷进了SD卡里，顺利跑起来了。</p>
+<p>​    突然发现之前的USB网卡rtl8188eu不能用，于是又开始折腾rtl8188eu的驱动。<br>下了个rtl8188eu驱动源码，发现没有unzip，没有make，gcc。 </p>
+<p>开始编译，没有/lib/modules/3.4.10/bulid 的软链接无效，导致找不到路径。</p>
+<p>kali默认是没有开启SSH，每次用串口很麻烦，于是就打开了ssh：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.修改/etc/ssh/sshd_config:</span><br><span class="line">	PasswordAuthentication yes</span><br><span class="line">	PermitRootLogin without-password的后面without-password改为yes</span><br><span class="line">保存退出</span><br><span class="line">2.添加自启动：</span><br><span class="line">	update-rc.d ssh enable &amp;nbsp;//开启</span><br><span class="line">	update-rc.d ssh disabled // 关闭</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1914,8 +1794,8 @@ update-rc.d ssh enable &amp;nbsp;//开启
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:08:07+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -1970,41 +1850,32 @@ update-rc.d ssh enable &amp;nbsp;//开启
       
         
           
-            <p><strong><span style="font-size:24px;"><u>wpa_supplicant</u></span>**</strong><span style="font-size:24px;"><u></u></span>** </p>
-<pre><code>用wpa_passphrase生成最基本的wpa_supplicant配置文件：
-</code></pre><pre class="prettyprint lang-bsh linenums">wpa_passphrase TPLINK 12345678 |sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf </pre>
-
-<p>wpa_supplication.conf的模板如下：</p>
-<pre class="prettyprint lang-bsh linenums">ctrl_interface=/var/run/wpa_supplicant
+            <p>###<strong>wpa_supplican</strong></p>
+<p>用wpa_passphrase生成最基本的wpa_supplicant配置文件：</p>
+<pre><code>wpa_passphrase TPLINK 12345678 |sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+</code></pre><p>wpa_supplication.conf的模板如下：</p>
+<pre><code>ctrl_interface=/var/run/wpa_supplicant
 ctrl_interface_group=wheel
 update_config=1
+network=
+{
+    ssid=&quot;xxxx&quot;
+    scan_ssid=1
+    psk=xxxxxxxxx37bca5cf24a345f514d319211822f568bba28f8f0b74c894e7644
+    proto=RSN
+    key_mgmt=WPA-PSK
+    pairwise=CCMP
+    auth_alg=OPEN
+}
+</code></pre><p>连接命令：</p>
+<pre><code>wpa_supplicant -B -d -iwlan0 -c/etc/wpa_supplicant.conf
+</code></pre><p>动态获取IP：</p>
+<pre><code>dhclient wlan0
+</code></pre><p>###<strong>iwconfig</strong></p>
+<p>扫描AP节点：<br>    iwlist wlan4 scanning</p>
+<p>配置MYSSID：<br>    iwconfig wlan0 essid “myssid”</p>
+<p>加密码：<br>    iwconfig wlan0 key s:xxxxx/xxxxxxxxxxxxx（40－bit为5个ASSIC字符，128－bit为13个ASSIC字符，以字符为密钥时，密钥之前需要加s:表示字符）</p>
 
-network={
- ssid="xxxx"
- scan_ssid=1
- psk=xxxxxxxxx37bca5cf24a345f514d319211822f568bba28f8f0b74c894e7644
- proto=RSN
- key_mgmt=WPA-PSK
- pairwise=CCMP
- auth_alg=OPEN
-}</pre>
-
-<p>连接命令：</p>
-<pre class="prettyprint lang-bsh linenums">wpa_supplicant -B -d -iwlan0 -c/etc/wpa_supplicant.conf</pre>
-
-<p>动态获取IP：</p>
-<pre class="prettyprint lang-bsh linenums">dhclient wlan0</pre>
-
-<pre><code>**&lt;span style=&quot;font-size:24px;&quot;&gt;&lt;u&gt;iwconfig&lt;/u&gt;&lt;/span&gt;** 
-
-扫描AP节点：
-</code></pre><pre class="prettyprint lang-bsh linenums">iwlist wlan4 scanning</pre>
-
-<p>配置MYSSID：</p>
-<pre class="prettyprint lang-bsh linenums">iwconfig wlan0 essid "myssid"</pre>
-
-<p>加密码：</p>
-<pre class="prettyprint lang-bsh linenums">iwconfig wlan0 key s:xxxxx/xxxxxxxxxxxxx（40－bit为5个ASSIC字符，128－bit为13个ASSIC字符，以字符为密钥时，密钥之前需要加s:表示字符）</pre>
           
         
       
@@ -2100,7 +1971,7 @@ network={
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

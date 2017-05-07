@@ -89,25 +89,25 @@
 
 
 
-<meta name="description" content="本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。
-开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
-
-后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/em">
+<meta name="description" content="​    本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。
+​    开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
+​    后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分。下下来刷进了SD卡里，顺利跑起来了。
+​    突然发现之前的US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cubieboard上kali初探">
 <meta property="og:url" content="mark.z-dd.net/2015/11/04/Cubieboard上kali初探/index.html">
 <meta property="og:site_name" content="DD'echo">
-<meta property="og:description" content="本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。
-开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
-
-后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/em">
-<meta property="og:updated_time" content="2017-04-27T03:59:03.374Z">
+<meta property="og:description" content="​    本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。
+​    开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
+​    后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分。下下来刷进了SD卡里，顺利跑起来了。
+​    突然发现之前的US">
+<meta property="og:updated_time" content="2017-05-07T04:10:11.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cubieboard上kali初探">
-<meta name="twitter:description" content="本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。
-开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
-
-后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/em">
+<meta name="twitter:description" content="​    本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。
+​    开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
+​    后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分。下下来刷进了SD卡里，顺利跑起来了。
+​    突然发现之前的US">
 
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:10:11+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -410,35 +410,12 @@
       
 
       
-        <p>本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。</p>
-<pre><code>开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。
-
-后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分![](http://echo.z-dd.net/admin/editor/plugins/emoticons/images/23.gif)。下下来刷进了SD卡里，顺利跑起来了。
-
-突然发现之前的USB网卡rtl8188eu不能用，于是又开始折腾&amp;nbsp;&amp;nbsp;rtl8188eu的驱动。
-
-下了个&lt;span style=&quot;white-space:normal;&quot;&gt;rtl8188eu驱动源码，发现没有unzip。&lt;/span&gt;&lt;span style=&quot;display:none;&quot; id=&quot;__kindeditor_bookmark_start_31__&quot;&gt;&lt;span style=&quot;white-space:normal;&quot;&gt;发现没make，gcc，&lt;/span&gt;&lt;/span&gt; 
-
-开始编译，没有/lib/modules/3.4.10/bulid 的软链接无效，导致找不到路径。
-
-没有make，gcc，
-
-ssh：
-
-kali默认是没有开启SSH，每次用串口很麻烦，于是就打开了ssh：
-
-1.修改/etc/ssh/sshd_config:
-
-PasswordAuthentication yes
-
-PermitRootLogin without-password的后面&lt;span style=&quot;white-space:normal;&quot;&gt;without-password&lt;/span&gt;改为yes
-
-保存退出
-
-2.添加自启动：
-
-update-rc.d ssh enable &amp;nbsp;//开启
-</code></pre><p>update-rc.d ssh disabled // 关闭</p>
+        <p>​    本人小白一枚，偶遇kali。觉得很不错，想玩玩。于是在手头的Cubieboard上倒腾。</p>
+<p>​    开始看到网上有人用第三方的方法制作在Cubieboard跑的kali的镜像，发现很多问题，链接地址失效不可用等等问题。</p>
+<p>​    后来突然发现Kali的官网上，ARM版本的Kali居然有Cubieboard的镜像，惊喜万分。下下来刷进了SD卡里，顺利跑起来了。</p>
+<p>​    突然发现之前的USB网卡rtl8188eu不能用，于是又开始折腾rtl8188eu的驱动。<br>下了个rtl8188eu驱动源码，发现没有unzip，没有make，gcc。 </p>
+<p>开始编译，没有/lib/modules/3.4.10/bulid 的软链接无效，导致找不到路径。</p>
+<p>kali默认是没有开启SSH，每次用串口很麻烦，于是就打开了ssh：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.修改/etc/ssh/sshd_config:</span><br><span class="line">	PasswordAuthentication yes</span><br><span class="line">	PermitRootLogin without-password的后面without-password改为yes</span><br><span class="line">保存退出</span><br><span class="line">2.添加自启动：</span><br><span class="line">	update-rc.d ssh enable &amp;nbsp;//开启</span><br><span class="line">	update-rc.d ssh disabled // 关闭</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -626,7 +603,7 @@ update-rc.d ssh enable &amp;nbsp;//开启
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

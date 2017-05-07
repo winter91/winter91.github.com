@@ -90,21 +90,18 @@
 
 
 <meta name="description" content="&amp;nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。
-#引导：
-&amp;nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中">
+#引导：​    于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kali Rolling版本折腾">
 <meta property="og:url" content="mark.z-dd.net/2016/03/13/Kali-Rolling版本折腾/index.html">
 <meta property="og:site_name" content="DD'echo">
 <meta property="og:description" content="&amp;nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。
-#引导：
-&amp;nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中">
-<meta property="og:updated_time" content="2017-04-27T03:59:03.377Z">
+#引导：​    于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win">
+<meta property="og:updated_time" content="2017-05-07T04:20:56.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kali Rolling版本折腾">
 <meta name="twitter:description" content="&amp;nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。
-#引导：
-&amp;nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中">
+#引导：​    于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win">
 
 
 
@@ -353,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:20:56+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -408,30 +405,17 @@
 
       
         <p>&nbsp; 最近有点“脑残”，想把之前自己电脑双系统里的linux-mint换成Kali的rolling版玩玩。</p>
-<p><strong>#引导：</strong></p>
-<p>&nbsp; 于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win10选择项。终于想起来了，之前装mint的时候是用MBR引导grub(在window下用的easyBCD，很简单)。</p>
+<p><strong>#引导：</strong><br>​    于是开始行动，用win32diskimager将Kali的安装镜像文件写到U盘，分区，安装，和以前装ubuntu，mint都类似，一切都啥问题，到grub安装的时候，我选择了将grub安装到了MBR，系统全部安装后，重启，发现，悲剧了，没有grub的引导选项中win10选择项。终于想起来了，之前装mint的时候是用MBR引导grub(在window下用的easyBCD，很简单)。</p>
 <p>然后硬着头皮去研究grub，后面发现了篇类似的文章(<a href="http://www.2cto.com/os/201411/354914.html" target="_blank" rel="external">http://www.2cto.com/os/201411/354914.html</a>)，然后用里面的方案一就OK了：</p>
 <p>在grub的配置文件/boot/grub/grub.cfg添加win10的启动项声明：</p>
 <blockquote>
-<h3 id="BEGIN-etc-grub-d-30-os-prober"><a href="#BEGIN-etc-grub-d-30-os-prober" class="headerlink" title="BEGIN /etc/grub.d/30_os-prober"></a>BEGIN /etc/grub.d/30_os-prober</h3><p>menuentry &#39;Windows 7 (loader) (on /dev/sda1)&#39; –class windows –class os $menuentry_id_option &#39;osprober-chain-XXX&#39; {</p>
-<p>insmod part_msdos</p>
-<p>insmod ntfs</p>
-<p>set root=&#39;hd0,msdos1&#39;</p>
-<p>chainloader +1</p>
-<p>}</p>
+<h3 id="BEGIN-etc-grub-d-30-os-prober"><a href="#BEGIN-etc-grub-d-30-os-prober" class="headerlink" title="BEGIN /etc/grub.d/30_os-prober"></a>BEGIN /etc/grub.d/30_os-prober</h3><p>menuentry &#39;Windows 7 (loader) (on /dev/sda1)&#39; –class windows –class os $menuentry_id_option &#39;osprober-chain-XXX&#39; {<br>insmod part_msdos<br>insmod ntfs<br>set root=&#39;hd0,msdos1&#39;<br>chainloader +1<br>}</p>
 <h3 id="END-etc-grub-d-30-os-prober"><a href="#END-etc-grub-d-30-os-prober" class="headerlink" title="END /etc/grub.d/30_os-prober"></a>END /etc/grub.d/30_os-prober</h3></blockquote>
 <p>加在### END /etc/grub.d/00_header ###之后。其中的XXX为你的Windows 系统分区的UUID。查看分区UUID的命令：sudo blkid</p>
-<p><strong>#安装中文输入法，字体(解决中文乱码):</strong></p>
-<p>apt-get install fcitx fcitx-table-wbpy &nbsp;ttf-wqy-microhei ttf-wqy-zenhei &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-<p>手工配置：</p>
-<p>im-config</p>
-<p><strong>#添加用户（因为Kali默认就是root用户）:</strong></p>
-<p>useradd -m -G video,audio,cdrom,sudo -s /bin/bash 用户名</p>
-<p>passwd 用户名</p>
-<p><strong>#安装多窗口终端：</strong></p>
-<p>apt-get install terminator &nbsp; &nbsp;</p>
-<p><strong><strong style="white-space: normal;">#</strong>浏览器：</strong></p>
-<p>虽然Kali里面的是iceweasel，但是和firefox是同一家族的，所以和之前装mint类似： <a href="http://echo.z-dd.net/post-34.html" target="_blank" rel="external">http://echo.z-dd.net/post-34.html</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+<p><strong>#安装中文输入法，字体(解决中文乱码):</strong><br>    apt-get install fcitx fcitx-table-wbpy &nbsp;ttf-wqy-microhei ttf-wqy-zenhei<br>手工配置：<br>    im-config</p>
+<p><strong>#添加用户（因为Kali默认就是root用户）:</strong><br>    useradd -m -G video,audio,cdrom,sudo -s /bin/bash 用户名<br>    passwd 用户名</p>
+<p><strong>#安装多窗口终端：</strong><br>    apt-get install terminator &nbsp; &nbsp;</p>
+<p><strong><strong style="white-space: normal;">#</strong>浏览器：</strong><br>    虽然Kali里面的是iceweasel，但是和firefox是同一家族的，所以和之前装mint类似： <a href="http://echo.z-dd.net/post-34.html" target="_blank" rel="external">http://echo.z-dd.net/post-34.html</a>&nbsp; </p>
 
       
     </div>
@@ -499,7 +483,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/03/hello-world/" rel="prev" title="Hello World">
+              <a href="/2017/05/07/hello-hexo/" rel="prev" title="Hello World">
                 Hello World <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -628,7 +612,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

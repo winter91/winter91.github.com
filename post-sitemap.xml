@@ -7,6 +7,150 @@
     </url>
 
     <url>
+        <loc>mark.z-dd.net/2016/01/05/yocto%E7%9B%B8%E5%85%B3/</loc>
+        <lastmod>2017-05-07T05:46:04.806Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2017/05/07/hello-hexo/</loc>
+        <lastmod>2017-05-07T05:41:48.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2015/10/16/hello-echo/</loc>
+        <lastmod>2017-05-07T05:41:37.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2014/09/17/DD%E5%88%9D%E5%AD%A6Linux%E7%B3%BB%E5%88%97-1-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</loc>
+        <lastmod>2017-05-07T05:35:18.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2014/10/16/IP%E4%B8%8EMAC-ARP%E5%8F%8AW5500%E8%B6%85%E6%97%B6%E6%9C%BA%E5%88%B6%EF%BC%8C%E9%9D%9E%E9%98%BB%E5%A1%9E/</loc>
+        <lastmod>2017-05-07T05:08:44.253Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2014/10/23/%E4%B8%8ESSI%E7%9A%84%E5%88%9D%E9%81%87/</loc>
+        <lastmod>2017-05-07T05:04:59.047Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2014/10/29/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF-%E7%95%A5%E7%9F%A5%E4%B8%80%E4%BA%8C/</loc>
+        <lastmod>2017-05-07T05:03:47.941Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2014/12/09/Linux%E7%B3%BB%E5%88%97-2-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8CLinux%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</loc>
+        <lastmod>2017-05-07T05:03:18.791Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2014/12/12/Linux%E9%A9%B1%E5%8A%A8%E7%B3%BB%E5%88%97-1-Misc-%E6%B7%B7%E6%9D%82-%E8%AE%BE%E5%A4%87%E4%B9%8BGPIO/</loc>
+        <lastmod>2017-05-07T04:57:57.996Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2015/01/05/%E6%8B%AF%E6%95%91%E6%88%91%E7%9A%84Ubuntu14-04%EF%BC%88kylin%EF%BC%89/</loc>
+        <lastmod>2017-05-07T04:44:47.689Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2016/03/13/Kali-Rolling%E7%89%88%E6%9C%AC%E6%8A%98%E8%85%BE/</loc>
+        <lastmod>2017-05-07T04:20:56.178Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2016/01/05/Python%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98Mark%EF%BC%81/</loc>
+        <lastmod>2017-05-07T04:14:33.632Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2015/11/10/I2C-tools%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8-%E8%AE%B0%E5%BD%95/</loc>
+        <lastmod>2017-05-07T04:11:20.872Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2015/11/04/Cubieboard%E4%B8%8Akali%E5%88%9D%E6%8E%A2/</loc>
+        <lastmod>2017-05-07T04:10:11.347Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2015/10/27/wpa-supplicant-iwconfig/</loc>
+        <lastmod>2017-05-07T04:08:07.778Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2015/10/19/openwrt-%E7%9B%B8%E5%85%B3%E6%9C%89%E7%94%A8%E7%9A%84/</loc>
+        <lastmod>2017-05-07T03:55:31.363Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2016/01/04/Centos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6/</loc>
+        <lastmod>2017-05-07T03:35:00.439Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2016/01/24/android%E4%B8%8A%E5%AE%89%E8%A3%85kali/</loc>
+        <lastmod>2017-05-07T03:24:35.964Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>mark.z-dd.net/2013/09/25/python-github-blog/</loc>
         <lastmod>2017-05-03T02:24:19.676Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,22 +167,6 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2016/01/24/android%E4%B8%8A%E5%AE%89%E8%A3%85kali/</loc>
-        <lastmod>2017-04-27T05:58:04.688Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2016/03/13/Kali-Rolling%E7%89%88%E6%9C%AC%E6%8A%98%E8%85%BE/</loc>
-        <lastmod>2017-04-27T03:59:03.377Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/2016/03/01/%E5%88%9D%E5%B0%9DLinux-mint/</loc>
         <lastmod>2017-04-27T03:59:03.377Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -47,71 +175,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2016/01/04/Centos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2015/11/10/I2C-tools%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8-%E8%AE%B0%E5%BD%95/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2016/01/05/Python%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98Mark%EF%BC%81/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2015/10/19/openwrt-%E7%9B%B8%E5%85%B3%E6%9C%89%E7%94%A8%E7%9A%84/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2016/01/05/yocto%E7%9B%B8%E5%85%B3/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2015/10/16/About/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2015/11/04/Cubieboard%E4%B8%8Akali%E5%88%9D%E6%8E%A2/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/2013/08/30/FM3%E5%BA%94%E7%94%A8%E7%AC%94%E8%AE%B0%E8%B0%83%E8%AF%95-%E4%B8%B2%E5%8F%A3%E4%B8%8A%E4%BD%8D%E6%9C%BA%EF%BC%88%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%EF%BC%8C%E9%AB%98%E6%B3%A2%E7%89%B9%E7%8E%87%EF%BC%8C%E4%BF%9D%E5%AD%98%E5%88%B0WAV%E6%96%87%E4%BB%B6%EF%BC%89-%E9%97%AE%E9%A2%98Mark%EF%BC%81/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2014/10/16/IP%E4%B8%8EMAC-ARP%E5%8F%8AW5500%E8%B6%85%E6%97%B6%E6%9C%BA%E5%88%B6%EF%BC%8C%E9%9D%9E%E9%98%BB%E5%A1%9E/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -135,39 +199,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2015/10/27/wpa-supplicant-iwconfig/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2014/10/23/%E4%B8%8ESSI%E7%9A%84%E5%88%9D%E9%81%87/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2013/08/30/%E4%B8%B2%E5%8F%A3%E4%B8%8A%E4%BD%8D%E6%9C%BA%EF%BC%88%E6%8E%A5%E6%94%B6%E5%90%8C%E6%AD%A5%E6%98%BE%E7%A4%BAFFT%E6%B3%A2%E5%BD%A2%EF%BC%89-%E9%97%AE%E9%A2%98Mark%EF%BC%81/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/2012/06/18/%E5%85%B3%E4%BA%8EPython/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2014/10/29/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF-%E7%95%A5%E7%9F%A5%E4%B8%80%E4%BA%8C/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -183,7 +215,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2012/06/16/%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%882%EF%BC%89/</loc>
+        <loc>mark.z-dd.net/2013/08/30/%E4%B8%B2%E5%8F%A3%E4%B8%8A%E4%BD%8D%E6%9C%BA%EF%BC%88%E6%8E%A5%E6%94%B6%E5%90%8C%E6%AD%A5%E6%98%BE%E7%A4%BAFFT%E6%B3%A2%E5%BD%A2%EF%BC%89-%E9%97%AE%E9%A2%98Mark%EF%BC%81/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -199,7 +231,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2012/06/27/%E8%8F%9C%E9%B8%9F%E5%AD%A6Python%EF%BC%881%EF%BC%89/</loc>
+        <loc>mark.z-dd.net/2012/06/16/%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%882%EF%BC%89/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -207,8 +239,8 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2014/09/17/DD%E5%88%9D%E5%AD%A6Linux%E7%B3%BB%E5%88%97-1-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</loc>
-        <lastmod>2017-04-27T03:59:03.373Z</lastmod>
+        <loc>mark.z-dd.net/2012/06/27/%E8%8F%9C%E9%B8%9F%E5%AD%A6Python%EF%BC%881%EF%BC%89/</loc>
+        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -223,31 +255,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2014/12/09/Linux%E7%B3%BB%E5%88%97-2-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E5%92%8CLinux%E6%A0%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</loc>
-        <lastmod>2017-04-27T03:59:03.373Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2014/12/12/Linux%E9%A9%B1%E5%8A%A8%E7%B3%BB%E5%88%97-1-Misc-%E6%B7%B7%E6%9D%82-%E8%AE%BE%E5%A4%87%E4%B9%8BGPIO/</loc>
-        <lastmod>2017-04-27T03:59:03.373Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/2015/01/11/ubuntu14-04%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-        <lastmod>2017-04-27T03:59:03.373Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2015/01/05/%E6%8B%AF%E6%95%91%E6%88%91%E7%9A%84Ubuntu14-04%EF%BC%88kylin%EF%BC%89/</loc>
         <lastmod>2017-04-27T03:59:03.373Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -265,14 +273,6 @@
     <url>
         <loc>mark.z-dd.net/2012/06/14/%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%881%EF%BC%89/</loc>
         <lastmod>2017-04-27T03:59:03.373Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/2017/05/03/hello-world/</loc>
-        <lastmod>2016-03-20T09:31:16.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

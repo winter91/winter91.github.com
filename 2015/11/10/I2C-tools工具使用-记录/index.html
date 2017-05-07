@@ -91,35 +91,32 @@
 
 <meta name="description" content="下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。
 使用 ：
-
-&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;**1.i2cdetect -l**
-
-&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp; 列举出系统中所有的I2C总线。
-
-&amp;amp;nbsp;&amp;amp;nbsp;">
+1.i2cdetect -l
+列举出系统中所有的I2C总线。
+2.i2cdetect -y -r 0
+列举一条I2C总线（以0为例）上的所有设备(UU为使用中，即已经操作过)
+0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I2C tools工具使用-记录">
 <meta property="og:url" content="mark.z-dd.net/2015/11/10/I2C-tools工具使用-记录/index.html">
 <meta property="og:site_name" content="DD'echo">
 <meta property="og:description" content="下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。
 使用 ：
-
-&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;**1.i2cdetect -l**
-
-&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp; 列举出系统中所有的I2C总线。
-
-&amp;amp;nbsp;&amp;amp;nbsp;">
-<meta property="og:updated_time" content="2017-04-27T03:59:03.375Z">
+1.i2cdetect -l
+列举出系统中所有的I2C总线。
+2.i2cdetect -y -r 0
+列举一条I2C总线（以0为例）上的所有设备(UU为使用中，即已经操作过)
+0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5">
+<meta property="og:updated_time" content="2017-05-07T04:11:20.872Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="I2C tools工具使用-记录">
 <meta name="twitter:description" content="下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。
 使用 ：
-
-&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;**1.i2cdetect -l**
-
-&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp; 列举出系统中所有的I2C总线。
-
-&amp;amp;nbsp;&amp;amp;nbsp;">
+1.i2cdetect -l
+列举出系统中所有的I2C总线。
+2.i2cdetect -y -r 0
+列举一条I2C总线（以0为例）上的所有设备(UU为使用中，即已经操作过)
+0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5">
 
 
 
@@ -368,8 +365,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T12:11:20+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -423,36 +420,18 @@
 
       
         <p>下载编译好 i2c-tools，并将生成的生成i2cdetect,i2cdump,i2cset,i2cget等工具拷贝到目标板中。</p>
-<pre><code>使用 ：
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;**1.i2cdetect -l**
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举出系统中所有的I2C总线。
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;** 2.i2cdetect -y -r **&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;**0**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 列举一条I2C总线（&lt;span style=&quot;background-color:#EE33EE;&quot;&gt;以0为例&lt;/span&gt;）上的所有设备(UU为使用中，即已经操作过)
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&amp;nbsp; 1&amp;nbsp; 2&amp;nbsp; 3&amp;nbsp; 4&amp;nbsp; 5&amp;nbsp; 6&amp;nbsp; 7&amp;nbsp; 8&amp;nbsp; 9&amp;nbsp; a&amp;nbsp; b&amp;nbsp; c&amp;nbsp; d&amp;nbsp; e&amp;nbsp; f
-</code></pre><p>00:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; – – – – – – – – – – – – –</p>
-<p>10: – – – – – – – – – – UU – – – – –</p>
-<p>20: – – – – – – – – – – – – – – – –</p>
-<p>30: – – – – 34 – – – – – – – – – – –</p>
-<p>40: – – – – – – – – – – – – – – – –</p>
-<p>50: – – – – – – – – – – – – – – – –</p>
-<p>60: – – – – – – – – – – – – – – – –</p>
-<p>70: – – – – – – – –</p>
-<pre><code>&amp;nbsp;&amp;nbsp;&amp;nbsp; **3.i2cdump -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; **4.i2cget -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;读取I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; **5.i2cset -f -y 0 **&lt;span style=&quot;background-color:#FF9900;&quot;&gt;**0x34**&lt;/span&gt; &lt;span style=&quot;background-color:#B8D100;&quot;&gt;**0x28**&lt;/span&gt; &lt;span style=&quot;background-color:#00D5FF;&quot;&gt;**0xfb**&lt;/span&gt; 
-
-&amp;nbsp;&amp;nbsp;&amp;nbsp; 写I2C总线（0）上地址为&lt;span style=&quot;background-color:#FF9900;&quot;&gt;0x34&lt;/span&gt;的设备的&lt;span style=&quot;background-color:#B8D100;&quot;&gt;0x28&lt;/span&gt;寄存器为&lt;span style=&quot;background-color:#00D5FF;&quot;&gt;0xfb&lt;/span&gt; 
+<p>使用 ：</p>
+<p><strong>1.i2cdetect -l</strong></p>
+<pre><code>列举出系统中所有的I2C总线。
+</code></pre><p><strong>2.i2cdetect -y -r 0</strong></p>
+<pre><code>列举一条I2C总线（以0为例）上的所有设备(UU为使用中，即已经操作过)
+</code></pre><p>0&nbsp; 1&nbsp; 2&nbsp; 3&nbsp; 4&nbsp; 5&nbsp; 6&nbsp; 7&nbsp; 8&nbsp; 9&nbsp; a&nbsp; b&nbsp; c&nbsp; d&nbsp; e&nbsp; f<br>00:               – – – – – – – – – – – – –<br>10: – – – – – – – – – – UU – – – – –<br>20: – – – – – – – – – – – – – – – –<br>30: – – – – 34 – – – – – – – – – – –<br>40: – – – – – – – – – – – – – – – –<br>50: – – – – – – – – – – – – – – – –<br>60: – – – – – – – – – – – – – – – –<br>70: – – – – – – – –</p>
+<p><strong>3. i2cdump -f -y 0 0x34</strong></p>
+<pre><code>读取I2C总线（0）上地址为0x34的设备
+</code></pre><p><strong>4. i2cget -f -y 0 0x34 0x28</strong></p>
+<pre><code>读取I2C总线（0）上地址为0x34的设备的0x28寄存器
+</code></pre><p><strong>5. i2cset -f -y 0 0x34 0x28 0xfb</strong></p>
+<pre><code>写I2C总线（0）上地址为0x34的设备的0x28寄存器为0xfb
 </code></pre>
       
     </div>
@@ -640,7 +619,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

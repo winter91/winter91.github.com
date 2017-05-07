@@ -89,25 +89,25 @@
 
 
 
-<meta name="description" content="DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构----------
-来源：1.http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84
-2.http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php
-**## 一、根文件系">
+<meta name="description" content="##DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构 #
+----------
+来源：1.http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%842.http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php
+一、根文件系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系列--2.磁盘分区和Linux根文件系统,目录结构">
 <meta property="og:url" content="mark.z-dd.net/2014/12/09/Linux系列-2-磁盘分区和Linux根文件系统-目录结构/index.html">
 <meta property="og:site_name" content="DD'echo">
-<meta property="og:description" content="DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构----------
-来源：1.http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84
-2.http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php
-**## 一、根文件系">
-<meta property="og:updated_time" content="2017-04-27T03:59:03.373Z">
+<meta property="og:description" content="##DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构 #
+----------
+来源：1.http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%842.http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php
+一、根文件系统">
+<meta property="og:updated_time" content="2017-05-07T05:03:18.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系列--2.磁盘分区和Linux根文件系统,目录结构">
-<meta name="twitter:description" content="DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构----------
-来源：1.http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84
-2.http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php
-**## 一、根文件系">
+<meta name="twitter:description" content="##DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构 #
+----------
+来源：1.http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%842.http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php
+一、根文件系统">
 
 
 
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:03:18+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -410,69 +410,47 @@
       
 
       
-        <h1 id="DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构"><a href="#DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构" class="headerlink" title="DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构"></a>DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构</h1><pre><code>----------
-</code></pre><p>来源：1.<a href=""><a href="http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" target="_blank" rel="external">http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84</a></a></p>
-<p>2.<a href="&quot;鸟哥的私房菜&quot;"><a href="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php" target="_blank" rel="external">http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php</a></a></p>
-<pre><code>**## 一、根文件系统 ##**
-</code></pre><p><strong>/bin</strong></p>
-<p>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
-<p><strong>/boot</strong></p>
-<p>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
-<p><strong>/dev</strong></p>
-<p>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
-<p><strong>/etc</strong></p>
-<p>该目录中包含系统和应用软件的配置文件。</p>
-<p><strong>/etc/passwd</strong></p>
-<p>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。</p>
-<p><strong>/home</strong></p>
-<p>存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。</p>
-<p><strong>/lib</strong></p>
-<p>这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。</p>
-<p><strong>/lib64</strong></p>
-<p>64位系统有这个文件夹，64位程序的库。</p>
-<p><strong>/lost+found</strong></p>
-<p>这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。</p>
-<p><strong>/media</strong></p>
-<p>可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。</p>
-<p><strong>/mnt</strong></p>
-<p>临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区）</p>
-<p><strong>/opt</strong></p>
-<p>多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。</p>
-<p><strong>/proc</strong></p>
-<p>它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。</p>
-<p><strong>/root</strong></p>
-<p>这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。</p>
-<p><strong>/sbin</strong></p>
-<p>供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。</p>
-<p><strong>/tmp</strong></p>
-<p>该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。</p>
-<p><strong>/usr</strong></p>
-<p>静态的用户级应用程序等，见下。</p>
-<p><strong>/var</strong></p>
-<p>动态的程序数据等，见下文。</p>
-<pre><code>var中包括了一些数据文件，如系统日志等。/var的存放使得/usr被只读挂载成为可能。
-
-**## /var目录结构 ##**
-</code></pre><p><strong>/var/cache</strong></p>
-<p>应用程序的缓存文件</p>
-<p><strong>/var/lib</strong></p>
-<p>应用程序的信息、数据。如数据库的数据等都存放在此文件夹。</p>
-<p><strong>/var/local</strong></p>
-<p>/usr/local中程序的信息、数据</p>
-<p><strong>/var/lock</strong></p>
-<p>锁文件</p>
-<p><strong>/var/log</strong></p>
-<p>日志文件</p>
-<p><strong>/var/opt</strong></p>
-<p>/opt中程序的信息、数据</p>
-<p><strong>/var/run</strong></p>
-<p>正在执行着的程序的信息，如PID文件应存放于此</p>
-<p><strong>/var/spool</strong></p>
-<p>存放程序的假脱机数据（即spool data）</p>
-<p><strong>/var/tmp</strong></p>
-<p>临时文件</p>
-<pre><code>****二、所以分区：****
-</code></pre><p>使用任何Linux系统，都要有至少两个分区：一个根分区，用“/”表示；另一个是swap（交换）分区（最小应该和内存一样大，最大一般不超过内存的两倍大小），最好把/boot单独创建一个分区上（200M左右）</p>
+        <p>##DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构 #</p>
+<pre><code>----------
+</code></pre><p>来源：1.<a href=""><a href="http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" target="_blank" rel="external">http://linux-wiki.cn/wiki/zh-hans/Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84</a></a><br>2.<a href="&quot;鸟哥的私房菜&quot;"><a href="http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php" target="_blank" rel="external">http://vbird.dic.ksu.edu.tw/linux_basic/0130designlinux_2.php</a></a></p>
+<h4 id="一、根文件系统"><a href="#一、根文件系统" class="headerlink" title="一、根文件系统"></a>一、根文件系统</h4><p><strong>/bin</strong><br>这一目录中存放了供所有用户使用的完成基本维护任务的命令。其中bin是binary的缩写，表示二进制文件，通常为可执行文件。一些常用的系统命令，如cp、ls等保存在该目录中。</p>
+<p><strong>/boot</strong><br>这里存放的是启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</p>
+<p><strong>/dev</strong><br>在此目录中包含所有的系统设备文件。从此目录可以访问各种系统设备。如CD-ROM，磁盘驱动器，调制解调器和内存等。在该目录中还包含有各种实用功能，如用于创建设备文件的MAKEDEV。</p>
+<p><strong>/etc</strong><br>该目录中包含系统和应用软件的配置文件。</p>
+<p><strong>/etc/passwd</strong><br>该目录中包含了系统中的用户描述信息，每行记录一个用户的信息。</p>
+<p><strong>/home</strong><br>存储普通用户的个人文件。每个用户的主目录均在/home下以自己的用户名命名。</p>
+<p><strong>/lib</strong><br>这个目录里存放着系统最基本的共享链接库和内核模块。共享链接库在功能上类似于Windows里的.dll文件。</p>
+<p><strong>/lib64</strong><br>64位系统有这个文件夹，64位程序的库。</p>
+<p><strong>/lost+found</strong><br>这并不是Linux目录结构的组成部分，而是ext3文件系统用于保存丢失文件的地方。不恰当的关机操作和磁盘错误均会导致文件丢失，这意味着这些被标注为“在使用”，但却并未列于磁盘上的数据结构上。正常情况下，引导进程会运行fsck程序，该程序能发现这些文件。除了“/”分区上的这个目录外，在每个分区上均有一个lost+found目录。</p>
+<p><strong>/media</strong><br>可移动设备的挂载点，当前的操作系统通常会把U盘等设备自动挂载到该文件夹下。</p>
+<p><strong>/mnt</strong><br>临时用于挂载文件系统的地方。一般情况下这个目录是空的，而在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。（注意在GNOME中，只有挂载到/media的文件夹才会显示在“计算机”中，挂载到/mnt不会做为特殊设备显示，详见自动挂载分区）</p>
+<p><strong>/opt</strong><br>多数第三方软件默认安装到此位置，如Adobe Reader、google-earth等。并不是每个系统都会创建这个目录。</p>
+<p><strong>/proc</strong><br>它是存在于内存中的虚拟文件系统。里面保存了内核和进程的状态信息。多为文本文件，可以直接查看。如/proc/cpuinfo保存了有关CPU的信息。</p>
+<p><strong>/root</strong><br>这是根用户的主目录。与保留给个人用户的/home下的目录很相似，该目录中还包含仅与根用户有关的条目。</p>
+<p><strong>/sbin</strong><br>供超级用户使用的可执行文件，里面多是系统管理命令，如fsck, reboot, shutdown, ifconfig等。</p>
+<p><strong>/tmp</strong><br>该目录用以保存临时文件。该目录具有Sticky特殊权限，所有用户都可以在这个目录中创建、编辑文件。但只有文件拥有者才能删除文件。为了加快临时文件的访问速度，有的实现把/tmp放在内存中。</p>
+<p><strong>/usr</strong><br>静态的用户级应用程序等，见下。</p>
+<p><strong>/var</strong><br>动态的程序数据等，见下文。<br>    var中包括了一些数据文件，如系统日志等。/var的存放使得/usr被只读挂载成为可能。</p>
+<pre><code>**## /var目录结构 ##**
+**/var/cache**
+应用程序的缓存文件
+**/var/lib**
+应用程序的信息、数据。如数据库的数据等都存放在此文件夹。
+**/var/local**
+/usr/local中程序的信息、数据
+**/var/lock**
+锁文件
+**/var/log**
+日志文件
+**/var/opt**
+/opt中程序的信息、数据
+**/var/run**
+正在执行着的程序的信息，如PID文件应存放于此
+**/var/spool**
+存放程序的假脱机数据（即spool data）
+**/var/tmp**
+临时文件
+</code></pre><h4 id="二、所以分区："><a href="#二、所以分区：" class="headerlink" title="二、所以分区："></a>二、所以分区：</h4><p>使用任何Linux系统，都要有至少两个分区：一个根分区，用“/”表示；另一个是swap（交换）分区（最小应该和内存一样大，最大一般不超过内存的两倍大小），最好把/boot单独创建一个分区上（200M左右）</p>
 
       
     </div>
@@ -669,7 +647,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -745,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DD初学Linux系列–2-磁盘分区和Linux文件系统-目录结构"><span class="nav-number">1.</span> <span class="nav-text">DD初学Linux系列–2.磁盘分区和Linux文件系统,目录结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、根文件系统"><span class="nav-number">1.</span> <span class="nav-text">一、根文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、所以分区："><span class="nav-number">2.</span> <span class="nav-text">二、所以分区：</span></a></li></ol></div>
             
 
           </div>

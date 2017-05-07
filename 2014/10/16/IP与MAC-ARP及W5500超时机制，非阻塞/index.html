@@ -91,23 +91,20 @@
 
 <meta name="description" content="1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，前提条件：由交换机组成的网络。
 按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。
-
-在不断电的情况下，">
+在不断电的情况下，电">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IP与MAC--ARP及W5500超时机制，非阻塞">
 <meta property="og:url" content="mark.z-dd.net/2014/10/16/IP与MAC-ARP及W5500超时机制，非阻塞/index.html">
 <meta property="og:site_name" content="DD'echo">
 <meta property="og:description" content="1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，前提条件：由交换机组成的网络。
 按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。
-
-在不断电的情况下，">
-<meta property="og:updated_time" content="2017-04-27T03:59:03.374Z">
+在不断电的情况下，电">
+<meta property="og:updated_time" content="2017-05-07T05:08:44.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IP与MAC--ARP及W5500超时机制，非阻塞">
 <meta name="twitter:description" content="1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，前提条件：由交换机组成的网络。
 按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。
-
-在不断电的情况下，">
+在不断电的情况下，电">
 
 
 
@@ -356,8 +353,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-04-27T11:59:03+08:00">
-                2017-04-27
+              <time title="更新于" itemprop="dateModified" datetime="2017-05-07T13:08:44+08:00">
+                2017-05-07
               </time>
             
           </span>
@@ -411,25 +408,11 @@
 
       
         <p>1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，<strong>前提条件：由交换机组成的网络</strong>。</p>
-<pre><code>按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。
-
-在不断电的情况下，电表中缓存着前一个集中器的IP和MAC映射关系，如果更换集中器之后且IP不变，电表进行UDP通信使用的还是之前的映射关系，所以会通信异常。
-
-2.另一个客户反馈的W5500的TCP连接问题，connect。如果服务器断了，客户端会一直死在连接的while里面不断请求连接。很明显，使用的是类似阻塞模式，但是超时中断未发生。A，改为非阻塞方式，立即返回状态。B，设置中断及合理的超时时间（TCPto）。SIMR，SIR及RTR, RCR
-</code></pre><blockquote>
-<p>while ( IINCHIP_READ(Sn_SR(s)) != SOCK_SYNSENT )</p>
-<p>{</p>
-<p>if(IINCHIP_READ(Sn_SR(s)) == SOCK_ESTABLISHED)</p>
-<p>{</p>
-<p>break;</p>
-<p>}</p>
-<p>if (getSn_IR(s) &amp; Sn_IR_TIMEOUT)</p>
-<p>{</p>
-<p>IINCHIP_WRITE(Sn_IR(s), (Sn_IR_TIMEOUT)); // clear TIMEOUT Interrupt</p>
-<p>ret = 0;</p>
-<p>break;</p>
-<p>}</p>
-<p>}</p>
+<p>按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。</p>
+<p>在不断电的情况下，电表中缓存着前一个集中器的IP和MAC映射关系，如果更换集中器之后且IP不变，电表进行UDP通信使用的还是之前的映射关系，所以会通信异常。</p>
+<p>2.另一个客户反馈的W5500的TCP连接问题，connect。如果服务器断了，客户端会一直死在连接的while里面不断请求连接。很明显，使用的是类似阻塞模式，但是超时中断未发生。A，改为非阻塞方式，立即返回状态。B，设置中断及合理的超时时间（TCPto）。SIMR，SIR及RTR, RCR</p>
+<blockquote>
+<p>while ( IINCHIP_READ(Sn_SR(s)) != SOCK_SYNSENT )<br>{<br>​    if(IINCHIP_READ(Sn_SR(s)) == SOCK_ESTABLISHED)<br>​    {<br>​        break;<br>​    }<br>​    if (getSn_IR(s) &amp; Sn_IR_TIMEOUT)<br>​    {<br>​        IINCHIP_WRITE(Sn_IR(s), (Sn_IR_TIMEOUT)); // clear TIMEOUT Interrupt<br>​        ret = 0;<br>​        break;<br>​    }<br>}</p>
 </blockquote>
 
       
@@ -620,7 +603,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

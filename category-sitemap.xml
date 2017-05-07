@@ -21,13 +21,6 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/categories/Network/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/categories/linux-common/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -42,13 +35,6 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/categories/Open-Source/</loc>
-        <lastmod>2017-04-27T03:59:03.374Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/categories/Matlab/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -56,50 +42,64 @@
     </url>
 
     <url>
+        <loc>mark.z-dd.net/categories/blog/</loc>
+        <lastmod>2017-05-03T02:24:19.676Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>mark.z-dd.net/categories/centos/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/categories/tools/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>mark.z-dd.net/categories/Python/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
+        <lastmod>2017-05-07T03:35:00.439Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>mark.z-dd.net/categories/openwrt/</loc>
-        <lastmod>2017-04-27T03:59:03.375Z</lastmod>
+        <lastmod>2017-05-07T03:55:31.363Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>mark.z-dd.net/categories/Linux/</loc>
-        <lastmod>2017-04-27T03:59:03.377Z</lastmod>
+        <loc>mark.z-dd.net/categories/Python/</loc>
+        <lastmod>2017-05-07T04:14:33.632Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>mark.z-dd.net/categories/kali/</loc>
-        <lastmod>2017-04-27T05:58:04.688Z</lastmod>
+        <lastmod>2017-05-07T04:20:56.178Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>mark.z-dd.net/categories/blog/</loc>
-        <lastmod>2017-05-03T02:24:19.676Z</lastmod>
+        <loc>mark.z-dd.net/categories/Open-Source/</loc>
+        <lastmod>2017-05-07T05:03:47.941Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/categories/Network/</loc>
+        <lastmod>2017-05-07T05:08:44.253Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/categories/Linux/</loc>
+        <lastmod>2017-05-07T05:35:18.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/categories/tools/</loc>
+        <lastmod>2017-05-07T05:46:04.806Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
