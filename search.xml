@@ -42,6 +42,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[vps及相关idea]]></title>
+    <url>%2F2016%2F01%2F11%2Fvps%E5%8F%8A%E7%9B%B8%E5%85%B3idea%2F</url>
+    <content type="text"><![CDATA[​ 前段时间用几十刀在美国弄了个VPS，玩玩，为啥要用VPS呢？突然间才意识到，不仅可以弄弄linux主机服务器环境，顺便还可以用来架梯子。近段时间想玩玩微信公众平台，然后就想到了自己的博客，把自己的博和微信公众号关联起来，然后又想到VPS，然后又想到了Python，随便再熟悉熟悉Python，话说好久都没碰它了，哈哈。开干！刚刚有这个idea，微信公众平台发布微信web开发者工具今天也发布了！(2016.1.11晚)]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[yocto相关]]></title>
     <url>%2F2016%2F01%2F05%2Fyocto%E7%9B%B8%E5%85%B3%2F</url>
     <content type="text"><![CDATA[repo:curl http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo &gt; ~/bin/repo https://community.freescale.com/docs/DOC-100847#jive_content_id_2__Configuring_the_kernelMACHINE=imx6qsabresd source fsl-setup-release.sh -b build-x11 -e x11bitbake -c menuconfig linux-imxbitbake fsl-image-qt5 bitbake -c cleansstate u-bootbitbake -c patch u-bootbitbake -c cleansstate linux-imxbitbake -c cleanall fsl-image-qt5bitbake meta-toolchain-qt5&nbsp; #生成的sdk在 deploy/sdk/，一样先运行环境脚本 bitbake meta-ide-support:生成交叉编译环境脚本source 交叉编译环境脚本查看编译链:echo $CCarm-poky-linux-gnueabi-gcc -v//bitbake meta-toolchain error:/usr/include/gnu/stubs.h:7:29: fatal error: gnu/stubs-soft.h: No such file or directory 编译器问题 编译好的部署image在/build-x11/tmp/deploy下qmake:/opt/fsl-yocto-bsp/build-x11/tmp/sysroots/x86_64-linux/usr/bin/qt5//opt/atsama5d44/poky/build-atmel/tmp/sysroots/x86_64-linux/usr/bin/qt5/qmake -o Makefile//make savedefconfig 生成defconfig文件]]></content>
@@ -66,7 +77,7 @@
   <entry>
     <title><![CDATA[Centos6 升级python2.6.6-->2.7.6]]></title>
     <url>%2F2016%2F01%2F04%2FCentos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6%2F</url>
-    <content type="text"><![CDATA[​ 最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下： 1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++ 2.修改符号链接： rm -rf /usr/bin/python ln -s /usr/local/bin/python2.7 /usr/bin/python&lt;/pre&gt; 3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6 python -V]]></content>
+    <content type="text"><![CDATA[​ 最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下： 1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++2.修改符号链接：​ rm -rf /usr/bin/python​ ln -s /usr/local/bin/python2.7 /usr/bin/python3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6 python -V]]></content>
       <categories>
         <category>centos</category>
       </categories>

@@ -139,6 +139,29 @@
   </entry>
   
   <entry>
+    <title>vps及相关idea</title>
+    <link href="mark.z-dd.net/2016/01/11/vps%E5%8F%8A%E7%9B%B8%E5%85%B3idea/"/>
+    <id>mark.z-dd.net/2016/01/11/vps及相关idea/</id>
+    <published>2016-01-11T12:55:55.000Z</published>
+    <updated>2017-05-07T05:54:43.101Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    前段时间用几十刀在美国弄了个VPS，玩玩，为啥要用VPS呢？突然间才意识到，不仅可以弄弄linux主机服务器环境，顺便还可以用来架梯子。近段时间想玩玩微信公众平台，然后就想到了自己的博客，把自己的博和微信公众号关联起来，然后又想到VPS，然后又想到了Python，随便再熟悉熟悉Python，话说好久都没碰它了，哈哈。开干！刚刚有这个idea，微信公众平台发布微信web开发者工具今天也发布了！(2016.1.11晚)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​    前段时间用几十刀在美国弄了个VPS，玩玩，为啥要用VPS呢？突然间才意识到，不仅可以弄弄linux主机服务器环境，顺便还可以用来架梯子。近段时间想玩玩微信公众平台，然后就想到了自己的博客，把自己的博和微信公众号关联起来，然后又想到VPS，然后又想到了Python，
+    
+    </summary>
+    
+      <category term="tools" scheme="mark.z-dd.net/categories/tools/"/>
+    
+    
+      <category term="vps" scheme="mark.z-dd.net/tags/vps/"/>
+    
+  </entry>
+  
+  <entry>
     <title>yocto相关</title>
     <link href="mark.z-dd.net/2016/01/05/yocto%E7%9B%B8%E5%85%B3/"/>
     <id>mark.z-dd.net/2016/01/05/yocto相关/</id>
@@ -209,21 +232,20 @@
     <link href="mark.z-dd.net/2016/01/04/Centos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6/"/>
     <id>mark.z-dd.net/2016/01/04/Centos6-升级python2-6-6-2-7-6/</id>
     <published>2016-01-04T05:55:55.000Z</published>
-    <updated>2017-05-07T03:35:00.439Z</updated>
+    <updated>2017-05-07T05:52:30.388Z</updated>
     
     <content type="html"><![CDATA[<p>​    最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下：</p>
-<pre><code>1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo yum install gcc-c++
-2.修改符号链接： 
-rm -rf /usr/bin/python
-ln -s /usr/local/bin/python2.7 /usr/bin/python&lt;/pre&gt;
-3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6
-  python -V
-</code></pre>]]></content>
+<blockquote>
+<p>1.下源码，解压，配置./configure，编译make，安装make install，默认安装路径：/usr/local/bin/python2.7，没装gcc，编译不了，sudo         yum install gcc-c++<br>2.修改符号链接：<br>​    rm -rf /usr/bin/python<br>​    ln -s /usr/local/bin/python2.7 /usr/bin/python<br>3.yum用的是2.6的，所以升级之后yum不能用，要修改vim /usr/bin/yum，即 #!/usr/bin/python2.6</p>
+<p>python -V</p>
+</blockquote>
+]]></content>
     
     <summary type="html">
     
       &lt;p&gt;​    最近弄了个美国的VPS，因为要用来搭梯子，shadowsocks只支持Centos6，所以莫办法，只能装个Centos6，后来发现里面的python只有2.6.6，所以升级了下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1.下源码，解压，配置./configure，编译ma
+&lt;blockquote&gt;
+&lt;p&gt;1.下源码，解压，配置./configure
     
     </summary>
     
@@ -791,38 +813,6 @@ stop () {
       <category term="lwip" scheme="mark.z-dd.net/tags/lwip/"/>
     
       <category term="SSI" scheme="mark.z-dd.net/tags/SSI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IP与MAC--ARP及W5500超时机制，非阻塞</title>
-    <link href="mark.z-dd.net/2014/10/16/IP%E4%B8%8EMAC-ARP%E5%8F%8AW5500%E8%B6%85%E6%97%B6%E6%9C%BA%E5%88%B6%EF%BC%8C%E9%9D%9E%E9%98%BB%E5%A1%9E/"/>
-    <id>mark.z-dd.net/2014/10/16/IP与MAC-ARP及W5500超时机制，非阻塞/</id>
-    <published>2014-10-16T13:58:54.000Z</published>
-    <updated>2017-05-07T05:08:44.253Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，<strong>前提条件：由交换机组成的网络</strong>。</p>
-<p>按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关的知识。每个主机和路由器都会有ARP cache，无论主机是跑的是软件协议栈（如Lwip等），还是硬件协议栈（w5500）。ARP是为上层的协议服务的。</p>
-<p>在不断电的情况下，电表中缓存着前一个集中器的IP和MAC映射关系，如果更换集中器之后且IP不变，电表进行UDP通信使用的还是之前的映射关系，所以会通信异常。</p>
-<p>2.另一个客户反馈的W5500的TCP连接问题，connect。如果服务器断了，客户端会一直死在连接的while里面不断请求连接。很明显，使用的是类似阻塞模式，但是超时中断未发生。A，改为非阻塞方式，立即返回状态。B，设置中断及合理的超时时间（TCPto）。SIMR，SIR及RTR, RCR</p>
-<blockquote>
-<p>while ( IINCHIP_READ(Sn_SR(s)) != SOCK_SYNSENT )<br>{<br>​    if(IINCHIP_READ(Sn_SR(s)) == SOCK_ESTABLISHED)<br>​    {<br>​        break;<br>​    }<br>​    if (getSn_IR(s) &amp; Sn_IR_TIMEOUT)<br>​    {<br>​        IINCHIP_WRITE(Sn_IR(s), (Sn_IR_TIMEOUT)); // clear TIMEOUT Interrupt<br>​        ret = 0;<br>​        break;<br>​    }<br>}</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.今天客户反馈了个问题：使用UDP通信，在电表（类服务器）不断电的情况下，更换集中器（类客户端）（IP不变，MAC变了），通信会失败，&lt;strong&gt;前提条件：由交换机组成的网络&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;按照理论上来讲，应该是会有问题的。后面就补习了下ARP相关
-    
-    </summary>
-    
-      <category term="Network" scheme="mark.z-dd.net/categories/Network/"/>
-    
-    
-      <category term="W5500" scheme="mark.z-dd.net/tags/W5500/"/>
-    
-      <category term="网络" scheme="mark.z-dd.net/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   

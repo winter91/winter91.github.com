@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>mark.z-dd.net/2016/01/11/vps%E5%8F%8A%E7%9B%B8%E5%85%B3idea/</loc>
+        <lastmod>2017-05-07T05:54:43.101Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>mark.z-dd.net/2016/01/04/Centos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6/</loc>
+        <lastmod>2017-05-07T05:52:30.388Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>mark.z-dd.net/2016/01/05/yocto%E7%9B%B8%E5%85%B3/</loc>
         <lastmod>2017-05-07T05:46:04.806Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -135,14 +151,6 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2016/01/04/Centos6-%E5%8D%87%E7%BA%A7python2-6-6-2-7-6/</loc>
-        <lastmod>2017-05-07T03:35:00.439Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/2016/01/24/android%E4%B8%8A%E5%AE%89%E8%A3%85kali/</loc>
         <lastmod>2017-05-07T03:24:35.964Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -199,7 +207,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2013/08/30/%E4%B8%B2%E5%8F%A3%E4%B8%8A%E4%BD%8D%E6%9C%BA%EF%BC%88%E6%8E%A5%E6%94%B6%E5%90%8C%E6%AD%A5%E6%98%BE%E7%A4%BAFFT%E6%B3%A2%E5%BD%A2%EF%BC%89-%E9%97%AE%E9%A2%98Mark%EF%BC%81/</loc>
+        <loc>mark.z-dd.net/2012/06/18/%E5%85%B3%E4%BA%8EPython/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -207,7 +215,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2012/06/18/%E5%85%B3%E4%BA%8EPython/</loc>
+        <loc>mark.z-dd.net/2013/08/30/%E4%B8%B2%E5%8F%A3%E4%B8%8A%E4%BD%8D%E6%9C%BA%EF%BC%88%E6%8E%A5%E6%94%B6%E5%90%8C%E6%AD%A5%E6%98%BE%E7%A4%BAFFT%E6%B3%A2%E5%BD%A2%EF%BC%89-%E9%97%AE%E9%A2%98Mark%EF%BC%81/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -223,7 +231,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2012/06/16/%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%882%EF%BC%89/</loc>
+        <loc>mark.z-dd.net/2012/06/27/%E8%8F%9C%E9%B8%9F%E5%AD%A6Python%EF%BC%881%EF%BC%89/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -239,7 +247,7 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/2012/06/27/%E8%8F%9C%E9%B8%9F%E5%AD%A6Python%EF%BC%881%EF%BC%89/</loc>
+        <loc>mark.z-dd.net/2012/06/16/%E8%8F%9C%E9%B8%9F%E5%AD%A6Matlab%EF%BC%882%EF%BC%89/</loc>
         <lastmod>2017-04-27T03:59:03.374Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

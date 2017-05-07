@@ -49,13 +49,6 @@
     </url>
 
     <url>
-        <loc>mark.z-dd.net/categories/centos/</loc>
-        <lastmod>2017-05-07T03:35:00.439Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>mark.z-dd.net/categories/openwrt/</loc>
         <lastmod>2017-05-07T03:55:31.363Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -98,8 +91,15 @@
     </url>
 
     <url>
+        <loc>mark.z-dd.net/categories/centos/</loc>
+        <lastmod>2017-05-07T05:52:30.388Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>mark.z-dd.net/categories/tools/</loc>
-        <lastmod>2017-05-07T05:46:04.806Z</lastmod>
+        <lastmod>2017-05-07T05:54:43.101Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
